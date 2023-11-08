@@ -1,10 +1,13 @@
 import React from 'react'
-import Error from './pages/error/Error'
+import {
+  RouterProvider,
+} from "react-router-dom";
+
+import route from './routes/route';
+
 function App() {
   return (
-    <div>
-      
-    </div>
+    <RouterProvider router={route} />
   )
 }
 
