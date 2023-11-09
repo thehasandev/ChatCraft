@@ -27,11 +27,33 @@ function Registration() {
     userFullName: '',
     userPassword : ''
   })
+
+  let [errorData,setErrorData] = useState({
+    userEmailError : '',
+    userFullNameError  : '',
+    userPasswordError: ''
+  })
+ 
   
   let handleInputChange =(e)=>{
-    setRegData({...regData,[e.target.name]:e.target.value})
+    setRegData({...regData, [e.target.name]:e.target.value})
   }
-  
+
+  let handleSubmit =()=>{
+   if(regData.userEmail == ''){
+     setErrorData({...errorData,userEmailError:'Please Enter A Email Address'})
+     }
+
+   if(errorData.userFullNameError == ''){
+    setErrorData({...errorData,userFullNameError:'Please Enter A FullName'})
+   }
+
+   if(errorData.userPasswordError == ''){
+    setErrorData({...errorData,userPasswordError:'Please Enter A Password'})
+   }
+
+  }
+
 
   return (
     
@@ -45,16 +67,29 @@ function Registration() {
                 <div>
                   <MyInput onChange={handleInputChange} name='userEmail' id="outlined-basic" label="Email Address" variant="outlined" />
                 </div>
-
+                {
+                  errorData.userEmailError  &&
+                  <h1>{errorData.userEmailError}</h1>
+                }
                 <div>
                   <MyInput onChange={handleInputChange} name='userFullName' id="outlined-basic" label="Full name" variant="outlined" />
                 </div>
 
+                {
+                  errorData.userFullNameError &&
+                  <h1>{errorData.userFullNameError}</h1>
+                }
+
                 <div>
                   <MyInput onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
                 </div>
+                {
+                  errorData.userFullNameError &&
+                  <h1>{errorData.userFullNameError}</h1>
+                }
 
-              <Mybutton variant="contained">Sign up</Mybutton>
+
+              <Mybutton onClick={handleSubmit} variant="contained">Sign up</Mybutton>
               <h4>Already  have an account ? <span>Sign In</span></h4>
             </div>
           </div>
