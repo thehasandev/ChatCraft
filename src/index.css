@@ -33,11 +33,11 @@
 }
 .registration .box .one .from h4{
     font-family: 'Nunito Sans', sans-serif;
-    font-weight: 400;
-    font-size: 20px;
+    font-weight: 700;
+    font-size: 14px;
     color: #11175D;
     width: 80%;
-    margin: 0 auto;
+    text-align: center;
     padding-top: 20px;
 }
 .registration .box .one .from span{

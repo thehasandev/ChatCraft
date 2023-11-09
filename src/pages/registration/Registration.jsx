@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Grid from '@mui/material/Grid';
 import RegistraionImg from "../../assets/registration.png"
 import TextField from '@mui/material/TextField';
@@ -22,8 +22,19 @@ const MyInput = styled(TextField)({
 
 
 function Registration() {
+  let [regData,setRegData] = useState({
+    userEmail : '',
+    userFullName: '',
+    userPassword : ''
+  })
+  
+  let handleInputChange =(e)=>{
+    setRegData({...regData,[e.target.name]:e.target.value})
+  }
+  
+
   return (
-    <>
+    
       <section className='registration'>
         <div  className='box'>
           <div className='one'>
@@ -32,15 +43,15 @@ function Registration() {
               <p>Free register and you can enjoy it</p>
                 
                 <div>
-                  <MyInput id="outlined-basic" label="Email Address" variant="outlined" />
+                  <MyInput onChange={handleInputChange} name='userEmail' id="outlined-basic" label="Email Address" variant="outlined" />
                 </div>
 
                 <div>
-                  <MyInput id="outlined-basic" label="Full name" variant="outlined" />
+                  <MyInput onChange={handleInputChange} name='userFullName' id="outlined-basic" label="Full name" variant="outlined" />
                 </div>
 
                 <div>
-                  <MyInput id="outlined-basic" label="Password" variant="outlined" />
+                  <MyInput onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
                 </div>
 
               <Mybutton variant="contained">Sign up</Mybutton>
@@ -56,7 +67,7 @@ function Registration() {
         
       </section>
 
-    </>
+    
   )
 }
 
