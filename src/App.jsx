@@ -7,7 +7,7 @@ import route from './routes/route';
 
 function App() {
   return (
-    <RouterProvider router={route} />
+    <RouterProvider router ={route} />
   )
 }
 

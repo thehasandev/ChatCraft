@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.box{
+    display: flex;
+}
+
+/*================ Registration  Part Start =============*/
+.registration .box .one{
+    width: 50%;
+}
+.registration .box .one h1{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 34px;
+    color: #11175D;
+    margin-bottom: 12px;
+}
+.registration .box .one p{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #11175D;
+    margin-bottom: 34px;
+}
+
+.registration .box .one .from{
+    width: 497px;
+    margin-left: auto;
+    margin-top: 200px;
+    
+}
+.registration .box .one .from h4{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: #11175D;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+.registration .box .one .from span{
+    color: orange;
+}
+
+
+.registration .box .two{
+    width: 50%;
+}
+
+
+.registration .box .two img{
+    height: 100vh;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+
+
+/*================ Registration  Part End =============*/

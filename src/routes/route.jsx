@@ -7,15 +7,15 @@ import Error from "../pages/error/Error"
 
 const route = createBrowserRouter([
     {
-        path: "/",
+        path: "/sadf",
         element:<Home/>,
     }, 
     {
-        path: "/singin",
+        path: "/",
         element:<Registration/>,
     }, 
     {
-        path: "/login",
+        path: "/asdf",
         element:<Login/>,
     }, 
     {
