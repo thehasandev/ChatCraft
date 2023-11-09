@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
-import Grid from '@mui/material/Grid';
 import RegistraionImg from "../../assets/registration.png"
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
-
+import Alert from '@mui/material/Alert';
 
 const Mybutton = styled(Button)({
  backgroundColor: '#5F35F5',
@@ -16,41 +15,39 @@ const Mybutton = styled(Button)({
 
 const MyInput = styled(TextField)({
  width:'80%',
- marginBottom:'20px'
 });
 
 
 
 function Registration() {
   let [regData,setRegData] = useState({
-    userEmail : '',
-    userFullName: '',
-    userPassword : ''
+    userEmail : "",
+    userFullName: "",
+    userPassword : ""
   })
-
-  let [errorData,setErrorData] = useState({
-    userEmailError : '',
-    userFullNameError  : '',
-    userPasswordError: ''
+  let [regError,setRegError] =useState({
+    userEmailError : "",
+    userFullNameError : "",
+    userPasswordError : ""
   })
- 
   
   let handleInputChange =(e)=>{
     setRegData({...regData, [e.target.name]:e.target.value})
   }
-
+  
   let handleSubmit =()=>{
-   if(regData.userEmail == ''){
-     setErrorData({...errorData,userEmailError:'Please Enter A Email Address'})
-     }
 
-   if(errorData.userFullNameError == ''){
-    setErrorData({...errorData,userFullNameError:'Please Enter A FullName'})
-   }
+    if(regData.userEmail == ""){
+      setRegError({...regError,userEmailError:"Please Enter a Email"})
+    }
 
-   if(errorData.userPasswordError == ''){
-    setErrorData({...errorData,userPasswordError:'Please Enter A Password'})
-   }
+    if(regData.userFullName == ""){
+      setRegError({...regError,userFullNameError:"Please Enter a Name"})
+    }
+
+    if(regData.userPassword == ""){
+      setRegError({...regError,userPasswordError:"Please Enter a Password"})
+    }
 
   }
 
@@ -63,30 +60,42 @@ function Registration() {
             <div className='from'>
               <h1>Get started with easily register</h1>
               <p>Free register and you can enjoy it</p>
-                
-                <div>
+              
+                <div className='input-part'>
                   <MyInput onChange={handleInputChange} name='userEmail' id="outlined-basic" label="Email Address" variant="outlined" />
-                </div>
-                {
-                  errorData.userEmailError  &&
-                  <h1>{errorData.userEmailError}</h1>
-                }
-                <div>
+                   <h4>{regError.userEmailError}</h4>
+                    {/* {
+                      emailError && 
+                    <Alert  className='alert' variant="filled" severity="error">
+                      {emailError}
+                    </Alert>
+                    } */}
+                 </div>
+            
+                
+                <div className='input-part'>
                   <MyInput onChange={handleInputChange} name='userFullName' id="outlined-basic" label="Full name" variant="outlined" />
+                  <h4>{regError.userFullNameError}</h4>
+                  {/* {
+                  nameError && 
+                  <Alert  className='alert' variant="filled" severity="error">
+                    {nameError}
+                  </Alert>
+                  } */}
                 </div>
 
-                {
-                  errorData.userFullNameError &&
-                  <h1>{errorData.userFullNameError}</h1>
-                }
-
-                <div>
+                <div className='input-part'>
                   <MyInput onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
+                  <h4>{regError.userPasswordError}</h4>
+                  {/* {
+                    passwordError &&
+                    <Alert  className='alert' variant="filled" severity="error">
+                      {passwordError}
+                    </Alert>
+                  } */}
                 </div>
-                {
-                  errorData.userFullNameError &&
-                  <h1>{errorData.userFullNameError}</h1>
-                }
+             
+                
 
 
               <Mybutton onClick={handleSubmit} variant="contained">Sign up</Mybutton>
