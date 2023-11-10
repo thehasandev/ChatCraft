@@ -7,8 +7,10 @@ import Goggle from '../../assets/goggle.png'
 import Alert from '@mui/material/Alert';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
+import { RotatingLines } from 'react-loader-spinner'
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 
 const Mybutton = styled(Button)({
  backgroundColor: '#5F35F5',
@@ -30,6 +32,8 @@ const MyInput = styled(TextField)({
 
 function Login() {
   const auth = getAuth();
+
+  let [loader,setLoader] =useState(false)
   let navigate = useNavigate()
   let [logData,setLogData] = useState({
     userEmail : "",
@@ -43,23 +47,22 @@ function Login() {
   }
   
   let handleSubmit =()=>{
-      signInWithEmailAndPassword(auth, logData.userEmail, logData.userPassword)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        if(user.emailVerified){
+    signInWithEmailAndPassword(auth, logData.userEmail, logData.userPassword)
+    .then((userCredential) => {
+      setLoader(true)
+      const user = userCredential.user;
+      if(user.emailVerified){
           navigate('/')
         }else{
-         toast.error('Please verify your email ')
-        }
-        
+         toast.error('Please verify your email')
+        } 
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
         if(errorCode.includes('login')){
-          toast('Please enter cretiancial')
+          toast('Cretiancial Not match')
         }
-        console.log(errorCode);
+    
       });
 
   }
@@ -68,6 +71,16 @@ function Login() {
   return (
     
       <section className='login'>
+          {
+            loader  && 
+            <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="300"
+            visible={true}
+          />
+          }
         <div  className='box'>
           <div className='one'>
             <div className='from'>

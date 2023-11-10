@@ -7,7 +7,7 @@ import Alert from '@mui/material/Alert';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,sendEmailVerification  } from "firebase/auth";
 
 let Mybutton = styled(Button)({
  backgroundColor: '#5F35F5',
@@ -27,8 +27,6 @@ let MyInput = styled(TextField)({
 
 
 function Registration() {
- 
-
   let auth = getAuth();
 
   let [regData,setRegData] = useState({
@@ -94,10 +92,12 @@ function Registration() {
   if(regData.userEmail && regData.userFullName && regData.userPassword && emialValid.test(regData.userEmail) && isPassword.test(regData.userPassword)){
     createUserWithEmailAndPassword(auth, regData.userEmail, regData.userPassword)
       .then((userCredential) => {
-        const user = userCredential.user;
-        setTimeout(()=>{
-          navigate('/log-in')
-        },3000)
+        sendEmailVerification(auth.currentUser)
+        .then(() => {
+          setTimeout(()=>{
+            navigate('/log-in')
+          },2000)
+        }); 
         toast.success("Registratin sucessfull please verify  your email")
         setEmailError('')
         setNameError('')
