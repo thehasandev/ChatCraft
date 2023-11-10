@@ -50,9 +50,9 @@ function Registration() {
       setEmailError("Please Enter a valid email")
      }else{
       setEmailError('')
-     }
-      
+     }  
     }
+
 
     if(regData.userFullName == ""){
       setNameError("Please Enter a Name")
@@ -60,11 +60,32 @@ function Registration() {
       setNameError('')
     }
 
+
     if(regData.userPassword == ""){
       setPasswordError("Please Enter a Password")
     }else{
-      setPasswordError('')
+
+      let isLowercase = /^(?=.*[a-z]).*$/
+      let isNumber = /^(?=.*[0-9]).*$/
+      let isContainsSymbol = /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/
+      let isValidLength = /^.{10,16}$/
+
+      if(!isLowercase.test(regData.userPassword)){
+        setPasswordError("Password must have at least one Lowercase Character.")
+      }else if(!isNumber.test(regData.userPassword)){
+        setPasswordError('Password must contain at least one Digit.')
+      }else if(!isContainsSymbol.test(regData.userPassword)){
+        setPasswordError('Password must contain at least one Special Symbol..')
+      }else if(!isValidLength.test(regData.userPassword)){
+        setPasswordError('Password must be 10-16 Characters Long')
+      }else{
+        setPasswordError('')
+      }
+
+      
     }
+
+
 
   }
 
