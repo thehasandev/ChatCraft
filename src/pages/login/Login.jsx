@@ -4,12 +4,11 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Goggle from '../../assets/goggle.png'
-import Alert from '@mui/material/Alert';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner'
 
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword ,signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 
 const Mybutton = styled(Button)({
@@ -32,6 +31,7 @@ const MyInput = styled(TextField)({
 
 function Login() {
   const auth = getAuth();
+  const provider = new GoogleAuthProvider();
 
   let [loader,setLoader] =useState(false)
   let navigate = useNavigate()
@@ -62,9 +62,15 @@ function Login() {
         if(errorCode.includes('login')){
           toast('Cretiancial Not match')
         }
-    
       });
 
+  }
+
+  let handleGoggleClick =()=>{
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      navigate('/')
+    })
   }
 
 
@@ -85,7 +91,7 @@ function Login() {
           <div className='one'>
             <div className='from'>
               <h1>Login to your account!</h1>
-              <img src={Goggle} alt="" />
+              <img onClick={handleGoggleClick} src={Goggle} alt="" />
               
                 <div className='input-part'>
                   <MyInput onChange={handleInputChange} name='userEmail' id="outlined-basic" label="Email Address" variant="outlined" />
@@ -103,7 +109,7 @@ function Login() {
       
 
           <div className='two'>
-              <img src={LoginPng} alt="Login" />
+              <img src={LoginPng} alt="Login"  />
           </div>
 
         </div>
