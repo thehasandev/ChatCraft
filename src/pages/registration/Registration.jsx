@@ -5,8 +5,11 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Alert from '@mui/material/Alert';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const Mybutton = styled(Button)({
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+let Mybutton = styled(Button)({
  backgroundColor: '#5F35F5',
  width:'80%',
  padding:'19px 0px',
@@ -17,13 +20,17 @@ const Mybutton = styled(Button)({
 },
 });
 
-const MyInput = styled(TextField)({
+let MyInput = styled(TextField)({
  width:'80%',
 });
 
 
 
 function Registration() {
+ 
+
+  let auth = getAuth();
+
   let [regData,setRegData] = useState({
     userEmail : "",
     userFullName: "",
@@ -45,8 +52,9 @@ function Registration() {
     let isLowercase = /^(?=.*[a-z]).*$/
     let isNumber = /^(?=.*[0-9]).*$/
     let isContainsSymbol = /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/
-    let isValidLength = /^.{10,16}$/
+    let isValidLength = /^.{6,16}$/
     let isPassword   = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+   
     
     if(regData.userEmail == ""){
        setEmailError("Please Enter a Email")
@@ -76,7 +84,7 @@ function Registration() {
       }else if(!isContainsSymbol.test(regData.userPassword)){
         setPasswordError('Password must contain at least one Special Symbol..')
       }else if(!isValidLength.test(regData.userPassword)){
-        setPasswordError('Password must be 10-16 Characters Long')
+        setPasswordError('Password must be 6-16 Characters Long')
       }else{
         setPasswordError('')
       }
@@ -84,8 +92,25 @@ function Registration() {
 
   
   if(regData.userEmail && regData.userFullName && regData.userPassword && emialValid.test(regData.userEmail) && isPassword.test(regData.userPassword)){
-    navigate('/log-in')
-  }
+    createUserWithEmailAndPassword(auth, regData.userEmail, regData.userPassword)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setTimeout(()=>{
+          navigate('/log-in')
+        },3000)
+        toast.success("Registratin sucessfull please verify  your email")
+        setEmailError('')
+        setNameError('')
+        setPasswordError('')
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        if(errorCode.includes('email')){
+          setEmailError('This email is used please enter a new email')
+        }
+
+      });
+      }
 
   }
 
@@ -100,7 +125,7 @@ function Registration() {
               <p>Free register and you can enjoy it</p>
               
                 <div className={`${emailError ? "input-margin" : "input-part"}`}>
-                  <MyInput onChange={handleInputChange} name='userEmail' id="outlined-basic" label="Email Address" variant="outlined" />
+                  <MyInput value={regData.userEmail} onChange={handleInputChange} name='userEmail' id="outlined-basic" label="Email Address" variant="outlined" />
                  
                     {
                       emailError && 
@@ -112,7 +137,7 @@ function Registration() {
             
                 
                  <div className={`${nameError ? "input-margin" : "input-part"}`}>
-                  <MyInput onChange={handleInputChange} name='userFullName' id="outlined-basic" label="Full name" variant="outlined" />
+                  <MyInput value={regData.userFullName} onChange={handleInputChange} name='userFullName' id="outlined-basic" label="Full name" variant="outlined" />
                 
                   {
                   nameError && 
@@ -123,7 +148,7 @@ function Registration() {
                 </div>
 
                 <div className={`${passwordError ? "input-margin" : "input-part"}`}>
-                  <MyInput onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
+                  <MyInput type='password' value={regData.userPassword} onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
                   
                   {
                     passwordError &&
@@ -136,7 +161,7 @@ function Registration() {
                 
 
 
-              <Mybutton onClick={handleSubmit} variant="contained">Sign up</Mybutton>
+              <Mybutton onClick={handleSubmit} variant="contained">Sign up </Mybutton>
               <h4>Already  have an account ? <Link to={'/log-in'}><span>Sign In</span></Link></h4>
             </div>
           </div>
