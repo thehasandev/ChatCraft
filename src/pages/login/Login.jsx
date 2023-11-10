@@ -98,7 +98,7 @@ function Login() {
                  </div>
             
                 <div className='input-part'>
-                  <MyInput onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
+                  <MyInput type='password' onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
                 </div>
              
               <Mybutton onClick={handleSubmit} variant="contained">Login to Continue</Mybutton>

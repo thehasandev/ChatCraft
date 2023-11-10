@@ -6,8 +6,10 @@ import { styled } from '@mui/material/styles';
 import Alert from '@mui/material/Alert';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import {RxEyeClosed} from 'react-icons/rx'
+import {AiFillEye} from 'react-icons/ai'
 
-import { getAuth, createUserWithEmailAndPassword,sendEmailVerification  } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,sendEmailVerification } from "firebase/auth";
 
 let Mybutton = styled(Button)({
  backgroundColor: '#5F35F5',
@@ -27,6 +29,7 @@ let MyInput = styled(TextField)({
 
 
 function Registration() {
+  let [eye,setEye] = useState(false)
   let auth = getAuth();
 
   let [regData,setRegData] = useState({
@@ -147,9 +150,14 @@ function Registration() {
                   }
                 </div>
 
-                <div className={`${passwordError ? "input-margin" : "input-part"}`}>
-                  <MyInput type='password' value={regData.userPassword} onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
-                  
+                <div className={`${passwordError ? "input-margin" : "input-part"} from-item`}>
+                  <MyInput type={eye ? "text": "password"} value={regData.userPassword} onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
+                  {
+                    eye ?
+                    <AiFillEye onClick={()=>{setEye(false)}} className={`${passwordError ? "icon-top":"icon-eye"}`}/>
+                    :
+                   <RxEyeClosed onClick={()=>{setEye(true)}} className={`${passwordError ? "icon-top":"icon-eye"}`}/>
+                  }
                   {
                     passwordError &&
                     <Alert  className='alert' variant="filled" severity="error">

@@ -34,6 +34,23 @@ a{
     margin-top: 100px;
     
 }
+.registration .box .one .from .from-item{
+ position: relative; 
+}
+.registration .box .one .from .from-item .icon-eye{
+ position: absolute;
+ top: 50%;
+ transform: translateY(-50%);
+ right: 120px;
+ cursor: pointer; 
+}
+.registration .box .one .from .from-item .icon-top{
+ position: absolute;
+ top: 20px;
+ right: 120px;
+ cursor: pointer; 
+}
+
 .registration .box .one .from .input-part{
   position: relative; 
   margin-bottom: 20px; 
