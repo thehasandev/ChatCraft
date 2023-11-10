@@ -5,7 +5,10 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Goggle from '../../assets/goggle.png'
 import Alert from '@mui/material/Alert';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const Mybutton = styled(Button)({
  backgroundColor: '#5F35F5',
@@ -15,8 +18,7 @@ const Mybutton = styled(Button)({
  borderRadius:'8px',
  '&:hover': {
   backgroundColor: '#5F35F5',
-  borderColor: '#5F35F5',
-  boxShadow: 'none',
+
 },
 });
 
@@ -27,7 +29,9 @@ const MyInput = styled(TextField)({
 
 
 function Login() {
-  let [regData,setRegData] = useState({
+  const auth = getAuth();
+  let navigate = useNavigate()
+  let [logData,setLogData] = useState({
     userEmail : "",
     userFullName: "",
     userPassword : ""
@@ -35,11 +39,28 @@ function Login() {
 
   
   let handleInputChange =(e)=>{
-    setRegData({...regData, [e.target.name]:e.target.value})
+    setLogData({...logData, [e.target.name]:e.target.value})
   }
   
   let handleSubmit =()=>{
-
+      signInWithEmailAndPassword(auth, logData.userEmail, logData.userPassword)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        if(user.emailVerified){
+          navigate('/')
+        }else{
+         toast.error('Please verify your email ')
+        }
+        
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if(errorCode.includes('login')){
+          toast('Please enter cretiancial')
+        }
+        console.log(errorCode);
+      });
 
   }
 

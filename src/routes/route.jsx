@@ -7,7 +7,7 @@ import Error from "../pages/error/Error"
 
 const route = createBrowserRouter([
     {
-        path: "/sadf",
+        path: "/",
         element:<Home/>,
     }, 
     {
