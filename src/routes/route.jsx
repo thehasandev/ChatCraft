@@ -15,7 +15,7 @@ const route = createBrowserRouter([
         element:<Registration/>,
     }, 
     {
-        path: "/asdf",
+        path: "/log-in",
         element:<Login/>,
     }, 
     {

@@ -10,7 +10,7 @@ const Mybutton = styled(Button)({
  width:'80%',
  padding:'19px 0px',
  marginTop: '10px',
- borderRadius:'86px'
+ borderRadius:'8px'
 });
 
 const MyInput = styled(TextField)({
@@ -25,11 +25,7 @@ function Registration() {
     userFullName: "",
     userPassword : ""
   })
-  let [regError,setRegError] =useState({
-    userEmailError : "",
-    userFullNameError : "",
-    userPasswordError : ""
-  })
+
   
   let handleInputChange =(e)=>{
     setRegData({...regData, [e.target.name]:e.target.value})
@@ -38,15 +34,15 @@ function Registration() {
   let handleSubmit =()=>{
 
     if(regData.userEmail == ""){
-      setRegError({...regError,userEmailError:"Please Enter a Email"})
+      // setRegError({...regError,userEmailError:"Please Enter a Email"})
     }
 
     if(regData.userFullName == ""){
-      setRegError({...regError,userFullNameError:"Please Enter a Name"})
+      // setRegError({...regError,userFullNameError:"Please Enter a Name"})
     }
 
     if(regData.userPassword == ""){
-      setRegError({...regError,userPasswordError:"Please Enter a Password"})
+      // setRegError({...regError,userPasswordError:"Please Enter a Password"})
     }
 
   }
@@ -63,7 +59,7 @@ function Registration() {
               
                 <div className='input-part'>
                   <MyInput onChange={handleInputChange} name='userEmail' id="outlined-basic" label="Email Address" variant="outlined" />
-                   <h4>{regError.userEmailError}</h4>
+                 
                     {/* {
                       emailError && 
                     <Alert  className='alert' variant="filled" severity="error">
@@ -75,7 +71,7 @@ function Registration() {
                 
                 <div className='input-part'>
                   <MyInput onChange={handleInputChange} name='userFullName' id="outlined-basic" label="Full name" variant="outlined" />
-                  <h4>{regError.userFullNameError}</h4>
+                
                   {/* {
                   nameError && 
                   <Alert  className='alert' variant="filled" severity="error">
@@ -86,7 +82,7 @@ function Registration() {
 
                 <div className='input-part'>
                   <MyInput onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
-                  <h4>{regError.userPasswordError}</h4>
+                  
                   {/* {
                     passwordError &&
                     <Alert  className='alert' variant="filled" severity="error">
