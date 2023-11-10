@@ -12,7 +12,12 @@ const Mybutton = styled(Button)({
  width:'80%',
  padding:'19px 0px',
  marginTop: '10px',
- borderRadius:'8px'
+ borderRadius:'8px',
+ '&:hover': {
+  backgroundColor: '#5F35F5',
+  borderColor: '#5F35F5',
+  boxShadow: 'none',
+},
 });
 
 const MyInput = styled(TextField)({
