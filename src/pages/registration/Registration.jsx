@@ -26,8 +26,11 @@ function Registration() {
     userFullName: "",
     userPassword : ""
   })
-
+  let [emailError,setEmailError] = useState("")
+  let [nameError,setNameError] = useState("")
+  let [passwordError,setPasswordError] = useState("")
   
+
   let handleInputChange =(e)=>{
     setRegData({...regData, [e.target.name]:e.target.value})
   }
@@ -35,15 +38,21 @@ function Registration() {
   let handleSubmit =()=>{
 
     if(regData.userEmail == ""){
-      // setRegError({...regError,userEmailError:"Please Enter a Email"})
+       setEmailError("Please Enter a Email")
+    }else{
+      setEmailError('')
     }
 
     if(regData.userFullName == ""){
-      // setRegError({...regError,userFullNameError:"Please Enter a Name"})
+      setNameError("Please Enter a Name")
+    }else{
+      setNameError('')
     }
 
     if(regData.userPassword == ""){
-      // setRegError({...regError,userPasswordError:"Please Enter a Password"})
+      setPasswordError("Please Enter a Password")
+    }else{
+      setPasswordError('')
     }
 
   }
@@ -58,38 +67,38 @@ function Registration() {
               <h1>Get started with easily register</h1>
               <p>Free register and you can enjoy it</p>
               
-                <div className='input-part'>
+                <div className={`${emailError ? "input-margin" : "input-part"}`}>
                   <MyInput onChange={handleInputChange} name='userEmail' id="outlined-basic" label="Email Address" variant="outlined" />
                  
-                    {/* {
+                    {
                       emailError && 
                     <Alert  className='alert' variant="filled" severity="error">
                       {emailError}
                     </Alert>
-                    } */}
+                    }
                  </div>
             
                 
-                <div className='input-part'>
+                 <div className={`${nameError ? "input-margin" : "input-part"}`}>
                   <MyInput onChange={handleInputChange} name='userFullName' id="outlined-basic" label="Full name" variant="outlined" />
                 
-                  {/* {
+                  {
                   nameError && 
                   <Alert  className='alert' variant="filled" severity="error">
                     {nameError}
                   </Alert>
-                  } */}
+                  }
                 </div>
 
-                <div className='input-part'>
+                <div className={`${passwordError ? "input-margin" : "input-part"}`}>
                   <MyInput onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
                   
-                  {/* {
+                  {
                     passwordError &&
                     <Alert  className='alert' variant="filled" severity="error">
                       {passwordError}
                     </Alert>
-                  } */}
+                  }
                 </div>
              
                 

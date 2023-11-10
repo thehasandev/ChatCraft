@@ -38,9 +38,15 @@ a{
   position: relative; 
   margin-bottom: 20px; 
 }
+.registration .box .one .from .input-margin{
+  position: relative; 
+  margin-bottom: 10px; 
+}
+.registration .box .one .from .input-margin .alert{
+    width: 74%;
+}
 .registration .box .one .from .input-part .alert{
-  width: 74%;
-  
+  width: 74%; 
 }
 
 .registration .box .one .from h4{
