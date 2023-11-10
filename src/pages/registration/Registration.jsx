@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Alert from '@mui/material/Alert';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Mybutton = styled(Button)({
  backgroundColor: '#5F35F5',
@@ -35,24 +35,31 @@ function Registration() {
   let [nameError,setNameError] = useState("")
   let [passwordError,setPasswordError] = useState("")
   
+  let navigate = useNavigate()
+  
 
   let handleInputChange =(e)=>{
     setRegData({...regData, [e.target.name]:e.target.value})
   }
   
   let handleSubmit =()=>{
-
+    let emialValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    let isLowercase = /^(?=.*[a-z]).*$/
+    let isNumber = /^(?=.*[0-9]).*$/
+    let isContainsSymbol = /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/
+    let isValidLength = /^.{10,16}$/
+    let isPassword   = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+    
     if(regData.userEmail == ""){
        setEmailError("Please Enter a Email")
     }else{
-      let emialValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    
      if(!emialValid.test(regData.userEmail)){
       setEmailError("Please Enter a valid email")
      }else{
       setEmailError('')
      }  
     }
-
 
     if(regData.userFullName == ""){
       setNameError("Please Enter a Name")
@@ -64,12 +71,6 @@ function Registration() {
     if(regData.userPassword == ""){
       setPasswordError("Please Enter a Password")
     }else{
-
-      let isLowercase = /^(?=.*[a-z]).*$/
-      let isNumber = /^(?=.*[0-9]).*$/
-      let isContainsSymbol = /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/
-      let isValidLength = /^.{10,16}$/
-
       if(!isLowercase.test(regData.userPassword)){
         setPasswordError("Password must have at least one Lowercase Character.")
       }else if(!isNumber.test(regData.userPassword)){
@@ -81,11 +82,12 @@ function Registration() {
       }else{
         setPasswordError('')
       }
-
-      
     }
 
-
+  
+  if(regData.userEmail && regData.userFullName && regData.userPassword && emialValid.test(regData.userEmail) && isPassword.test(regData.userPassword)){
+    navigate('/log-in')
+  }
 
   }
 
