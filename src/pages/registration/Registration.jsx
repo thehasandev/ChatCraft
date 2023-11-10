@@ -14,8 +14,6 @@ const Mybutton = styled(Button)({
  borderRadius:'8px',
  '&:hover': {
   backgroundColor: '#5F35F5',
-  borderColor: '#5F35F5',
-  boxShadow: 'none',
 },
 });
 
