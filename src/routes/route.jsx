@@ -11,7 +11,7 @@ const route = createBrowserRouter([
         element:<Home/>,
     }, 
     {
-        path: "/",
+        path: "/sing-up",
         element:<Registration/>,
     }, 
     {

@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Goggle from '../../assets/goggle.png'
 import Alert from '@mui/material/Alert';
+import { Link } from 'react-router-dom';
 
 const Mybutton = styled(Button)({
  backgroundColor: '#5F35F5',
@@ -57,9 +58,10 @@ function Login() {
              
               <Mybutton onClick={handleSubmit} variant="contained">Login to Continue</Mybutton>
               <p>Forgot Password</p>
-              <h4>Don’t have an account ?  <span>Sign Up</span></h4>
+              <h4>Don’t have an account ? <Link to={'/sing-up'}><span>Sign up</span></Link> </h4>
             </div>
           </div>
+      
 
           <div className='two'>
               <img src={LoginPng} alt="Login" />

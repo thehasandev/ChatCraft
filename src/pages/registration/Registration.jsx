@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Alert from '@mui/material/Alert';
+import { Link } from 'react-router-dom';
 
 const Mybutton = styled(Button)({
  backgroundColor: '#5F35F5',
@@ -95,7 +96,7 @@ function Registration() {
 
 
               <Mybutton onClick={handleSubmit} variant="contained">Sign up</Mybutton>
-              <h4>Already  have an account ? <span>Sign In</span></h4>
+              <h4>Already  have an account ? <Link to={'/log-in'}><span>Sign In</span></Link></h4>
             </div>
           </div>
 

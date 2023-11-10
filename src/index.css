@@ -5,6 +5,9 @@
 .box{
     display: flex;
 }
+a{
+    text-decoration: none;
+}
 
 /*================ Registration  Part Start =============*/
 .registration .box .one{
