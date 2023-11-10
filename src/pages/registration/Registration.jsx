@@ -45,7 +45,13 @@ function Registration() {
     if(regData.userEmail == ""){
        setEmailError("Please Enter a Email")
     }else{
+      let emialValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+     if(!emialValid.test(regData.userEmail)){
+      setEmailError("Please Enter a valid email")
+     }else{
       setEmailError('')
+     }
+      
     }
 
     if(regData.userFullName == ""){
