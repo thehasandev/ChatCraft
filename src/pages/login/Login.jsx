@@ -7,6 +7,8 @@ import Goggle from '../../assets/goggle.png'
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner'
+import {RxEyeClosed} from 'react-icons/rx'
+import {AiFillEye} from 'react-icons/ai'
 
 import { getAuth, signInWithEmailAndPassword ,signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
@@ -30,9 +32,10 @@ const MyInput = styled(TextField)({
 
 
 function Login() {
-  const auth = getAuth();
-  const provider = new GoogleAuthProvider();
+  let auth = getAuth();
+  let provider = new GoogleAuthProvider();
 
+  let [eye,setEye] = useState(false)
   let [loader,setLoader] =useState(false)
   let navigate = useNavigate()
   let [logData,setLogData] = useState({
@@ -41,7 +44,6 @@ function Login() {
     userPassword : ""
   })
 
-  
   let handleInputChange =(e)=>{
     setLogData({...logData, [e.target.name]:e.target.value})
   }
@@ -49,9 +51,9 @@ function Login() {
   let handleSubmit =()=>{
     signInWithEmailAndPassword(auth, logData.userEmail, logData.userPassword)
     .then((userCredential) => {
-      setLoader(true)
       const user = userCredential.user;
       if(user.emailVerified){
+        setLoader(true)
           navigate('/')
         }else{
          toast.error('Please verify your email')
@@ -98,7 +100,13 @@ function Login() {
                  </div>
             
                 <div className='input-part'>
-                  <MyInput type='password' onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
+                  <MyInput type={`${eye ? "text":"password"}`} onChange={handleInputChange} name='userPassword' id="outlined-basi" label="Password" variant="outlined" />
+                  {
+                    eye ?
+                    <AiFillEye onClick={()=>{setEye(false)}} className={`icon-eye`}/>
+                    :
+                   <RxEyeClosed onClick={()=>{setEye(true)}} className={`icon-eye`}/>
+                  }
                 </div>
              
               <Mybutton onClick={handleSubmit} variant="contained">Login to Continue</Mybutton>
@@ -107,7 +115,6 @@ function Login() {
             </div>
           </div>
       
-
           <div className='two'>
               <img src={LoginPng} alt="Login"  />
           </div>

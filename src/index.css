@@ -34,6 +34,9 @@ a{
     margin-top: 100px;
     
 }
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+	width: 380px !important;
+}
 .registration .box .one .from .from-item{
  position: relative; 
 }
@@ -59,12 +62,10 @@ a{
   position: relative; 
   margin-bottom: 10px; 
 }
-.registration .box .one .from .input-margin .alert{
-    width: 74%;
+.registration .box .one .from  .alert{
+    max-width: 75%
 }
-.registration .box .one .from .input-part .alert{
-  width: 74%; 
-}
+
 
 .registration .box .one .from h4{
     font-family: 'Nunito Sans', sans-serif;
@@ -92,6 +93,59 @@ a{
     object-fit: cover;
 }
 
+/* Responsive  */
+@media (min-width: 320px) and (max-width: 700.99px){
+    .registration .box{
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+    .registration .box .one{
+        width: auto;
+    }
+    .registration .box .two{
+        width: auto;
+    }
+    .registration .box .one .from{
+        width: 360px;
+        margin: 0 auto ;
+        margin-top: 30px;
+        
+    }
+    .registration .box .one h1 {
+        font-size: 20px; 
+        text-align: center;
+        
+    }
+    .registration .box .one p {
+        font-size: 14px;
+        text-align: center;
+    }
+   .registration .box .two img {
+	width: 250px;
+	height: 250px;
+	object-fit: cover;
+	margin: 0 auto;
+    border-radius: 100%;
+  }
+  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+	width: 300px !important;
+    margin-left: 100px;
+}
+
+.registration .box .one .from .from-item .icon-eye{
+    right: 40px;
+   }
+   .registration .box .one .from  .alert{
+    max-width: 300px;
+   }
+   .registration .box .one .from .from-item .icon-top {
+	right: 40px;
+   }
+
+
+
+
+}
 
 
 /*================ Registration  Part End =============*/
@@ -100,6 +154,7 @@ a{
 .login .box .one{
     width: 50%;
 }
+
 .login .box .one h1{
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 700;
@@ -125,6 +180,13 @@ a{
   position: relative; 
   margin-bottom: 20px; 
 }
+.login .box .one .from .input-part .icon-eye{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 120px;
+    cursor: pointer; 
+   }
 .login .box .one .from p{
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
@@ -159,6 +221,7 @@ a{
     display: block;
     object-fit: cover;
 }
+
 
 
 

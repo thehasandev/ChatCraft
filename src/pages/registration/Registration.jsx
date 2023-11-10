@@ -11,20 +11,9 @@ import {AiFillEye} from 'react-icons/ai'
 
 import { getAuth, createUserWithEmailAndPassword,sendEmailVerification } from "firebase/auth";
 
-let Mybutton = styled(Button)({
- backgroundColor: '#5F35F5',
- width:'80%',
- padding:'19px 0px',
- marginTop: '10px',
- borderRadius:'8px',
- '&:hover': {
-  backgroundColor: '#5F35F5',
-},
-});
 
-let MyInput = styled(TextField)({
- width:'80%',
-});
+
+
 
 
 
@@ -128,7 +117,7 @@ function Registration() {
               <p>Free register and you can enjoy it</p>
               
                 <div className={`${emailError ? "input-margin" : "input-part"}`}>
-                  <MyInput value={regData.userEmail} onChange={handleInputChange} name='userEmail' id="outlined-basic" label="Email Address" variant="outlined" />
+                  <TextField  value={regData.userEmail} onChange={handleInputChange} name='userEmail' id="outlined-basic" label="Email Address" variant="outlined" />
                  
                     {
                       emailError && 
@@ -140,7 +129,7 @@ function Registration() {
             
                 
                  <div className={`${nameError ? "input-margin" : "input-part"}`}>
-                  <MyInput value={regData.userFullName} onChange={handleInputChange} name='userFullName' id="outlined-basic" label="Full name" variant="outlined" />
+                  <TextField  value={regData.userFullName} onChange={handleInputChange} name='userFullName' id="outlined-basic" label="Full name" variant="outlined" />
                 
                   {
                   nameError && 
@@ -151,7 +140,7 @@ function Registration() {
                 </div>
 
                 <div className={`${passwordError ? "input-margin" : "input-part"} from-item`}>
-                  <MyInput type={eye ? "text": "password"} value={regData.userPassword} onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
+                  <TextField  type={eye ? "text": "password"} value={regData.userPassword} onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
                   {
                     eye ?
                     <AiFillEye onClick={()=>{setEye(false)}} className={`${passwordError ? "icon-top":"icon-eye"}`}/>
@@ -169,7 +158,7 @@ function Registration() {
                 
 
 
-              <Mybutton onClick={handleSubmit} variant="contained">Sign up </Mybutton>
+              <button onClick={handleSubmit} variant="contained">Sign up </button>
               <h4>Already  have an account ? <Link to={'/log-in'}><span>Sign In</span></Link></h4>
             </div>
           </div>
