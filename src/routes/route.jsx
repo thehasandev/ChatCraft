@@ -7,11 +7,11 @@ import Error from "../pages/error/Error"
 
 const route = createBrowserRouter([
     {
-        path: "/",
+        path: "/a",
         element:<Home/>,
     }, 
     {
-        path: "/sing-up",
+        path: "/",
         element:<Registration/>,
     }, 
     {
