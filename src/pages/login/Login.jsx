@@ -96,11 +96,11 @@ function Login() {
               <img onClick={handleGoggleClick} src={Goggle} alt="" />
               
                 <div className='input-part'>
-                  <MyInput onChange={handleInputChange} name='userEmail' id="outlined-basic" label="Email Address" variant="outlined" />
+                  <MyInput onChange={handleInputChange} name='userEmail' id="outlined-basic"  label="Email Address" variant="outlined" />
                  </div>
             
                 <div className='input-part'>
-                  <MyInput type={`${eye ? "text":"password"}`} onChange={handleInputChange} name='userPassword' id="outlined-basi" label="Password" variant="outlined" />
+                  <MyInput type={`${eye ? "text":"password"}`} onChange={handleInputChange} name='userPassword' id="outlined-basic"  label="Password" variant="outlined" />
                   {
                     eye ?
                     <AiFillEye onClick={()=>{setEye(false)}} className={`icon-eye`}/>

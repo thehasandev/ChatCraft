@@ -54,9 +54,7 @@ a{
     margin-top: 100px;
     
 }
-.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-	width: 380px !important;
-}
+
 .registration .box .one .from .from-item{
  position: relative; 
 }
@@ -115,6 +113,9 @@ a{
 
 /* Responsive  */
 @media (min-width: 320px) and (max-width: 800.99px){
+    #outlined-basic{
+        width: 320px;
+    }
     .registration .box{
         flex-direction: column-reverse;
         justify-content: center;
@@ -147,10 +148,7 @@ a{
 	margin: 0 auto;
     border-radius: 100%;
   }
-  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-	width: 325px !important;
-    margin-left: 100px;
-}
+
 
 .registration .box .one .from .from-item .icon-eye{
     right: 40px;
@@ -245,6 +243,9 @@ a{
 
 /* Responsive  */
 @media (min-width: 320px) and (max-width: 800.99px){
+    .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+        width: 360px;
+    }
     .login .box{
         flex-direction: column-reverse;
         justify-content: center;
@@ -281,9 +282,7 @@ a{
 
 
 
-   .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
-	width: 360px;
-}
+
 .login .box .one img {
 	margin-left: 10px;
 }
