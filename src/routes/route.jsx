@@ -7,7 +7,7 @@ import Error from "../pages/error/Error"
 
 const route = createBrowserRouter([
     {
-        path: "/",
+        path: "/home",
         element:<Home/>,
     }, 
     {
@@ -15,7 +15,7 @@ const route = createBrowserRouter([
         element:<Registration/>,
     }, 
     {
-        path: "/log-in",
+        path: "/",
         element:<Login/>,
     }, 
     {

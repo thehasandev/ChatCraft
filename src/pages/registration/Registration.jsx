@@ -161,7 +161,7 @@ function Registration() {
               <Button text="Sign up"/>
             </div>
             
-              <h4>Already  have an account ? <Link to={'/log-in'}><span>Sign In</span></Link></h4>
+              <h4>Already  have an account ? <Link to={'/'}><span>Sign In</span></Link></h4>
             </div>
           </div>
 
