@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import LoginPng from "../../assets/login.png"
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import Button from "../../components/Button"
 import { styled } from '@mui/material/styles';
 import Goggle from '../../assets/goggle.png'
 import { toast } from 'react-toastify';
@@ -108,8 +108,11 @@ function Login() {
                    <RxEyeClosed onClick={()=>{setEye(true)}} className={`icon-eye`}/>
                   }
                 </div>
-             
-              <Mybutton onClick={handleSubmit} variant="contained">Login to Continue</Mybutton>
+                
+             <div onClick={handleSubmit}>
+               <Button text="Login to Continue"/>
+             </div>
+              {/* <Mybutton onClick={handleSubmit} variant="contained">Login to Continue</Mybutton> */}
               <p>Forgot Password</p>
               <h4>Don’t have an account ? <Link to={'/sing-up'}><span>Sign up</span></Link> </h4>
             </div>

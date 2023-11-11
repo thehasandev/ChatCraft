@@ -38,6 +38,7 @@ function Registration() {
   }
   
   let handleSubmit =()=>{
+    console.log("click");
     let emialValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     let isLowercase = /^(?=.*[a-z]).*$/
     let isNumber = /^(?=.*[0-9]).*$/

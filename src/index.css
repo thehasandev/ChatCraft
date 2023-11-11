@@ -18,6 +18,7 @@ a{
     color: white;
     border-radius: 8px;
     border: 0;
+    cursor: pointer;
     
 }
 @media (min-width: 320px) and (max-width: 800.99px){
@@ -239,6 +240,63 @@ a{
     width: 100%;
     display: block;
     object-fit: cover;
+}
+
+
+/* Responsive  */
+@media (min-width: 320px) and (max-width: 800.99px){
+    .login .box{
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+    .login .box .one{
+        width: auto;
+    }
+    .login .box .two{
+        width: auto;
+    }
+    .login .box .one .from{
+        width: 360px;
+        margin: 0 auto ;
+        margin-top: 30px;
+    }
+    .login .box .one h1 {
+        font-size: 20px; 
+        text-align: center;
+        
+    }
+
+   .login .box .two img {
+	width: 250px;
+	height: 250px;
+	object-fit: cover;
+	margin: 0 auto;
+    border-radius: 100%;
+  }
+
+  .login .box .one .from .input-part .icon-eye{
+    right: 20px;
+    
+   }
+
+
+
+   .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+	width: 360px;
+}
+.login .box .one img {
+	margin-left: 10px;
+}
+.login .box .one .from h4 {
+	margin-left: 27px;
+    padding-top: 5px;
+}
+.login .box .one .from p {
+	margin-left: 22px;
+}
+
+
+
 }
 
 
