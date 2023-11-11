@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import RegistraionImg from "../../assets/registration.png"
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import Button from '../../components/Button';
 import { styled } from '@mui/material/styles';
 import Alert from '@mui/material/Alert';
 import { Link, useNavigate } from 'react-router-dom';
@@ -156,9 +156,10 @@ function Registration() {
                 </div>
              
                 
-
-
-              <button onClick={handleSubmit} variant="contained">Sign up </button>
+            <div onClick={handleSubmit}>
+              <Button text="Sign up"/>
+            </div>
+            
               <h4>Already  have an account ? <Link to={'/log-in'}><span>Sign In</span></Link></h4>
             </div>
           </div>

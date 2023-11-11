@@ -8,6 +8,25 @@
 a{
     text-decoration: none;
 }
+.btn-all{
+    width: 410px;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    background: #11175D;
+    padding: 20px 0px;
+    color: white;
+    border-radius: 8px;
+    border: 0;
+    
+}
+@media (min-width: 320px) and (max-width: 800.99px){
+    .btn-all{
+        width: 355px;    
+    }
+}
+
+
 
 /*================ Registration  Part Start =============*/
 .registration .box .one{
@@ -94,7 +113,7 @@ a{
 }
 
 /* Responsive  */
-@media (min-width: 320px) and (max-width: 700.99px){
+@media (min-width: 320px) and (max-width: 800.99px){
     .registration .box{
         flex-direction: column-reverse;
         justify-content: center;
@@ -128,7 +147,7 @@ a{
     border-radius: 100%;
   }
   .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-	width: 300px !important;
+	width: 325px !important;
     margin-left: 100px;
 }
 
@@ -136,7 +155,7 @@ a{
     right: 40px;
    }
    .registration .box .one .from  .alert{
-    max-width: 300px;
+    max-width: 320px;
    }
    .registration .box .one .from .from-item .icon-top {
 	right: 40px;
