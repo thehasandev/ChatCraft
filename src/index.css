@@ -30,6 +30,9 @@ a{
 
 
 /*================ Registration  Part Start =============*/
+.registration{
+    padding: 0
+}
 .registration .box .one{
     width: 50%;
 }
@@ -65,13 +68,13 @@ a{
  position: absolute;
  top: 50%;
  transform: translateY(-50%);
- right: 120px;
+ right: 100px;
  cursor: pointer; 
 }
 .registration .box .one .from .from-item .icon-top{
  position: absolute;
  top: 20px;
- right: 120px;
+ right: 100px;
  cursor: pointer; 
 }
 
@@ -116,6 +119,9 @@ a{
 
 /* Responsive  */
 @media (min-width: 320px) and (max-width: 800.99px){
+    .registration{
+        padding: 20px 0px
+    }
     #outlined-basic{
         width: 320px;
     }
@@ -172,6 +178,9 @@ a{
 /*================ Registration  Part End =============*/
 
 /*================ Login  Part Start =============*/
+.login{
+    padding: 0;
+}
 .login .box .one{
     width: 50%;
 }
@@ -220,7 +229,7 @@ a{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 120px;
+    right: 100px;
     cursor: pointer; 
    }
 .login .box .one .from p{
@@ -230,7 +239,8 @@ a{
     color:red;
     width: 80%;
     text-align: center;
-    padding-top:5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 .login .box .one .from h4{
     font-family: 'Nunito Sans', sans-serif;
@@ -239,7 +249,7 @@ a{
     color: #11175D;
     width: 80%;
     text-align: center;
-    padding-top: 20px;
+ 
 }
 .login .box .one .from span{
     color: orange;
@@ -261,6 +271,9 @@ a{
 
 /* Responsive  */
 @media (min-width: 320px) and (max-width: 800.99px){
+    .login{
+        padding: 20px 0px;
+    }
     .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
         width: 360px;
     }

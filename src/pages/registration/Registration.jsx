@@ -21,11 +21,7 @@ function Registration() {
   let [eye,setEye] = useState(false)
   let auth = getAuth();
 
-  let [regData,setRegData] = useState({
-    userEmail : "",
-    userFullName: "",
-    userPassword : ""
-  })
+  let [regData,setRegData] = useState({userEmail : "",userFullName: "", userPassword : ""})
   let [emailError,setEmailError] = useState("")
   let [nameError,setNameError] = useState("")
   let [passwordError,setPasswordError] = useState("")

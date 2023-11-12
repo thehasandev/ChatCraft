@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import LoginPng from "../../assets/login.png"
 import TextField from '@mui/material/TextField';
 import Button from "../../components/Button"
-import { styled } from '@mui/material/styles';
 import GoggleLogo from '../../assets/g.png'
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
@@ -11,23 +10,6 @@ import {RxEyeClosed} from 'react-icons/rx'
 import {AiFillEye} from 'react-icons/ai'
 
 import { getAuth, signInWithEmailAndPassword ,signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-
-
-const Mybutton = styled(Button)({
- backgroundColor: '#5F35F5',
- width:'80%',
- padding:'19px 0px',
- marginTop: '10px',
- borderRadius:'8px',
- '&:hover': {
-  backgroundColor: '#5F35F5',
-
-},
-});
-
-
-
-
 
 function Login() {
   let auth = getAuth();
@@ -63,7 +45,6 @@ function Login() {
           toast('Cretiancial Not match')
         }
       });
-
   }
 
   let handleGoggleClick =()=>{
@@ -114,7 +95,7 @@ function Login() {
              <div onClick={handleSubmit}>
                <Button text="Login to Continue"/>
              </div>
-              {/* <Mybutton onClick={handleSubmit} variant="contained">Login to Continue</Mybutton> */}
+              
               <Link to="/forgot">
                 <p >Forgot Password</p>
               </Link>
