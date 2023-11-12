@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {FiMail} from "react-icons/fi"
 import { Link } from 'react-router-dom'
-function Forgot() {
 
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+function Forgot() {
+    let [email,setEmail] = useState("")
+
+    const auth = getAuth();  
     let handleResetPassword =()=>{
-        console.log("reset");
+        sendPasswordResetEmail(auth, email)
+        .then(() => {
+          // Password reset email sent!
+          // ..
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+        });
     }
   return (
     <section className='forgot'>
@@ -12,7 +25,7 @@ function Forgot() {
         <h1>Forget Password</h1>
         <p>You can reset your Password</p>
         <div className='input'>
-          <input type="text" placeholder='Enter your email'/>
+          <input  onChange={(e)=>{setEmail(e.target.value)}} type="email" placeholder='Enter your email'/>
           <div className="icon-box">
             <FiMail size={18}/>
           </div>
