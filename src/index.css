@@ -293,12 +293,86 @@ a{
 .login .box .one .from p {
 	margin-left: 22px;
 }
-
-
-
 }
 
 
-
-
 /*================ Login  Part End =============*/
+
+/*================ Forgot  Part Start =============*/
+.forgot{
+    background: teal;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.forgot .forgot-item{
+    background: white;
+    width: 350px;
+    border-radius: 10px;
+    padding: 20px 0px;
+}
+.forgot .forgot-item h1{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: #11175D;
+    text-align: center;  
+    margin-bottom: 10px;
+}
+.forgot .forgot-item p{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #11175D;
+    text-align: center;  
+    margin-bottom: 20px;
+}
+.forgot .forgot-item .input{
+    width: 280px;
+    margin: 0 auto;
+    position: relative;
+ 
+}
+.forgot .forgot-item .input .icon-box{
+   position: absolute;
+   top: 0;
+   right: -11px;
+   width: 40px;
+   height: 100%;
+   background: #11175D;
+   border-radius: 2px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: white;
+
+}
+.forgot .forgot-item .input input{
+    width: 100%;
+    border: 1px solid rgb(172, 172, 172);
+    padding: 8px 5px;
+    border-radius: 2px;
+
+}
+.forgot .forgot-item .btn{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.forgot .forgot-item button{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 10px 20px;
+    background: #11175D;
+    color: white;
+    border-radius: 5px;
+    border: 0;
+   cursor: pointer;
+}
+
+/*================ Forgot  Part End ===============*/
+

@@ -113,7 +113,9 @@ function Login() {
                <Button text="Login to Continue"/>
              </div>
               {/* <Mybutton onClick={handleSubmit} variant="contained">Login to Continue</Mybutton> */}
-              <p>Forgot Password</p>
+              <Link to="/forgot">
+                <p >Forgot Password</p>
+              </Link>
               <h4>Don’t have an account ? <Link to={'/sing-up'}><span>Sign up</span></Link> </h4>
             </div>
           </div>
