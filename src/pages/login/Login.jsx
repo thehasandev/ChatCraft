@@ -25,9 +25,7 @@ const Mybutton = styled(Button)({
 },
 });
 
-const MyInput = styled(TextField)({
- width:'80%',
-});
+
 
 
 
@@ -100,11 +98,11 @@ function Login() {
               </div>
               
                 <div className='input-part'>
-                  <MyInput onChange={handleInputChange} name='userEmail' id="outlined-basic"  label="Email Address" variant="outlined" />
+                  <TextField type='email' onChange={handleInputChange} name='userEmail' id="outlined-basic"  label="Email Address" variant="outlined" />
                  </div>
             
                 <div className='input-part'>
-                  <MyInput type={`${eye ? "text":"password"}`} onChange={handleInputChange} name='userPassword' id="outlined-basic"  label="Password" variant="outlined" />
+                  <TextField type={`${eye ? "text":"password"}`} onChange={handleInputChange} name='userPassword' id="outlined-basic"  label="Password" variant="outlined" />
                   {
                     eye ?
                     <AiFillEye onClick={()=>{setEye(false)}} className={`icon-eye`}/>
