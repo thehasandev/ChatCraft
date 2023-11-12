@@ -88,7 +88,7 @@ function Registration() {
         sendEmailVerification(auth.currentUser)
         .then(() => {
           setTimeout(()=>{
-            navigate('/log-in')
+            navigate('/')
           },2000)
         }); 
         toast.success("Registratin sucessfull please verify  your email")

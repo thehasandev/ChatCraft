@@ -54,7 +54,7 @@ function Login() {
       const user = userCredential.user;
       if(user.emailVerified){
         setLoader(true)
-          navigate('/')
+          navigate('/home')
         }else{
          toast.error('Please verify your email')
         } 

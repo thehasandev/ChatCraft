@@ -1,6 +1,11 @@
 import React from 'react'
 import {FiMail} from "react-icons/fi"
+import { Link } from 'react-router-dom'
 function Forgot() {
+
+    let handleResetPassword =()=>{
+        console.log("reset");
+    }
   return (
     <section className='forgot'>
       <div className='forgot-item'>
@@ -13,8 +18,10 @@ function Forgot() {
           </div>
         </div>
         <div className='btn'>
-            <button>Reset</button>
-            <button>Back to Home</button>
+            <button onClick={handleResetPassword}>Reset</button>
+            <Link to="/">
+              <button>Back to Login</button>
+            </Link>
         </div>
       </div>
     </section>

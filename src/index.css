@@ -33,6 +33,9 @@ a{
 .registration .box .one{
     width: 50%;
 }
+#outlined-basic{
+    width: 380px;
+}
 .registration .box .one h1{
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 700;
@@ -300,7 +303,7 @@ a{
 
 /*================ Forgot  Part Start =============*/
 .forgot{
-    background: teal;
+    background: #6470f3;
     width: 100%;
     height: 100vh;
     display: flex;
