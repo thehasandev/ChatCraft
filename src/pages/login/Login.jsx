@@ -18,17 +18,29 @@ function Login() {
   let [eye,setEye] = useState(false)
   let [loader,setLoader] =useState(false)
   let navigate = useNavigate()
-  let [logData,setLogData] = useState({
-    userEmail : "",
-    userFullName: "",
-    userPassword : ""
-  })
+  let [logData,setLogData] = useState({userEmail : "",userPassword : ""})
+  let [emailError,setEmailError] = useState("")
+  let [passwordError,setPasswordError] = useState("")
 
   let handleInputChange =(e)=>{
     setLogData({...logData, [e.target.name]:e.target.value})
   }
   
   let handleSubmit =()=>{
+
+    if(!logData.userEmail){
+      setEmailError("Please enter a email")
+    }else{
+      setEmailError("")
+    }
+
+    if(!logData.userPassword){
+      setPasswordError("Please enter a password")
+    }else{
+      setPasswordError("")
+    }
+
+
     signInWithEmailAndPassword(auth, logData.userEmail, logData.userPassword)
     .then((userCredential) => {
       const user = userCredential.user;
@@ -79,11 +91,13 @@ function Login() {
               </div>
               
                 <div className='input-part'>
-                  <TextField type='email' onChange={handleInputChange} name='userEmail' id="outlined-basic"  label="Email Address" variant="outlined" />
+                  <TextField type='email' value={logData.userEmail} onChange={handleInputChange} name='userEmail' id="outlined-basic"  label="Email Address" variant="outlined" />
+                 <h6>{emailError}</h6>
                  </div>
             
                 <div className='input-part'>
-                  <TextField type={`${eye ? "text":"password"}`} onChange={handleInputChange} name='userPassword' id="outlined-basic"  label="Password" variant="outlined" />
+                  <TextField type={`${eye ? "text":"password"}`} value={logData.userPassword} onChange={handleInputChange} name='userPassword' id="outlined-basic"  label="Password" variant="outlined" />
+                <h6>{passwordError}</h6>
                   {
                     eye ?
                     <AiFillEye onClick={()=>{setEye(false)}} className={`icon-eye`}/>

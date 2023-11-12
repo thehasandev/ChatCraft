@@ -160,13 +160,13 @@ a{
 
 
 .registration .box .one .from .from-item .icon-eye{
-    right: 40px;
+    right: 20px;
    }
    .registration .box .one .from  .alert{
     max-width: 320px;
    }
    .registration .box .one .from .from-item .icon-top {
-	right: 40px;
+	right: 20px;
    }
 
 
@@ -199,6 +199,13 @@ a{
     margin-left: auto;
     margin-top: 100px;
     
+}
+.login .box .one .from h6{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: red;
+    margin-top: 4px;
 }
 .login .box .one .goggle{
    cursor: pointer;
@@ -236,7 +243,7 @@ a{
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
     font-size: 14px;
-    color:red;
+    color:#11175D;
     width: 80%;
     text-align: center;
     margin-top: 5px;
