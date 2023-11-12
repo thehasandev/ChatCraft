@@ -191,11 +191,26 @@ a{
     margin-top: 100px;
     
 }
-.login .box .one img{
-    width: 200px;
-   margin-bottom: 15px;
+.login .box .one .goggle{
    cursor: pointer;
-    
+   margin: 18px 0px;
+   display: flex;
+   align-items: center;
+   gap: 9px;
+   border: 2px solid rgb(194, 191, 191);
+   width: 200px;
+   justify-content: center;
+   padding: 10px 0px;
+   border-radius: 5px;
+}
+.login .box .one .goggle img{
+   width: 20px;
+}
+.login .box .one .goggle .title{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #11175D;
 }
 .login .box .one .from .input-part{
   position: relative; 

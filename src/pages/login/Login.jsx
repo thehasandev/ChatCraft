@@ -3,7 +3,7 @@ import LoginPng from "../../assets/login.png"
 import TextField from '@mui/material/TextField';
 import Button from "../../components/Button"
 import { styled } from '@mui/material/styles';
-import Goggle from '../../assets/goggle.png'
+import GoggleLogo from '../../assets/g.png'
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner'
@@ -93,7 +93,11 @@ function Login() {
           <div className='one'>
             <div className='from'>
               <h1>Login to your account!</h1>
-              <img onClick={handleGoggleClick} src={Goggle} alt="" />
+              
+              <div onClick={handleGoggleClick} className='goggle'>
+                <img src={GoggleLogo}/>
+                <span className='title'>Login with Google</span>
+              </div>
               
                 <div className='input-part'>
                   <MyInput onChange={handleInputChange} name='userEmail' id="outlined-basic"  label="Email Address" variant="outlined" />
