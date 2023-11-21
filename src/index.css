@@ -30,12 +30,20 @@ a{
 
 
 /*================ Registration  Part Start =============*/
+.loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
 .registration{
     padding: 0
 }
 .registration .box .one{
     width: 50%;
 }
+
 #outlined-basic{
     width: 380px;
 }
