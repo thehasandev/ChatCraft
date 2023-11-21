@@ -34,13 +34,10 @@ function Registration() {
   }
   
   let handleSubmit =()=>{
-    console.log("click");
+ 
     let emialValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-    let isLowercase = /^(?=.*[a-z]).*$/
-    let isNumber = /^(?=.*[0-9]).*$/
-    let isContainsSymbol = /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/
     let isValidLength = /^.{6,16}$/
-    let isPassword   = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+
    
     
     if(regData.userEmail == ""){
@@ -64,13 +61,7 @@ function Registration() {
     if(regData.userPassword == ""){
       setPasswordError("Please Enter a Password")
     }else{
-      if(!isLowercase.test(regData.userPassword)){
-        setPasswordError("Password must have at least one Lowercase Character.")
-      }else if(!isNumber.test(regData.userPassword)){
-        setPasswordError('Password must contain at least one Digit.')
-      }else if(!isContainsSymbol.test(regData.userPassword)){
-        setPasswordError('Password must contain at least one Special Symbol..')
-      }else if(!isValidLength.test(regData.userPassword)){
+       if(!isValidLength.test(regData.userPassword)){
         setPasswordError('Password must be 6-16 Characters Long')
       }else{
         setPasswordError('')
@@ -78,7 +69,7 @@ function Registration() {
     }
 
   
-  if(regData.userEmail && regData.userFullName && regData.userPassword && emialValid.test(regData.userEmail) && isPassword.test(regData.userPassword)){
+  if(regData.userEmail && regData.userFullName && regData.userPassword && emialValid.test(regData.userEmail) && isValidLength.test(regData.userPassword)){
     createUserWithEmailAndPassword(auth, regData.userEmail, regData.userPassword)
       .then((userCredential) => {
         sendEmailVerification(auth.currentUser)
