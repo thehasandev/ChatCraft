@@ -95,7 +95,7 @@ function Registration() {
       .catch((error) => {
         const errorCode = error.code;
         if(errorCode.includes('email')){
-          setEmailError('This email is used please enter a new email')
+          setEmailError('This email is already used please enter a new email')
         }
 
       });
