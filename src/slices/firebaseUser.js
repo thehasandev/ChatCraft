@@ -3,16 +3,16 @@ import { createSlice } from '@reduxjs/toolkit'
 export const firebaseUser = createSlice({
   name: 'user',
   initialState: {
-    value: null,
+    value: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
   },
   reducers: {
-    loggeduser: (state,action) => {
+    activeuser: (state,action) => {
     state.value = action.payload
     }
   },
 })
 
 
-export const { loggeduser } = firebaseUser.actions
+export const { activeuser } = firebaseUser.actions
 
 export default firebaseUser.reducer

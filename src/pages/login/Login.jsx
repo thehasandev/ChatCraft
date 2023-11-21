@@ -11,12 +11,14 @@ import {AiFillEye} from 'react-icons/ai'
 
 import { getAuth, signInWithEmailAndPassword ,signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useDispatch } from 'react-redux';
-import { loggeduser } from '../../slices/firebaseUser';
+import { activeuser } from '../../slices/firebaseUser';
 
 function Login() {
   let dispatch =useDispatch()
   let auth = getAuth();
   let provider = new GoogleAuthProvider();
+
+
 
   let [eye,setEye] = useState(false)
   let [loader,setLoader] =useState(false)
@@ -47,7 +49,9 @@ function Login() {
     signInWithEmailAndPassword(auth, logData.userEmail, logData.userPassword)
     .then((userCredential) => {
       const user = userCredential.user;
-      dispatch(loggeduser(user))
+      dispatch(activeuser(user))
+      localStorage.setItem("user",JSON.stringify(user))
+
       if(user.emailVerified){
         setLoader(true)
           navigate('/home')

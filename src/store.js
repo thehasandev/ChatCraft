@@ -4,6 +4,6 @@ import firebaseUser from './slices/firebaseUser'
 
 export default configureStore({
   reducer: {
-    logUser : firebaseUser
+    loguser : firebaseUser
   },
 })
