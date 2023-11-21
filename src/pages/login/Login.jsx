@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LoginPng from "../../assets/login.png"
 import TextField from '@mui/material/TextField';
 import Button from "../../components/Button"
@@ -10,15 +10,17 @@ import {RxEyeClosed} from 'react-icons/rx'
 import {AiFillEye} from 'react-icons/ai'
 
 import { getAuth, signInWithEmailAndPassword ,signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { activeuser } from '../../slices/firebaseUser';
 
 function Login() {
   let dispatch =useDispatch()
   let auth = getAuth();
   let provider = new GoogleAuthProvider();
+  
+  let userData =useSelector((state)=>state.loguser.value)
 
-
+  
 
   let [eye,setEye] = useState(false)
   let [loader,setLoader] =useState(false)
@@ -73,6 +75,13 @@ function Login() {
       navigate('/')
     })
   }
+
+  useEffect(()=>{
+  
+   if(userData != null){
+    navigate("/home")
+   }
+  },[])
 
 
   return (
