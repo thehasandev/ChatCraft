@@ -44,6 +44,7 @@ function Login() {
     signInWithEmailAndPassword(auth, logData.userEmail, logData.userPassword)
     .then((userCredential) => {
       const user = userCredential.user;
+        
       if(user.emailVerified){
         setLoader(true)
           navigate('/home')
