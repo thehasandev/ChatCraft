@@ -8,7 +8,8 @@ import { activeuser } from '../../slices/firebaseUser';
 
 function Home() {
   let userData =useSelector((state)=>state.loguser.value)
-  let dispatch =useDispatch()   
+  
+  let dispatch = useDispatch()   
   const auth = getAuth();
   let navigate = useNavigate()
   
@@ -30,8 +31,15 @@ function Home() {
   
 
   return (
-    <Button onClick={handleLogout} variant="contained">Logout</Button>
-  )
+    
+      userData ?
+      <>
+      <Button onClick={handleLogout} variant="contained">Logout</Button>
+      </>
+      :
+      <h1></h1>
+    
+   )
 }
 
 export default Home

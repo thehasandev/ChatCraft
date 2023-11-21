@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RegistraionImg from "../../assets/registration.png"
 import TextField from '@mui/material/TextField';
 import Button from '../../components/Button';
@@ -10,6 +10,7 @@ import {RxEyeClosed} from 'react-icons/rx'
 import {AiFillEye} from 'react-icons/ai'
 
 import { getAuth, createUserWithEmailAndPassword,sendEmailVerification } from "firebase/auth";
+import { useSelector } from 'react-redux';
 
 
 
@@ -20,7 +21,8 @@ import { getAuth, createUserWithEmailAndPassword,sendEmailVerification } from "f
 function Registration() {
   let [eye,setEye] = useState(false)
   let auth = getAuth();
-
+  let userData =useSelector((state)=>state.loguser.value)
+  
   let [regData,setRegData] = useState({userEmail : "",userFullName: "", userPassword : ""})
   let [emailError,setEmailError] = useState("")
   let [nameError,setNameError] = useState("")
@@ -28,6 +30,11 @@ function Registration() {
   
   let navigate = useNavigate()
   
+  useEffect(()=>{
+   if(userData != null){
+    navigate("/home")
+  }
+  },[])
 
   let handleInputChange =(e)=>{
     setRegData({...regData, [e.target.name]:e.target.value})
