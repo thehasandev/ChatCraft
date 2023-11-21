@@ -10,8 +10,11 @@ import {RxEyeClosed} from 'react-icons/rx'
 import {AiFillEye} from 'react-icons/ai'
 
 import { getAuth, signInWithEmailAndPassword ,signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useDispatch } from 'react-redux';
+import { loggeduser } from '../../slices/firebaseUser';
 
 function Login() {
+  let dispatch =useDispatch()
   let auth = getAuth();
   let provider = new GoogleAuthProvider();
 
@@ -44,7 +47,7 @@ function Login() {
     signInWithEmailAndPassword(auth, logData.userEmail, logData.userPassword)
     .then((userCredential) => {
       const user = userCredential.user;
-        
+      dispatch(loggeduser(user))
       if(user.emailVerified){
         setLoader(true)
           navigate('/home')

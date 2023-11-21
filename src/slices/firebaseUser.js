@@ -7,12 +7,12 @@ export const firebaseUser = createSlice({
   },
   reducers: {
     loggeduser: (state,action) => {
-     console.log(action.payload)
+    state.value = action.payload
     }
   },
 })
 
 
-export const { increment, decrement, incrementByAmount } = firebaseUser.actions
+export const { loggeduser } = firebaseUser.actions
 
 export default firebaseUser.reducer
