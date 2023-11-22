@@ -9,6 +9,7 @@ import Friends from '../../components/Friends';
 import UserList from '../../components/UserList';
 import FriendRequest from '../../components/FriendRequest';
 import MyGroups from '../../components/MyGroups';
+import BlockUser from '../../components/BlockUser';
 
 // useEffect(()=>{
 //  if(userData == null){
@@ -26,6 +27,7 @@ function Home() {
            <UserList/>
            <FriendRequest/>
            <MyGroups/>
+           <BlockUser/>
        </div>
     </section>
     

@@ -1,7 +1,7 @@
 import React from 'react'
-import gOne from "../assets/fr1.png"
+import gOne from "../assets/b2.png"
 import { BiDotsVerticalRounded } from "react-icons/bi";
-function FriendRequest() {
+function BlockUser() {
   return (
     
     <div className='list'>
@@ -12,11 +12,11 @@ function FriendRequest() {
           <img src={gOne} alt="g1" />
         </div>
         <div>
-            <h3>Tejeshwini C</h3>
-            <p>Sure!</p>
+            <h3>Swathi</h3>
+            <p>Today, 2:31pm</p>
         </div>
         <div>
-            <button>Accept</button>
+            <button>unblock</button>
         </div>
       </div>
     
@@ -25,11 +25,11 @@ function FriendRequest() {
           <img src={gOne} alt="g1" />
         </div>
         <div>
-            <h3>Tejeshwini C</h3>
-            <p>Sure!</p>
+            <h3>Swathi</h3>
+            <p>Today, 2:31pm</p>
         </div>
         <div>
-            <button>Accept</button>
+            <button>unblock</button>
         </div>
       </div>
     
@@ -38,11 +38,11 @@ function FriendRequest() {
           <img src={gOne} alt="g1" />
         </div>
         <div>
-            <h3>Tejeshwini C</h3>
-            <p>Sure!</p>
+            <h3>Swathi</h3>
+            <p>Today, 2:31pm</p>
         </div>
         <div>
-            <button>Accept</button>
+            <button>unblock</button>
         </div>
       </div>
     
@@ -51,11 +51,11 @@ function FriendRequest() {
           <img src={gOne} alt="g1" />
         </div>
         <div>
-            <h3>Tejeshwini C</h3>
-            <p>Sure!</p>
+            <h3>Swathi</h3>
+            <p>Today, 2:31pm</p>
         </div>
         <div>
-            <button>Accept</button>
+            <button>unblock</button>
         </div>
       </div>
     
@@ -64,11 +64,11 @@ function FriendRequest() {
           <img src={gOne} alt="g1" />
         </div>
         <div>
-            <h3>Tejeshwini C</h3>
-            <p>Sure!</p>
+            <h3>Swathi</h3>
+            <p>Today, 2:31pm</p>
         </div>
         <div>
-            <button>Accept</button>
+            <button>unblock</button>
         </div>
       </div>
     
@@ -77,11 +77,11 @@ function FriendRequest() {
           <img src={gOne} alt="g1" />
         </div>
         <div>
-            <h3>Tejeshwini C</h3>
-            <p>Sure!</p>
+            <h3>Swathi</h3>
+            <p>Today, 2:31pm</p>
         </div>
         <div>
-            <button>Accept</button>
+            <button>unblock</button>
         </div>
       </div>
     
@@ -90,34 +90,13 @@ function FriendRequest() {
           <img src={gOne} alt="g1" />
         </div>
         <div>
-            <h3>Tejeshwini C</h3>
-            <p>Sure!</p>
+            <h3>Swathi</h3>
+            <p>Today, 2:31pm</p>
         </div>
         <div>
-            <button>Accept</button>
+            <button>unblock</button>
         </div>
       </div>
-    
-      <div className='list-item'>
-        <div>
-          <img src={gOne} alt="g1" />
-        </div>
-        <div>
-            <h3>Tejeshwini C</h3>
-            <p>Sure!</p>
-        </div>
-        <div>
-            <button>Accept</button>
-        </div>
-      </div>
-    
-
-    
-     
-    
-     
-    
-
     
 
 
@@ -126,4 +105,4 @@ function FriendRequest() {
   )
 }
 
-export default FriendRequest
+export default BlockUser

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import profileImg from "../assets/profile.png"
 import { FaHome } from "react-icons/fa";
 import { AiFillMessage } from "react-icons/ai";
@@ -8,9 +8,10 @@ import { IoIosLogOut } from "react-icons/io";
 import { getAuth, signOut } from "firebase/auth";
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 function Sidebar() {
   const auth = getAuth();
+  const [pageName,setPageName] = useState("")
   let userData =useSelector((state)=>state.loguser.value)
   let dispatch = useDispatch()   
   let navigate = useNavigate()
@@ -23,6 +24,9 @@ function Sidebar() {
     });
   }
 
+
+
+
   return (
     <div className='sidevar'>
       <div>
@@ -31,19 +35,23 @@ function Sidebar() {
      
       <div style={{marginBottom:"50px"}}>
         <div className='icons-part'>
-            <div className=''>
+          <Link to="/home/home">
+            <div  className={window.location.pathname == "/home/home"  && "active"}>
               <FaHome className='icons'/> 
             </div>
+          </Link>
         </div>
         
         <div className='icons-part'>
-            <div className=''>
+          <Link to="/home/message">
+            <div className={window.location.pathname == "/home/message"  && "active"}>
               <AiFillMessage className='icons'/> 
             </div>
+          </Link>
         </div>
 
         <div className='icons-part'>
-            <div className='active'>
+            <div className=''>
               <IoMdNotifications className='icons'/> 
             </div>
         </div>
