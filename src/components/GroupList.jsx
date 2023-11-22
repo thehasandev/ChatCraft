@@ -4,7 +4,7 @@ import CustomScroll from 'react-custom-scroll';
 function GroupList() {
   return (
     
-    <div className='group-list'>
+    <div className='list'>
       <h2>Groups List</h2>
       <div className='list-item'>
         <div>
