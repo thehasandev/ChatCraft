@@ -6,6 +6,7 @@ import { activeuser } from '../../slices/firebaseUser';
 import { useDispatch, useSelector } from 'react-redux';
 import GroupList from '../../components/GroupList';
 import Friends from '../../components/Friends';
+import UserList from '../../components/UserList';
 
 // useEffect(()=>{
 //  if(userData == null){
@@ -20,6 +21,7 @@ function Home() {
        <div className='box'>
            <GroupList/>
            <Friends/>
+           <UserList/>
        </div>
     </section>
     
