@@ -5,7 +5,9 @@ import Sidebar from './Sidebar'
 function RootLayouts() {
   return (
     <div style={{display:"flex", width:"500px"}}>
+      <div>
         <Sidebar/>
+      </div>
         <div>
           <Outlet/>
         </div>

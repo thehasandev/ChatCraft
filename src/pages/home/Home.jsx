@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from "firebase/auth";
 import { activeuser } from '../../slices/firebaseUser';
 import { useDispatch, useSelector } from 'react-redux';
+import GroupList from '../../components/GroupList';
 
 // useEffect(()=>{
 //  if(userData == null){
@@ -13,15 +14,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 function Home() {
 
-  
-
-
-  
-
   return (
-    <>
-     <Button  variant="contained">Logout</Button>
-    </>
+    <section className='groups-item'>
+       <div className='box'>
+           <GroupList/>
+       </div>
+    </section>
     
    )
 }
