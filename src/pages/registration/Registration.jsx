@@ -11,14 +11,14 @@ import {RxEyeClosed} from 'react-icons/rx'
 import {AiFillEye} from 'react-icons/ai'
 
 import { getAuth, createUserWithEmailAndPassword,sendEmailVerification } from "firebase/auth";
-import { useSelector } from 'react-redux';
+
 
 
 
 function Registration() {
   let [eye,setEye] = useState(false)
   let auth = getAuth();
-  let userData =useSelector((state)=>state.loguser.value)
+
   let [loader,setLoader] =useState(false)
   let [regData,setRegData] = useState({userEmail : "",userFullName: "", userPassword : ""})
   let [emailError,setEmailError] = useState("")
@@ -27,11 +27,6 @@ function Registration() {
   
   let navigate = useNavigate()
   
-  useEffect(()=>{
-   if(userData != null){
-    navigate("/home/home")
-  }
-  },[])
 
   let handleInputChange =(e)=>{
     setRegData({...regData, [e.target.name]:e.target.value})

@@ -16,17 +16,16 @@ function Sidebar() {
   let dispatch = useDispatch()   
   let navigate = useNavigate()
 
-  let handleLogout =()=>{
-    signOut(auth).then(() => {
-      localStorage.removeItem("user")
-      navigate("/")
-    }).catch((error) => {
-    });
+let handleLogout =()=>{
+  navigate("/")
+}
+
+useEffect(()=>{
+  if(window.location.pathname == "/home"){
+    navigate("/")
   }
-
-
-
-
+  
+},[])
   return (
     <div className='sidevar'>
       <div>
@@ -35,8 +34,8 @@ function Sidebar() {
      
       <div style={{marginBottom:"50px"}}>
         <div className='icons-part'>
-          <Link to="/home/home">
-            <div  className={window.location.pathname == "/home/home"  && "active"}>
+          <Link to="/home/group">
+            <div  className={window.location.pathname == "/home/group"  && "active"}>
               <FaHome className='icons'/> 
             </div>
           </Link>
