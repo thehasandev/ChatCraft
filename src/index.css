@@ -430,6 +430,26 @@ a{
     background:#5F35F5;
     margin: 20px;
     border-radius: 20px;
+    padding: 38px 0px;
+    box-sizing: border-box;
 }
+
+.sidevar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sidevar img{
+ margin-bottom: 50px;
+}
+
+.sidevar .icons{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    color: white;
+}
+
 /* Sidevar  */
 
