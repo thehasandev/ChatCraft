@@ -488,7 +488,7 @@ a{
 
 /* Grop List  */
 
-.group-list{
+.list{
     width: 360px;
     margin: 20px;
     height: 347px;
@@ -507,7 +507,7 @@ a{
 }
 .list::-webkit-scrollbar-thumb{
     width: 6px;
-    background: linear-gradient(transparent,#30ff00);
+    background: linear-gradient(transparent,#0c1dde);
 }
 
 .list h2{
