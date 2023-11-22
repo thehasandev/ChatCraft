@@ -532,6 +532,12 @@ a{
     color: #4D4D4D;
     font-size: 14px;
 }
+.list h6{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #4D4D4D;
+    font-size: 12px;
+}
 .list button{
     font-family: 'Poppins', sans-serif;
     font-weight: 500;

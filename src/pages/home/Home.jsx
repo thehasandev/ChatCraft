@@ -5,6 +5,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { activeuser } from '../../slices/firebaseUser';
 import { useDispatch, useSelector } from 'react-redux';
 import GroupList from '../../components/GroupList';
+import Friends from '../../components/Friends';
 
 // useEffect(()=>{
 //  if(userData == null){
@@ -18,6 +19,7 @@ function Home() {
     <section className='groups-item'>
        <div className='box'>
            <GroupList/>
+           <Friends/>
        </div>
     </section>
     
