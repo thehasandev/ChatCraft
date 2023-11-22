@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import GroupList from '../../components/GroupList';
 import Friends from '../../components/Friends';
 import UserList from '../../components/UserList';
+import FriendRequest from '../../components/FriendRequest';
 
 // useEffect(()=>{
 //  if(userData == null){
@@ -22,6 +23,7 @@ function Home() {
            <GroupList/>
            <Friends/>
            <UserList/>
+           <FriendRequest/>
        </div>
     </section>
     
