@@ -30,13 +30,9 @@ function Home() {
   
 
   return (
-    
-      userData ?
-      <>
-      <Button onClick={handleLogout} variant="contained">Logout</Button>
-      </>
-      :
-      <h1></h1>
+    <>
+     <Button onClick={handleLogout} variant="contained">Logout</Button>
+    </>
     
    )
 }

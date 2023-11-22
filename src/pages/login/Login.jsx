@@ -56,7 +56,7 @@ function Login() {
 
       if(user.emailVerified){
         setLoader(true)
-          navigate('/home')
+          navigate('/home/home')
         }else{
          toast.error('Please verify your email')
         } 
@@ -79,7 +79,7 @@ function Login() {
   useEffect(()=>{
   
    if(userData != null){
-    navigate("/home")
+    navigate("/home/home")
    }
   },[])
 

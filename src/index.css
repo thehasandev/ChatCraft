@@ -422,3 +422,14 @@ a{
 
 /*================ Forgot  Part End ===============*/
 
+
+/* Sidevar  */
+.sidevar{
+    width: 186px;
+    height: 95vh;
+    background:#5F35F5;
+    margin: 20px;
+    border-radius: 20px;
+}
+/* Sidevar  */
+
