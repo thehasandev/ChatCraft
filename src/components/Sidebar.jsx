@@ -51,9 +51,11 @@ function Sidebar() {
         </div>
 
         <div className='icons-part'>
-            <div className=''>
+           <Link to="/home/notification">
+            <div className={window.location.pathname == "/home/notification"  && "active"}>
               <IoMdNotifications className='icons'/> 
             </div>
+           </Link>
         </div>
 
         <div className='icons-part'>

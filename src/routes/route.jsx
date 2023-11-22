@@ -7,6 +7,7 @@ import Error from "../pages/error/Error"
 import Forgot from '../pages/forgot/Forgot';
 import RootLayouts from '../components/RootLayouts';
 import Message from '../pages/messege/Message';
+import Notification from '../pages/notification/Notification';
 
 const route = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const route = createBrowserRouter([
             {
               path: "/home/message",
               element: <Message/>,
+            },
+            {
+              path: "/home/notification",
+              element: <Notification/>,
             },
           ],
     }, 
