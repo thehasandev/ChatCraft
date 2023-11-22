@@ -59,9 +59,11 @@ function Sidebar() {
         </div>
 
         <div className='icons-part'>
-            <div className=''>
+          <Link to="/home/settings">
+            <div className={window.location.pathname == "/home/settings"  && "active"}>
               <CiSettings className='icons'/> 
             </div>
+          </Link>
         </div>
       </div>
 

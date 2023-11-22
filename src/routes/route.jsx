@@ -8,6 +8,7 @@ import Forgot from '../pages/forgot/Forgot';
 import RootLayouts from '../components/RootLayouts';
 import Message from '../pages/messege/Message';
 import Notification from '../pages/notification/Notification';
+import Settings from '../pages/settings/Settings';
 
 const route = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const route = createBrowserRouter([
             {
               path: "/home/notification",
               element: <Notification/>,
+            },
+            {
+              path: "/home/settings",
+              element: <Settings/>,
             },
           ],
     }, 
