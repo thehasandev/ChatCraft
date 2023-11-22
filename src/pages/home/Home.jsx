@@ -8,6 +8,7 @@ import GroupList from '../../components/GroupList';
 import Friends from '../../components/Friends';
 import UserList from '../../components/UserList';
 import FriendRequest from '../../components/FriendRequest';
+import MyGroups from '../../components/MyGroups';
 
 // useEffect(()=>{
 //  if(userData == null){
@@ -24,6 +25,7 @@ function Home() {
            <Friends/>
            <UserList/>
            <FriendRequest/>
+           <MyGroups/>
        </div>
     </section>
     
