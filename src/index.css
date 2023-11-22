@@ -438,6 +438,7 @@ a{
     display: flex;
     flex-direction: column;
     align-items: center;
+  
 }
 .sidevar img{
  margin-bottom: 50px;
@@ -449,6 +450,37 @@ a{
     justify-content: center;
     font-size: 30px;
     color: white;
+}
+.icons-part{
+    position: relative;
+    z-index: 1;
+}
+
+.sidevar .active::after {
+    position: absolute;
+    top: -6px;
+    right: -78px;
+    width: 122px;
+    height: 44px;
+    background-color: white;
+    content: "";
+    z-index: -2;
+   border-bottom-left-radius: 10px;
+}
+.sidevar .active::before {
+    position: absolute;
+    top: -6px;
+    right: -78px;
+    width: 10px;
+    height: 44px;
+    background-color: #5F35F5;
+    content: "";
+    z-index: -1;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.sidevar .active .icons{
+    color: #5F35F5;
 }
 
 /* Sidevar  */

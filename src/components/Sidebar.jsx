@@ -11,14 +11,33 @@ function Sidebar() {
       <div>
         <img src={profileImg} alt="profile" />
       </div>
-      
-      <FaHome className='icons'/> 
-      <AiFillMessage className='icons'/> 
-      <IoMdNotifications className='icons'/> 
-      <CiSettings className='icons'/> 
-  
+     
+     
 
-   
+        <div className='icons-part'>
+            <div className=''>
+              <FaHome className='icons'/> 
+            </div>
+        </div>
+        
+        <div className='icons-part'>
+            <div className=''>
+              <AiFillMessage className='icons'/> 
+            </div>
+        </div>
+
+        <div className='icons-part'>
+            <div className='active'>
+              <IoMdNotifications className='icons'/> 
+            </div>
+        </div>
+
+        <div className='icons-part'>
+            <div className=''>
+              <CiSettings className='icons'/> 
+            </div>
+        </div>
+
     </div>
   )
 }
