@@ -9,6 +9,7 @@ import { getAuth, signOut } from "firebase/auth";
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { activeuser } from '../slices/firebaseUser';
 function Sidebar() {
   const auth = getAuth();
   const [pageName,setPageName] = useState("")
@@ -18,6 +19,7 @@ function Sidebar() {
 
 let handleLogout =()=>{
   navigate("/")
+  dispatch(activeuser(null))
 }
 
 useEffect(()=>{
@@ -27,6 +29,7 @@ useEffect(()=>{
   
 },[])
   return (
+    
     <div className='sidevar'>
       <div>
         <img src={profileImg} alt="profile" />
