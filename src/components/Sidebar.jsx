@@ -43,7 +43,7 @@ useEffect(()=>{
         <img src={profileImg} alt="profile" />
       </div>
      
-      <div style={{marginBottom:"50px"}}>
+     
         <div className='icons-part'>
           <Link to="/home/group">
             <div  className={window.location.pathname == "/home/group"  && "active"}>
@@ -75,7 +75,7 @@ useEffect(()=>{
             </div>
           </Link>
         </div>
-      </div>
+     
 
       <div className='icons-part'>
           <IoIosLogOut onClick={handleLogout} className='icons' style={{cursor:"pointer"}}/> 
