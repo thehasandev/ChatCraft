@@ -78,7 +78,7 @@ useEffect(()=>{
       </div>
 
       <div className='icons-part'>
-          <IoIosLogOut onClick={handleLogout} className='icons'/> 
+          <IoIosLogOut onClick={handleLogout} className='icons' style={{cursor:"pointer"}}/> 
        </div>
 
 

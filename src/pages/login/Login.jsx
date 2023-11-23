@@ -15,8 +15,8 @@ import { activeuser } from '../../slices/firebaseUser';
 
 
 function Login() {
-  let auth = getAuth();
-  let provider = new GoogleAuthProvider();
+  let auth = getAuth()
+  let provider = new GoogleAuthProvider()
   let dispatch =useDispatch()
   let userData =useSelector((state)=>state.loguser.value)
 
@@ -24,10 +24,10 @@ function Login() {
 
   let [eye,setEye] = useState(false)
   let [loader,setLoader] =useState(false)
-  let navigate = useNavigate()
   let [logData,setLogData] = useState({userEmail : "",userPassword : ""})
   let [emailError,setEmailError] = useState("")
   let [passwordError,setPasswordError] = useState("")
+  let navigate = useNavigate()
 
   let handleInputChange =(e)=>{
     setLogData({...logData, [e.target.name]:e.target.value})
