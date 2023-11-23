@@ -52,7 +52,7 @@ function Login() {
     .then((userCredential) => {
       const user = userCredential.user;
       dispatch(activeuser(user))
-
+      localStorage.setItem("user",JSON.stringify(user))
       if(user.emailVerified){
         setLoader(true)
           navigate('/home/group')
@@ -76,8 +76,8 @@ function Login() {
   }
 
   useEffect(()=>{
-   if(userData==null){
-    navigate("/")
+   if(userData!=null){
+    navigate("/home/group")
    }
   },[])
 

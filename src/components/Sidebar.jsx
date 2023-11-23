@@ -20,10 +20,18 @@ function Sidebar() {
 let handleLogout =()=>{
   navigate("/")
   dispatch(activeuser(null))
+  localStorage.removeItem("user")
 }
 
 useEffect(()=>{
   if(window.location.pathname == "/home"){
+    navigate("/")
+  }
+  
+},[])
+
+useEffect(()=>{
+  if(window.location.pathname == "/home/"){
     navigate("/")
   }
   
