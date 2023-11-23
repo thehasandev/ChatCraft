@@ -20,7 +20,6 @@ function Login() {
   let dispatch =useDispatch()
   let userData =useSelector((state)=>state.loguser.value)
 
-  
 
   let [eye,setEye] = useState(false)
   let [loader,setLoader] =useState(false)
@@ -51,8 +50,10 @@ function Login() {
     signInWithEmailAndPassword(auth, logData.userEmail, logData.userPassword)
     .then((userCredential) => {
       const user = userCredential.user;
+     
       dispatch(activeuser(user))
       localStorage.setItem("user",JSON.stringify(user))
+      
       if(user.emailVerified){
         setLoader(true)
           navigate('/home/group')
@@ -69,9 +70,10 @@ function Login() {
   }
 
   let handleGoggleClick =()=>{
+    dispatch(activeuser({user: "data"}))
     signInWithPopup(auth, provider)
-    .then((result) => {
-      navigate('/')
+    .then((result) =>{
+      navigate('/home/group')
     })
   }
 
@@ -80,6 +82,11 @@ function Login() {
     navigate("/home/group")
    }
   },[])
+
+
+
+
+
 
 
 

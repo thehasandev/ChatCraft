@@ -3,12 +3,13 @@ import { createSlice } from '@reduxjs/toolkit'
 export const firebaseUser = createSlice({
   name: 'user',
   initialState: {
-    value: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null
+    value: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
   },
   reducers: {
     activeuser: (state,action) => {
       state.value = action.payload
-    }
+    },
+   
   },
 })
 

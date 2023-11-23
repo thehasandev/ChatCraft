@@ -13,13 +13,18 @@ import { useNavigate } from 'react-router-dom';
 
 function Home() {
   let userData = useSelector((state)=>state.loguser.value)
+  
   let navigate = useNavigate()
 
   useEffect(()=>{
    if(userData == null){
       navigate("/")
    }
-  })
+  },[])
+
+
+
+  
  
   return (
     <section className='groups-item'>
