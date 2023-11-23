@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import gOne from "../assets/g2.png"
 import { BiDotsVerticalRounded } from "react-icons/bi";
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 function GroupList() {
+
   return (
-    
     <div className='list'>
       <h2>Groups List <BiDotsVerticalRounded /></h2>
 
