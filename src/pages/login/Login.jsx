@@ -70,11 +70,14 @@ function Login() {
   }
 
   let handleGoggleClick =()=>{
-    dispatch(activeuser({user: "data"}))
     signInWithPopup(auth, provider)
-    .then((result) =>{
-      navigate('/home')
-    })
+    .then((result) => {
+      const user = result.user;
+      dispatch(activeuser(user))
+      localStorage.setItem("user",JSON.stringify(user))
+      navigate("/home")
+    }).catch((error) => {
+    });
   }
 
   useEffect(()=>{
