@@ -18,7 +18,7 @@ function Home() {
 
   useEffect(()=>{
    if(userData == null){
-      navigate("/login")
+      navigate("/")
    }
   },[])
 

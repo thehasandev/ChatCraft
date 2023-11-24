@@ -5,7 +5,7 @@ function BlockUser() {
   return (
     
     <div className='list'>
-      <h2>Friend  Request <BiDotsVerticalRounded /></h2>
+      <h2>Blocked Users <BiDotsVerticalRounded /></h2>
 
       <div className='list-item'>
         <div>

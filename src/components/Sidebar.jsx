@@ -13,7 +13,7 @@ import { activeuser } from '../slices/firebaseUser';
 function Sidebar() {
   const auth = getAuth();
  
-  let userData =useSelector((state)=>state.loguser.value)
+ 
   let dispatch = useDispatch()   
   let navigate = useNavigate()
  

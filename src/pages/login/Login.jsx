@@ -73,7 +73,7 @@ function Login() {
     dispatch(activeuser({user: "data"}))
     signInWithPopup(auth, provider)
     .then((result) =>{
-      navigate('/home/group')
+      navigate('/home')
     })
   }
 
