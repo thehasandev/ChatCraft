@@ -32,7 +32,7 @@ function Registration() {
 
   useEffect(()=>{
     if(userData != null){
-       navigate("/home/group")
+       navigate("/home")
     }
    },[])
 

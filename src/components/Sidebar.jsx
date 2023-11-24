@@ -12,30 +12,20 @@ import { Link, useNavigate } from 'react-router-dom';
 import { activeuser } from '../slices/firebaseUser';
 function Sidebar() {
   const auth = getAuth();
-  const [pageName,setPageName] = useState("")
+ 
   let userData =useSelector((state)=>state.loguser.value)
   let dispatch = useDispatch()   
   let navigate = useNavigate()
-
+ 
 let handleLogout =()=>{
   navigate("/")
   dispatch(activeuser(null))
   localStorage.removeItem("user")
 }
 
-useEffect(()=>{
-  if(window.location.pathname == "/home"){
-    navigate("/")
-  }
-  
-},[])
 
-useEffect(()=>{
-  if(window.location.pathname == "/home/"){
-    navigate("/")
-  }
-  
-},[])
+
+
   return (
     
     <div className='sidevar'>
@@ -45,8 +35,8 @@ useEffect(()=>{
      
      
         <div className='icons-part'>
-          <Link to="/home/group">
-            <div  className={window.location.pathname == "/home/group"  && "active"}>
+          <Link to="/home">
+            <div  className={window.location.pathname == "/home"  && "active"}>
               <FaHome className='icons'/> 
             </div>
           </Link>

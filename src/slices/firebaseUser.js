@@ -9,10 +9,8 @@ export const firebaseUser = createSlice({
     activeuser: (state,action) => {
       state.value = action.payload
     },
-   
   },
 })
-
 
 export const { activeuser } = firebaseUser.actions
 

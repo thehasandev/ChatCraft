@@ -53,10 +53,10 @@ function Login() {
      
       dispatch(activeuser(user))
       localStorage.setItem("user",JSON.stringify(user))
-      
+
       if(user.emailVerified){
         setLoader(true)
-          navigate('/home/group')
+          navigate('/home')
         }else{
          toast.error('Please verify your email')
         } 
@@ -79,16 +79,9 @@ function Login() {
 
   useEffect(()=>{
    if(userData!=null){
-    navigate("/home/group")
+    navigate("/home")
    }
   },[])
-
-
-
-
-
-
-
 
   return (
     

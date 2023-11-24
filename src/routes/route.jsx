@@ -16,7 +16,7 @@ const route = createBrowserRouter([
         element:<RootLayouts/>,
         children: [
             {
-              path: "/home/group",
+              path: "/home",
               element: <Home/>,
             },
             {
