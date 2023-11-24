@@ -10,8 +10,7 @@ function Forgot() {
     let handleResetPassword =()=>{
         sendPasswordResetEmail(auth, email)
         .then(() => {
-          // Password reset email sent!
-          // ..
+         setEmail("")
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -25,7 +24,7 @@ function Forgot() {
         <h1>Forget Password</h1>
         <p>You can reset your Password</p>
         <div className='input'>
-          <input  onChange={(e)=>{setEmail(e.target.value)}} type="email" placeholder='Enter your email'/>
+          <input value={email}  onChange={(e)=>{setEmail(e.target.value)}} type="email" placeholder='Enter your email'/>
           <div className="icon-box">
             <FiMail size={18}/>
           </div>
