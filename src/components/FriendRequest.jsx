@@ -5,7 +5,12 @@ function FriendRequest() {
   return (
     
     <div className='list'>
-      <h2>Friend  Request <BiDotsVerticalRounded /></h2>
+      <div className="list-box">
+        <h2>Friend  Request </h2>
+        <input type="text" placeholder='Search a Users'/>
+        <BiDotsVerticalRounded />
+      </div>
+      
 
       <div className='list-item'>
         <div>

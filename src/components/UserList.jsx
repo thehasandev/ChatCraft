@@ -22,6 +22,7 @@ function UserList() {
   return (
     
     <div className='list'>
+      
       <div className="list-box">
         <h2>User List </h2>
         <input type="text" placeholder='Search a Users'/>
@@ -29,8 +30,8 @@ function UserList() {
       </div>
     
     {
-      userList.map((item)=>( 
-      <div className='list-item'>
+      userList.map((item,index)=>( 
+      <div key={index} className='list-item'>
         <div>
           <img src={item.userImgUrl} alt="g1" />
         </div>
