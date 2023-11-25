@@ -30,7 +30,11 @@ function Registration() {
 
   let userData =useSelector((state)=>state.loguser.value)
   let navigate = useNavigate()
-
+  
+  let [userList,setUserList] =useState([])
+ userList.map((item)=>{
+  console.log(item);
+ })
 
   useEffect(()=>{
     if(userData != null){
@@ -83,18 +87,17 @@ function Registration() {
   if(regData.userEmail && regData.userFullName && regData.userPassword && emialValid.test(regData.userEmail) && isValidLength.test(regData.userPassword)){
     createUserWithEmailAndPassword(auth, regData.userEmail, regData.userPassword)
     .then((userCredential) => {
+      set(ref(db, 'users/'+ userCredential.user.uid), {
+        userName: regData.userFullName,
+        userEmail: userCredential.user.email,
+        userImgUrl:"https://firebasestorage.googleapis.com/v0/b/chating-1cd1e.appspot.com/o/download.jpg?alt=media&token=34be5b59-5e58-480a-bcf9-3d0e9f74e544"
+      });
         setLoader(true)
         sendEmailVerification(auth.currentUser)
         .then(() => {
           setTimeout(()=>{
           setLoader(false)
           navigate('/')
-
-          set(push(ref(db, 'user/'+userCredential.user.uid)), {
-            userName: regData.userFullName,
-            userEmail: userCredential.user.email,
-            userImgUrl:"https://firebasestorage.googleapis.com/v0/b/chating-1cd1e.appspot.com/o/download.jpg?alt=media&token=34be5b59-5e58-480a-bcf9-3d0e9f74e544"
-          });
          },2000)
         }); 
         toast.success("Registratin sucessfull please verify  your email")
@@ -113,16 +116,17 @@ function Registration() {
 
   }
 
-  // useEffect(()=>{
-  //   const starCountRef = ref(db, "user");
-  //   onValue(starCountRef, (snapshot) => {
-  //     let arr =[]
-  //   snapshot.forEach((item)=>{
-  //     console.log(item.val());
-  //   })
+  useEffect(()=>{
+    const starCountRef = ref(db, "users");
+    onValue(starCountRef, (snapshot) => {
+      let arr =[]
+    snapshot.forEach((item)=>{
+      arr.push(item.val());
+    })
+    setUserList(arr)
      
-  //   });
-  // },[])
+    });
+  },[])
 
 
 
