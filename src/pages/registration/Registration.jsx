@@ -12,7 +12,7 @@ import {AiFillEye} from 'react-icons/ai'
 
 import { getAuth, createUserWithEmailAndPassword,sendEmailVerification } from "firebase/auth";
 import { useSelector } from 'react-redux';
-import { getDatabase, push, ref, set } from "firebase/database";
+import { getDatabase, push, ref, set,onValue  } from "firebase/database";
 
 
 
@@ -93,6 +93,7 @@ function Registration() {
           set(push(ref(db, 'user/'+userCredential.user.uid)), {
             userName: regData.userFullName,
             userEmail: userCredential.user.email,
+            userImgUrl:"https://firebasestorage.googleapis.com/v0/b/chating-1cd1e.appspot.com/o/download.jpg?alt=media&token=34be5b59-5e58-480a-bcf9-3d0e9f74e544"
           });
          },2000)
         }); 
@@ -112,6 +113,16 @@ function Registration() {
 
   }
 
+  // useEffect(()=>{
+  //   const starCountRef = ref(db, "user");
+  //   onValue(starCountRef, (snapshot) => {
+  //     let arr =[]
+  //   snapshot.forEach((item)=>{
+  //     console.log(item.val());
+  //   })
+     
+  //   });
+  // },[])
 
 
 
