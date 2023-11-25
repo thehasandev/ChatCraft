@@ -511,6 +511,18 @@ a{
     -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
     box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
     border-radius: 10px;
+    position: relative;
+}
+
+.list .error{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 800;
+    color: #111111;
+    font-size: 20px;
 }
 .list::-webkit-scrollbar{
     width: 6px;
@@ -577,7 +589,21 @@ border-radius: 100%;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 17px;
+    position: relative;
 }
+
+.list-box .input{
+    position: relative;
+}
+.list-box .input .icon{
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+right: 10px;
+color:rgba(0, 0, 0, 0.8);
+font-size: 20px;
+}
+
 .list-box input{
    padding: 8px 5px;
    border: 1px solid rgba(0, 0, 0, 0.2)

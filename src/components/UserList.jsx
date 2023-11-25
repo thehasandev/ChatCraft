@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import gOne from "../assets/u1.png"
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { getDatabase, ref, onValue } from "firebase/database";
+import { IoSearchSharp } from "react-icons/io5";
 function UserList() {
   const db = getDatabase();
   let [userList,setUserList] = useState([])
@@ -32,7 +33,12 @@ function UserList() {
 
       <div className="list-box">
         <h2>User List </h2>
-        <input onChange={handleUserChange} type="text" placeholder='Search a Users'/>
+        <div className='input'>
+          <input onChange={handleUserChange} type="text" placeholder='Search a Users'/>
+         <div className='icon'>
+           <IoSearchSharp/>
+         </div>
+        </div>
         <BiDotsVerticalRounded />
       </div>
 
@@ -69,7 +75,7 @@ function UserList() {
           </div>
           ))  
         :
-        <h1>Not fount</h1>
+        <h1 className='error'>User's Not Found</h1>
         
 
     }
