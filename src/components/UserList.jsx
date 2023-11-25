@@ -22,7 +22,11 @@ function UserList() {
   return (
     
     <div className='list'>
-      <h2>User List <BiDotsVerticalRounded /></h2>
+      <div className="list-box">
+        <h2>User List </h2>
+        <input type="text" placeholder='Search a Users'/>
+        <BiDotsVerticalRounded />
+      </div>
     
     {
       userList.map((item)=>( 
