@@ -12,11 +12,13 @@ import {AiFillEye} from 'react-icons/ai'
 
 import { getAuth, createUserWithEmailAndPassword,sendEmailVerification } from "firebase/auth";
 import { useSelector } from 'react-redux';
+import { getDatabase, push, ref, set } from "firebase/database";
 
 
 
 
 function Registration() {
+   const db = getDatabase();
   let [eye,setEye] = useState(false)
   let auth = getAuth();
 
@@ -87,6 +89,11 @@ function Registration() {
           setTimeout(()=>{
           setLoader(false)
           navigate('/')
+
+          set(push(ref(db, 'user/'+userCredential.user.uid)), {
+            userName: regData.userFullName,
+            userEmail: userCredential.user.email,
+          });
          },2000)
         }); 
         toast.success("Registratin sucessfull please verify  your email")
@@ -130,7 +137,7 @@ function Registration() {
             <p>Free register and you can enjoy it</p>
             
               <div className={`${emailError ? "input-margin" : "input-part"}`}>
-                <TextField  value={regData.userEmail} onChange={handleInputChange} name='userEmail' id="outlined-basic" label="Email Address" variant="outlined" />
+                <TextField type='email'  value={regData.userEmail} onChange={handleInputChange} name='userEmail' id="outlined-basic" label="Email Address" variant="outlined" />
                
                   {
                     emailError && 
@@ -142,7 +149,7 @@ function Registration() {
           
               
                <div className={`${nameError ? "input-margin" : "input-part"}`}>
-                <TextField  value={regData.userFullName} onChange={handleInputChange} name='userFullName' id="outlined-basic" label="Full name" variant="outlined" />
+                <TextField type='text'  value={regData.userFullName} onChange={handleInputChange} name='userFullName' id="outlined-basic" label="Full name" variant="outlined" />
               
                 {
                 nameError && 
