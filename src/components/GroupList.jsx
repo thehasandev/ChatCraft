@@ -8,7 +8,7 @@ function GroupList() {
   return (
     <div className='list'>
       <h2>Groups List <BiDotsVerticalRounded /></h2>
-
+    <div className='scroll'>
       <div className='list-item'>
         <div>
           <img src={gOne} alt="g1" />
@@ -62,6 +62,8 @@ function GroupList() {
             <button>Join</button>
         </div>
       </div>
+
+    </div>
 
 
     </div>

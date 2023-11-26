@@ -11,6 +11,7 @@ function FriendRequest() {
         <BiDotsVerticalRounded />
       </div>
       
+<div className='scroll'>
 
       <div className='list-item'>
         <div>
@@ -116,6 +117,7 @@ function FriendRequest() {
         </div>
       </div>
     
+</div>
 
     
      

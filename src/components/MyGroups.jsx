@@ -7,6 +7,7 @@ function MyGroups() {
     
     <div className='list'>
       <h2>My Groups <BiDotsVerticalRounded /></h2>
+   <div className='scroll'>
 
       <div className='list-item'>
         <div>
@@ -104,6 +105,7 @@ function MyGroups() {
             <h6>Today, 8:56pm</h6>
         </div>
       </div>
+   </div>
       
     </div>
   )

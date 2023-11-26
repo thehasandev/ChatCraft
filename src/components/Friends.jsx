@@ -7,127 +7,125 @@ function Friends() {
     <div className='list'>
       <h2>Friends <BiDotsVerticalRounded /></h2>
 
-      <div className='list-item'>
-        <div>
-          <img src={gOne} alt="g1" />
+    <div className='scroll'>
+        <div className='list-item'>
+          <div>
+            <img src={gOne} alt="g1" />
+          </div>
+          <div>
+              <h3>Raghav</h3>
+              <p>Dinner?</p>
+          </div>
+          <div>
+              <h6>Today, 8:56pm</h6>
+          </div>
         </div>
-        <div>
-            <h3>Raghav</h3>
-            <p>Dinner?</p>
+        
+        <div className='list-item'>
+          <div>
+            <img src={gOne} alt="g1" />
+          </div>
+          <div>
+              <h3>Raghav</h3>
+              <p>Dinner?</p>
+          </div>
+          <div>
+              <h6>Today, 8:56pm</h6>
+          </div>
         </div>
-        <div>
-            <h6>Today, 8:56pm</h6>
+        
+        <div className='list-item'>
+          <div>
+            <img src={gOne} alt="g1" />
+          </div>
+          <div>
+              <h3>Raghav</h3>
+              <p>Dinner?</p>
+          </div>
+          <div>
+              <h6>Today, 8:56pm</h6>
+          </div>
         </div>
-      </div>
-      
-      <div className='list-item'>
-        <div>
-          <img src={gOne} alt="g1" />
+        
+        <div className='list-item'>
+          <div>
+            <img src={gOne} alt="g1" />
+          </div>
+          <div>
+              <h3>Raghav</h3>
+              <p>Dinner?</p>
+          </div>
+          <div>
+              <h6>Today, 8:56pm</h6>
+          </div>
         </div>
-        <div>
-            <h3>Raghav</h3>
-            <p>Dinner?</p>
+        
+        <div className='list-item'>
+          <div>
+            <img src={gOne} alt="g1" />
+          </div>
+          <div>
+              <h3>Raghav</h3>
+              <p>Dinner?</p>
+          </div>
+          <div>
+              <h6>Today, 8:56pm</h6>
+          </div>
         </div>
-        <div>
-            <h6>Today, 8:56pm</h6>
+        
+        <div className='list-item'>
+          <div>
+            <img src={gOne} alt="g1" />
+          </div>
+          <div>
+              <h3>Raghav</h3>
+              <p>Dinner?</p>
+          </div>
+          <div>
+              <h6>Today, 8:56pm</h6>
+          </div>
         </div>
-      </div>
-      
-      <div className='list-item'>
-        <div>
-          <img src={gOne} alt="g1" />
+        
+        <div className='list-item'>
+          <div>
+            <img src={gOne} alt="g1" />
+          </div>
+          <div>
+              <h3>Raghav</h3>
+              <p>Dinner?</p>
+          </div>
+          <div>
+              <h6>Today, 8:56pm</h6>
+          </div>
         </div>
-        <div>
-            <h3>Raghav</h3>
-            <p>Dinner?</p>
+        
+        <div className='list-item'>
+          <div>
+            <img src={gOne} alt="g1" />
+          </div>
+          <div>
+              <h3>Raghav</h3>
+              <p>Dinner?</p>
+          </div>
+          <div>
+              <h6>Today, 8:56pm</h6>
+          </div>
         </div>
-        <div>
-            <h6>Today, 8:56pm</h6>
+        
+        <div className='list-item'>
+          <div>
+            <img src={gOne} alt="g1" />
+          </div>
+          <div>
+              <h3>Raghav</h3>
+              <p>Dinner?</p>
+          </div>
+          <div>
+              <h6>Today, 8:56pm</h6>
+          </div>
         </div>
-      </div>
-      
-      <div className='list-item'>
-        <div>
-          <img src={gOne} alt="g1" />
-        </div>
-        <div>
-            <h3>Raghav</h3>
-            <p>Dinner?</p>
-        </div>
-        <div>
-            <h6>Today, 8:56pm</h6>
-        </div>
-      </div>
-      
-      <div className='list-item'>
-        <div>
-          <img src={gOne} alt="g1" />
-        </div>
-        <div>
-            <h3>Raghav</h3>
-            <p>Dinner?</p>
-        </div>
-        <div>
-            <h6>Today, 8:56pm</h6>
-        </div>
-      </div>
-      
-      <div className='list-item'>
-        <div>
-          <img src={gOne} alt="g1" />
-        </div>
-        <div>
-            <h3>Raghav</h3>
-            <p>Dinner?</p>
-        </div>
-        <div>
-            <h6>Today, 8:56pm</h6>
-        </div>
-      </div>
-      
-      <div className='list-item'>
-        <div>
-          <img src={gOne} alt="g1" />
-        </div>
-        <div>
-            <h3>Raghav</h3>
-            <p>Dinner?</p>
-        </div>
-        <div>
-            <h6>Today, 8:56pm</h6>
-        </div>
-      </div>
-      
-      <div className='list-item'>
-        <div>
-          <img src={gOne} alt="g1" />
-        </div>
-        <div>
-            <h3>Raghav</h3>
-            <p>Dinner?</p>
-        </div>
-        <div>
-            <h6>Today, 8:56pm</h6>
-        </div>
-      </div>
-      
-      <div className='list-item'>
-        <div>
-          <img src={gOne} alt="g1" />
-        </div>
-        <div>
-            <h3>Raghav</h3>
-            <p>Dinner?</p>
-        </div>
-        <div>
-            <h6>Today, 8:56pm</h6>
-        </div>
-      </div>
-      
 
-      
-  
-
+    </div>
 
     </div>
   )

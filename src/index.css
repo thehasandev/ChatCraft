@@ -502,8 +502,6 @@ a{
 .list{
     width: 400px;
     margin: 20px;
-    height: 347px;
-    overflow-y: scroll;
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 16px;
     box-sizing: border-box;
@@ -521,14 +519,19 @@ a{
     transform: translate(-50%,-50%);
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 800;
-    color: #111111;
+    color: #444444;
     font-size: 20px;
 }
-.list::-webkit-scrollbar{
+.scroll{
+    padding-right: 10px;
+    overflow-y: scroll;
+    height: 320px;
+}
+.scroll::-webkit-scrollbar{
     width: 6px;
     background: gray;
 }
-.list::-webkit-scrollbar-thumb{
+.scroll::-webkit-scrollbar-thumb{
     width: 6px;
     background: linear-gradient(transparent,#0c1dde);
 }
@@ -570,6 +573,7 @@ a{
     border: 0;
     border-radius: 5px;
 }
+
 .list .list-item{
  display: flex;
  align-items: center;

@@ -42,24 +42,30 @@ function UserList() {
         <BiDotsVerticalRounded />
       </div>
 
+
     {
       input.length < 1 ?
-      userList.map((item,index)=>( 
-        <div key={index} className='list-item'>
-          <div>
-            <img src={item.userImgUrl} alt="g1" />
-          </div>
-          <div>
-              <h3>{item.userName}</h3>
-              <p>Today, 2:31pm</p>
-          </div>
-          <div>
-              <button>+</button>
-          </div>
-        </div>
-        ))  
+      <div className='scroll'>
+        {
+          userList.map((item,index)=>( 
+            <div key={index} className='list-item'>
+              <div>
+                <img src={item.userImgUrl} alt="g1" />
+              </div>
+              <div>
+                  <h3>{item.userName}</h3>
+                  <p>Today, 2:31pm</p>
+              </div>
+              <div>
+                  <button>+</button>
+              </div>
+            </div>
+            ))  
+        }
+      </div>
         :
         searchUserList.length>0 ?
+
         searchUserList.map((item,index)=>( 
           <div key={index} className='list-item'>
             <div>
