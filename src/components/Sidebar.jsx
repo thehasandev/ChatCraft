@@ -7,7 +7,7 @@ import { CiSettings } from "react-icons/ci";
 import { IoIosLogOut } from "react-icons/io";
 import { getAuth, signOut } from "firebase/auth";
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { activeuser } from '../slices/firebaseUser';
 function Sidebar() {
@@ -36,7 +36,7 @@ let handleLogout =()=>{
      
         <div className='icons-part'>
           <Link to="/home">
-            <div  className={window.location.pathname == "/home"  && "active"}>
+            <div  className={window.location.pathname == "/home"  ? "active" : ""}>
               <FaHome className='icons'/> 
             </div>
           </Link>
@@ -44,7 +44,7 @@ let handleLogout =()=>{
         
         <div className='icons-part'>
           <Link to="/home/message">
-            <div className={window.location.pathname == "/home/message"  && "active"}>
+            <div className={window.location.pathname == "/home/message"  ? "active" :""}>
               <AiFillMessage className='icons'/> 
             </div>
           </Link>
@@ -52,7 +52,7 @@ let handleLogout =()=>{
 
         <div className='icons-part'>
            <Link to="/home/notification">
-            <div className={window.location.pathname == "/home/notification"  && "active"}>
+            <div className={window.location.pathname == "/home/notification"  ? "active" : ""}>
               <IoMdNotifications className='icons'/> 
             </div>
            </Link>
@@ -60,7 +60,7 @@ let handleLogout =()=>{
 
         <div className='icons-part'>
           <Link to="/home/settings">
-            <div className={window.location.pathname == "/home/settings"  && "active"}>
+            <div className={window.location.pathname == "/home/settings"  ? "active" : ""}>
               <CiSettings className='icons'/> 
             </div>
           </Link>
