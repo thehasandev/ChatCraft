@@ -13,8 +13,12 @@ function Friends() {
           <IoSearchSharp/>
         </div>
       </div> 
-
-      <h2>Friends <BiDotsVerticalRounded /></h2>
+      
+      <div className="list-box">
+          <h2>Friends </h2>
+          <BiDotsVerticalRounded />
+      </div>
+      
 
       <div className='scroll'>
           <div className='list-item'>

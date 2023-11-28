@@ -1,7 +1,9 @@
 import React from 'react'
+
 import gOne from "../assets/fr1.png"
-import { BiDotsVerticalRounded } from "react-icons/bi";
 import { IoSearchSharp } from "react-icons/io5";
+import { BiDotsVerticalRounded } from "react-icons/bi";
+
 function FriendRequest() {
   return (
     
@@ -16,6 +18,7 @@ function FriendRequest() {
 
         <div className="list-box">
           <h2>Friend  Request </h2>
+          <BiDotsVerticalRounded />
         </div>
         
         <div className='scroll'>

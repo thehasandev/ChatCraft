@@ -5,7 +5,12 @@ function BlockUser() {
   return (
     
     <div className='list'>
-      <h2>Blocked Users <BiDotsVerticalRounded /></h2>
+
+     <div className="list-box">
+          <h2>Blocked Users  </h2>
+          <BiDotsVerticalRounded />
+     </div>
+     
 
       <div className='scroll'>
               <div className='list-item'>
