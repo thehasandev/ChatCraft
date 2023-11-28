@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import gOne from "../assets/u1.png"
+
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { IoSearchSharp } from "react-icons/io5";
@@ -8,6 +8,9 @@ function UserList() {
   let [userList,setUserList] = useState([])
   let [input,setInput] =useState("")
   let [searchUserList,setSearchUserList] =useState([])
+
+
+  let [isLoading,setIsloading] =useState(true)
   
 
   useEffect(()=>{
@@ -18,6 +21,7 @@ function UserList() {
        arr.push(item.val());
       })
      setUserList(arr)
+     setIsloading(false)
     });
   },[])
 
@@ -30,68 +34,65 @@ function UserList() {
   return (
     
     <div className='list'>
-
-      <div className="list-box">
-        <h2>User List </h2>
-        <div className='input'>
-          <input onChange={handleUserChange} type="text" placeholder='Search a Users'/>
-         <div className='icon'>
-           <IoSearchSharp/>
-         </div>
-        </div>
-        <BiDotsVerticalRounded />
-      </div>
-
-
     {
-      input.length < 1 ?
-      <div className='scroll'>
-        {
-          userList.map((item,index)=>( 
-            <div key={index} className='list-item'>
-              <div>
-                <img src={item.userImgUrl} alt="g1" />
+      isLoading ? 
+      <h1>Loading...</h1>
+      :
+      <>
+            <div className="list-box">
+              <h2>User List </h2>
+              <div className='input'>
+                <input onChange={handleUserChange} type="text" placeholder='Search a Users'/>
+              <div className='icon'>
+                <IoSearchSharp/>
               </div>
-              <div>
-                  <h3>{item.userName}</h3>
-                  <p>Today, 2:31pm</p>
               </div>
-              <div>
-                  <button>+</button>
-              </div>
+              <BiDotsVerticalRounded />
             </div>
-            ))  
-        }
-      </div>
-        :
-        searchUserList.length>0 ?
+          {
+            input.length < 1 ?
+            <div className='scroll'>
+              {
+                userList.map((item,index)=>( 
+                  <div key={index} className='list-item'>
+                    <div>
+                      <img src={item.userImgUrl} alt="g1" />
+                    </div>
+                    <div>
+                        <h3>{item.userName}</h3>
+                        <p>Today, 2:31pm</p>
+                    </div>
+                    <div>
+                        <button>+</button>
+                    </div>
+                  </div>
+                  ))  
+              }
+            </div>
+              :
+              searchUserList.length>0 ?
 
-        searchUserList.map((item,index)=>( 
-          <div key={index} className='list-item'>
-            <div>
-              <img src={item.userImgUrl} alt="g1" />
-            </div>
-            <div>
-                <h3>{item.userName}</h3>
-                <p>Today, 2:31pm</p>
-            </div>
-            <div>
-                <button>+</button>
-            </div>
-          </div>
-          ))  
-        :
-        <h1 className='error'>User's Not Found</h1>
-        
-
+              searchUserList.map((item,index)=>( 
+                <div key={index} className='list-item'>
+                  <div>
+                    <img src={item.userImgUrl} alt="g1" />
+                  </div>
+                  <div>
+                      <h3>{item.userName}</h3>
+                      <p>Today, 2:31pm</p>
+                  </div>
+                  <div>
+                      <button>+</button>
+                  </div>
+                </div>
+                ))  
+              :
+              <h1 className='error'>User's Not Found</h1>
+            
+          }
+      
+      </>
     }
-   
- 
-  
-      
-
-      
-
 
 
     </div>
