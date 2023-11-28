@@ -131,9 +131,8 @@ a{
     .registration{
         padding: 20px 0px
     }
-    #outlined-basic{
-        width: 320px;
-    }
+  
+  
     .registration .box{
         flex-direction: column-reverse;
         justify-content: center;
@@ -172,15 +171,11 @@ a{
     right: 20px;
    }
    .registration .box .one .from  .alert{
-    max-width: 320px;
+    max-width: 340px;
    }
    .registration .box .one .from .from-item .icon-top {
 	right: 20px;
    }
-
-
-
-
 }
 
 

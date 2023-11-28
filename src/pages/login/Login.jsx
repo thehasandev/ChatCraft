@@ -110,12 +110,12 @@ function Login() {
               </div>
               
                 <div className='input-part'>
-                  <TextField type='email' value={logData.userEmail} onChange={handleInputChange} name='userEmail' id="outlined-basic"  label="Email Address" variant="outlined" />
+                  <TextField type='email' value={logData.userEmail} onChange={handleInputChange} name='userEmail' style={{width:"415px"}}  label="Email Address" variant="outlined" />
                  <h6>{emailError}</h6>
                  </div>
             
                 <div className='input-part'>
-                  <TextField type={`${eye ? "text":"password"}`} value={logData.userPassword} onChange={handleInputChange} name='userPassword' id="outlined-basic"  label="Password" variant="outlined" />
+                  <TextField type={`${eye ? "text":"password"}`} value={logData.userPassword} onChange={handleInputChange} name='userPassword' style={{width:"415px"}}  label="Password" variant="outlined" />
                 <h6>{passwordError}</h6>
                   {
                     eye ?

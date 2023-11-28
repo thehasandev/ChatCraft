@@ -96,6 +96,7 @@ function Registration() {
             userEmail: userCredential.user.email,
             userImgUrl:"https://firebasestorage.googleapis.com/v0/b/chating-1cd1e.appspot.com/o/download.jpg?alt=media&token=34be5b59-5e58-480a-bcf9-3d0e9f74e544"
           });
+          
          },2000)
         }); 
         toast.success("Registratin sucessfull please verify  your email")
@@ -140,7 +141,7 @@ function Registration() {
             <p>Free register and you can enjoy it</p>
             
               <div className={`${emailError ? "input-margin" : "input-part"}`}>
-                <TextField type='email'  value={regData.userEmail} onChange={handleInputChange} name='userEmail' id="outlined-basic" label="Email Address" variant="outlined" />
+                <TextField type='email'  value={regData.userEmail} onChange={handleInputChange} name='userEmail' style={{width:"405px"}} label="Email Address" variant="outlined" />
                
                   {
                     emailError && 
@@ -152,7 +153,7 @@ function Registration() {
           
               
                <div className={`${nameError ? "input-margin" : "input-part"}`}>
-                <TextField type='text'  value={regData.userFullName} onChange={handleInputChange} name='userFullName' id="outlined-basic" label="Full name" variant="outlined" />
+                <TextField type='text'  value={regData.userFullName} onChange={handleInputChange} name='userFullName' style={{width:"405px"}} label="Full name" variant="outlined" />
               
                 {
                 nameError && 
@@ -163,7 +164,7 @@ function Registration() {
               </div>
 
               <div className={`${passwordError ? "input-margin" : "input-part"} from-item`}>
-                <TextField  type={eye ? "text": "password"} value={regData.userPassword} onChange={handleInputChange} name='userPassword' id="outlined-basic" label="Password" variant="outlined" />
+                <TextField  type={eye ? "text": "password"} value={regData.userPassword} onChange={handleInputChange} name='userPassword' style={{width:"405px"}} label="Password" variant="outlined" />
                 {
                   eye ?
                   <AiFillEye onClick={()=>{setEye(false)}} className={`${passwordError ? "icon-top":"icon-eye"}`}/>
