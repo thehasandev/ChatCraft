@@ -1,10 +1,21 @@
 import React from 'react'
+
 import gOne from "../assets/b2.png"
 import { BiDotsVerticalRounded } from "react-icons/bi";
+import { IoSearchSharp } from "react-icons/io5";
+
 function BlockUser() {
   return (
     
     <div className='list'>
+    
+    <div className='input'>
+        <input  type="text" placeholder='Search a Users'/>
+
+        <div className='icon'>
+          <IoSearchSharp/>
+        </div>
+     </div> 
 
      <div className="list-box">
           <h2>Blocked Users  </h2>
