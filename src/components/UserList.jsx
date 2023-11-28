@@ -58,7 +58,7 @@ function UserList() {
                 userList.map((item,index)=>( 
                   <div key={index} className='list-item'>
                     <div>
-                      <img src={item.userImgUrl} alt="g1" />
+                      <img src={item.userImgUrl} alt="user" />
                     </div>
 
                     <div style={{width:"180px"}}>
@@ -79,7 +79,7 @@ function UserList() {
               searchUserList.map((item,index)=>( 
                 <div key={index} className='list-item'>
                   <div>
-                    <img src={item.userImgUrl} alt="g1" />
+                    <img src={item.userImgUrl} alt="user" />
                   </div>
                   <div>
                     <h3>{item.userName}</h3>
