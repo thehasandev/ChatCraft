@@ -39,14 +39,16 @@ function UserList() {
       <h1>Loading...</h1>
       :
       <>
+          <div className='input'>
+            <input onChange={handleUserChange} type="text" placeholder='Search a Users'/>
+            <div className='icon'>
+              <IoSearchSharp/>
+            </div>
+          </div> 
+
+
             <div className="list-box">
               <h2>User List </h2>
-              <div className='input'>
-                <input onChange={handleUserChange} type="text" placeholder='Search a Users'/>
-              <div className='icon'>
-                <IoSearchSharp/>
-              </div>
-              </div>
               <BiDotsVerticalRounded />
             </div>
           {
@@ -58,10 +60,12 @@ function UserList() {
                     <div>
                       <img src={item.userImgUrl} alt="g1" />
                     </div>
-                    <div>
+
+                    <div style={{width:"180px"}}>
                         <h3>{item.userName}</h3>
                         <p>Today, 2:31pm</p>
                     </div>
+
                     <div>
                         <button>+</button>
                     </div>
@@ -78,8 +82,8 @@ function UserList() {
                     <img src={item.userImgUrl} alt="g1" />
                   </div>
                   <div>
-                      <h3>{item.userName}</h3>
-                      <p>Today, 2:31pm</p>
+                    <h3>{item.userName}</h3>
+                    <p>Today, 2:31pm</p>
                   </div>
                   <div>
                       <button>+</button>
@@ -88,13 +92,9 @@ function UserList() {
                 ))  
               :
               <h1 className='error'>User's Not Found</h1>
-            
           }
-      
       </>
     }
-
-
     </div>
     
   )
