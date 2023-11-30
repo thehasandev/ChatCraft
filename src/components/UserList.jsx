@@ -4,13 +4,21 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { IoSearchSharp } from "react-icons/io5";
 
+import { useSelector } from 'react-redux';
+
 function UserList() {
   const db = getDatabase();
+
+  let userData =useSelector((state)=>state.loguser.value)
+ 
+  
 
   let [userList,setUserList] = useState([])
   let [input,setInput] =useState("")
   let [searchUserList,setSearchUserList] =useState([])
   let [isLoading,setIsloading] =useState(true)
+ 
+
   
 
   useEffect(()=>{
@@ -53,43 +61,55 @@ function UserList() {
             </div>
           {
             input.length < 1 ?
-            <div className='scroll'>
-              {
-                userList.map((item,index)=>( 
-                  <div key={index} className='list-item'>
-                    <div>
-                      <img src={item.userImgUrl} alt="user" />
-                    </div>
+              <div className='scroll'>
+                {
+                  
+                  userList.map((item,index)=>
+                    {
+                      if(userData.email!=item.userEmail){
+         return       <div key={index} className='list-item'>
+                        <div>
+                          <img src={item.userImgUrl} alt="user" />
+                        </div>
+  
+                        <div style={{width:"180px"}}>
+                            <h3>{item.userName}</h3>
+                            <p>Today, 2:31pm</p>
+                        </div>
+  
+                        <div>
+                            <button>+</button>
+                        </div>
+                      </div>  
+                      }
+                    }
+                    ) 
+                }
+              </div>
 
-                    <div style={{width:"180px"}}>
-                        <h3>{item.userName}</h3>
-                        <p>Today, 2:31pm</p>
-                    </div>
-
-                    <div>
-                        <button>+</button>
-                    </div>
-                  </div>
-                  ))  
-              }
-            </div>
               :
               searchUserList.length>0 ?
 
-              searchUserList.map((item,index)=>( 
-                <div key={index} className='list-item'>
+            searchUserList.map((item,index)=>
+              {
+                if(userData.email!=item.userEmail){
+   return       <div key={index} className='list-item'>
                   <div>
                     <img src={item.userImgUrl} alt="user" />
                   </div>
-                  <div>
-                    <h3>{item.userName}</h3>
-                    <p>Today, 2:31pm</p>
+
+                  <div style={{width:"180px"}}>
+                      <h3>{item.userName}</h3>
+                      <p>Today, 2:31pm</p>
                   </div>
+
                   <div>
                       <button>+</button>
                   </div>
-                </div>
-                ))  
+                </div>  
+                }
+              }
+              ) 
               :
               <h1 className='error'>User's Not Found</h1>
           }

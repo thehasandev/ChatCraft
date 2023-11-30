@@ -94,6 +94,7 @@ function Registration() {
             userName: regData.userFullName,
             userEmail: userCredential.user.email,
             userImgUrl:"https://firebasestorage.googleapis.com/v0/b/chating-1cd1e.appspot.com/o/download.jpg?alt=media&token=34be5b59-5e58-480a-bcf9-3d0e9f74e544"
+          
           });
           
          },2000)
@@ -120,7 +121,7 @@ function Registration() {
 
   return (
     
-      loader ? 
+  loader ? 
     <div className='loader'>
         <RotatingLines
           strokeColor="gray"
@@ -143,7 +144,7 @@ function Registration() {
                 <TextField type='email'  value={regData.userEmail} onChange={handleInputChange} name='userEmail' style={{width:"405px"}} label="Email Address" variant="outlined" />
                
                   {
-                    emailError && 
+                  emailError && 
                   <Alert  className='alert' variant="filled" severity="error">
                     {emailError}
                   </Alert>
