@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+
 import RegistraionImg from "../../assets/registration.png"
 import TextField from '@mui/material/TextField';
 import Button from '../../components/Button';
@@ -15,21 +16,19 @@ import { useSelector } from 'react-redux';
 import { getDatabase, ref, set  } from "firebase/database";
 
 
-
-
 function Registration() {
-   const db = getDatabase();
-  let [eye,setEye] = useState(false)
+  const db = getDatabase();
   let auth = getAuth();
+  let navigate = useNavigate()
 
+  let userData =useSelector((state)=>state.loguser.value)
+   
+  let [eye,setEye] = useState(false)
   let [loader,setLoader] =useState(false)
   let [regData,setRegData] = useState({userEmail : "",userFullName: "", userPassword : ""})
   let [emailError,setEmailError] = useState("")
   let [nameError,setNameError] = useState("")
   let [passwordError,setPasswordError] = useState("")
-
-  let userData =useSelector((state)=>state.loguser.value)
-  let navigate = useNavigate()
   
 
 
@@ -157,9 +156,9 @@ function Registration() {
               
                 {
                 nameError && 
-                <Alert  className='alert' variant="filled" severity="error">
-                  {nameError}
-                </Alert>
+                  <Alert  className='alert' variant="filled" severity="error">
+                    {nameError}
+                  </Alert>
                 }
               </div>
 

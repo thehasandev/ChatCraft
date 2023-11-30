@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { getDatabase, ref, onValue } from "firebase/database";
 import { IoSearchSharp } from "react-icons/io5";
+
 function UserList() {
   const db = getDatabase();
+
   let [userList,setUserList] = useState([])
   let [input,setInput] =useState("")
   let [searchUserList,setSearchUserList] =useState([])
-
-
   let [isLoading,setIsloading] =useState(true)
   
 
@@ -18,10 +18,10 @@ function UserList() {
     onValue(starCountRef, (snapshot) => {
       let arr =[]
       snapshot.forEach((item)=>{
-       arr.push(item.val());
+        arr.push(item.val());
       })
-     setUserList(arr)
-     setIsloading(false)
+        setUserList(arr)
+        setIsloading(false)
     });
   },[])
 

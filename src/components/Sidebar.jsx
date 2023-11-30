@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react'
+
 import profileImg from "../assets/profile.png"
+
 import { FaHome } from "react-icons/fa";
 import { AiFillMessage } from "react-icons/ai";
 import { IoMdNotifications } from "react-icons/io";
 import { CiSettings } from "react-icons/ci";
 import { IoIosLogOut } from "react-icons/io";
-import { getAuth, signOut } from "firebase/auth";
-
+import { getAuth } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { activeuser } from '../slices/firebaseUser';
+
 function Sidebar() {
   const auth = getAuth();
- 
- 
+  
   let dispatch = useDispatch()   
   let navigate = useNavigate()
  

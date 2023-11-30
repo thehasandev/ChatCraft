@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+
 import gOne from "../assets/g2.png"
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { IoSearchSharp } from "react-icons/io5";
@@ -77,8 +78,6 @@ function GroupList() {
         </div>
 
       </div>
-
-
     </div>
   )
 }

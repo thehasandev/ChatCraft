@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+
 import GroupList from '../../components/GroupList';
 import Friends from '../../components/Friends';
 import UserList from '../../components/UserList';
@@ -12,20 +13,17 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Home() {
+  let navigate = useNavigate()
   let userData = useSelector((state)=>state.loguser.value)
   
-  let navigate = useNavigate()
 
   useEffect(()=>{
    if(userData == null){
       navigate("/")
    }
+
   },[])
 
-
-
-  
- 
   return (
     <section className='groups-item'>
        <div className='box'>

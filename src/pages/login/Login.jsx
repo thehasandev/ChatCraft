@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+
 import LoginPng from "../../assets/login.png"
 import TextField from '@mui/material/TextField';
 import Button from "../../components/Button"
@@ -9,24 +10,26 @@ import { RotatingLines } from 'react-loader-spinner'
 import {RxEyeClosed} from 'react-icons/rx'
 import {AiFillEye} from 'react-icons/ai'
 
+
 import { getAuth, signInWithEmailAndPassword ,signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useDispatch, useSelector } from 'react-redux';
 import { activeuser } from '../../slices/firebaseUser';
 
 
 function Login() {
-  let auth = getAuth()
   let provider = new GoogleAuthProvider()
-  let dispatch =useDispatch()
-  let userData =useSelector((state)=>state.loguser.value)
+  let auth = getAuth()
 
+  let navigate = useNavigate()
+  let dispatch =useDispatch()
+
+  let userData =useSelector((state)=>state.loguser.value)
 
   let [eye,setEye] = useState(false)
   let [loader,setLoader] =useState(false)
   let [logData,setLogData] = useState({userEmail : "",userPassword : ""})
   let [emailError,setEmailError] = useState("")
   let [passwordError,setPasswordError] = useState("")
-  let navigate = useNavigate()
 
   let handleInputChange =(e)=>{
     setLogData({...logData, [e.target.name]:e.target.value})
@@ -56,8 +59,8 @@ function Login() {
 
       if(user.emailVerified){
         setLoader(true)
-          navigate('/home')
-        }else{
+        navigate('/home')
+      }else{
          toast.error('Please verify your email')
         } 
       })
@@ -71,12 +74,16 @@ function Login() {
 
   let handleGoggleClick =()=>{
     signInWithPopup(auth, provider)
+    
     .then((result) => {
       const user = result.user;
       dispatch(activeuser(user))
       localStorage.setItem("user",JSON.stringify(user))
       navigate("/home")
-    }).catch((error) => {
+    })
+    
+    .catch((error) => {
+
     });
   }
 
@@ -130,8 +137,9 @@ function Login() {
              </div>
               
               <Link to="/forgot">
-                <p >Forgot Password</p>
+                <p>Forgot Password</p>
               </Link>
+
               <h4>Don’t have an account ? <Link to={'/sing-up'}><span>Sign up</span></Link> </h4>
             </div>
           </div>
