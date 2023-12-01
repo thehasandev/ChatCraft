@@ -10,7 +10,7 @@ function UserList() {
   const db = getDatabase();
 
   let userData =useSelector((state)=>state.loguser.value)
-
+ 
   
 
   let [userList,setUserList] = useState([])
@@ -26,7 +26,9 @@ function UserList() {
     onValue(starCountRef, (snapshot) => {
       let arr =[]
       snapshot.forEach((item)=>{
-        arr.push(item.val());
+        if(item.key!=userData.uid){
+          arr.push(item.val());
+        }
       })
         setUserList(arr)
         setIsloading(false)

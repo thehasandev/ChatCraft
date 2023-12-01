@@ -16,7 +16,7 @@ function Sidebar() {
   const auth = getAuth();
   
   let userData =useSelector((state)=>state.loguser.value)
-  console.log(userData);
+ 
 
   let dispatch = useDispatch()   
   let navigate = useNavigate()
