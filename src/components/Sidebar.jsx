@@ -8,13 +8,16 @@ import { IoMdNotifications } from "react-icons/io";
 import { CiSettings } from "react-icons/ci";
 import { IoIosLogOut } from "react-icons/io";
 import { getAuth } from "firebase/auth";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { activeuser } from '../slices/firebaseUser';
 
 function Sidebar() {
   const auth = getAuth();
   
+  let userData =useSelector((state)=>state.loguser.value)
+  console.log(userData);
+
   let dispatch = useDispatch()   
   let navigate = useNavigate()
  
@@ -32,6 +35,7 @@ let handleLogout =()=>{
     <div className='sidevar'>
       <div>
         <img src={profileImg} alt="profile" />
+        <h2 className='name'>{userData.reloadUserInfo.displayName}</h2>
       </div>
      
      

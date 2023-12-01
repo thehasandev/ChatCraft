@@ -11,9 +11,9 @@ import { toast } from 'react-toastify';
 import {RxEyeClosed} from 'react-icons/rx'
 import {AiFillEye} from 'react-icons/ai'
 
-import { getAuth, createUserWithEmailAndPassword,sendEmailVerification } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,sendEmailVerification,updateProfile } from "firebase/auth";
 import { useSelector } from 'react-redux';
-import { getDatabase, ref, set  } from "firebase/database";
+import { getDatabase, ref, set   } from "firebase/database";
 
 
 function Registration() {
@@ -22,6 +22,7 @@ function Registration() {
   let navigate = useNavigate()
 
   let userData =useSelector((state)=>state.loguser.value)
+
    
   let [eye,setEye] = useState(false)
   let [loader,setLoader] =useState(false)
@@ -89,13 +90,18 @@ function Registration() {
           setTimeout(()=>{
           setLoader(false)
           navigate('/')
-
-          set(ref(db, 'users/'+ userCredential.user.uid), {
-            userName: regData.userFullName,
-            userEmail: userCredential.user.email,
-            userImgUrl:"https://firebasestorage.googleapis.com/v0/b/chating-1cd1e.appspot.com/o/download.jpg?alt=media&token=34be5b59-5e58-480a-bcf9-3d0e9f74e544"
-          
-          });
+        
+          updateProfile(auth.currentUser, {
+            displayName: regData.userFullName, img_url: "https://firebasestorage.googleapis.com/v0/b/chating-1cd1e.appspot.com/o/download.jpg?alt=media&token=34be5b59-5e58-480a-bcf9-3d0e9f74e544"
+          }).then(() => {
+            set(ref(db, 'users/'+ userCredential.user.uid), {
+              userName: regData.userFullName,
+              userEmail: userCredential.user.email,
+              userImgUrl:"https://firebasestorage.googleapis.com/v0/b/chating-1cd1e.appspot.com/o/download.jpg?alt=media&token=34be5b59-5e58-480a-bcf9-3d0e9f74e544"
+            });
+          })
+           
+         
           
          },2000)
         }); 

@@ -10,7 +10,7 @@ function UserList() {
   const db = getDatabase();
 
   let userData =useSelector((state)=>state.loguser.value)
- 
+
   
 
   let [userList,setUserList] = useState([])
@@ -63,10 +63,9 @@ function UserList() {
             input.length < 1 ?
               <div className='scroll'>
                 {
-                  
                   userList.map((item,index)=>
                     {
-                      if(userData.email!=item.userEmail){
+                     
          return       <div key={index} className='list-item'>
                         <div>
                           <img src={item.userImgUrl} alt="user" />
@@ -81,37 +80,41 @@ function UserList() {
                             <button>+</button>
                         </div>
                       </div>  
-                      }
                     }
                     ) 
                 }
               </div>
 
               :
-              searchUserList.length>0 ?
+              <div className='scroll'>
+                {
+                  searchUserList.length>0 ?
 
-            searchUserList.map((item,index)=>
-              {
-                if(userData.email!=item.userEmail){
-   return       <div key={index} className='list-item'>
-                  <div>
-                    <img src={item.userImgUrl} alt="user" />
-                  </div>
+                searchUserList.map((item,index)=>
+              
+                  {
+                
+      return       <div key={index} className='list-item'>
+                      <div>
+                        <img src={item.userImgUrl} alt="user" />
+                      </div>
 
-                  <div style={{width:"180px"}}>
-                      <h3>{item.userName}</h3>
-                      <p>Today, 2:31pm</p>
-                  </div>
+                      <div style={{width:"180px"}}>
+                          <h3>{item.userName}</h3>
+                          <p>Today, 2:31pm</p>
+                      </div>
 
-                  <div>
-                      <button>+</button>
-                  </div>
-                </div>  
+                      <div>
+                          <button>+</button>
+                      </div>
+                    </div>   
+                  }
+                  ) 
+                  :
+                  <h1 className='error'>User's Not Found</h1>
+
                 }
-              }
-              ) 
-              :
-              <h1 className='error'>User's Not Found</h1>
+              </div>
           }
       </>
     }
