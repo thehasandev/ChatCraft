@@ -3,14 +3,15 @@ import React, { useEffect, useState,createRef } from 'react'
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 
-import profileImg from "../assets/profile.png"
+import { getStorage, ref,uploadString ,getDownloadURL} from "firebase/storage";
+
 
 import { FaHome } from "react-icons/fa";
 import { AiFillMessage } from "react-icons/ai";
 import { IoMdNotifications } from "react-icons/io";
 import { CiSettings } from "react-icons/ci";
 import { IoIosLogOut } from "react-icons/io";
-import { getAuth } from "firebase/auth";
+import { getAuth,updateProfile } from "firebase/auth";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { activeuser } from '../slices/firebaseUser';
@@ -39,13 +40,14 @@ const style = {
 
 
 function Sidebar() {
-  const [open, setOpen] = useState(false)
-
-  const handleClose = () => setOpen(false);
-
   const auth = getAuth();
+  const [open, setOpen] = useState(false)
+  const handleClose = () => setOpen(false);
+  
+  const storage = getStorage();
   
   let userData =useSelector((state)=>state.loguser.value)
+  const storageRef = ref(storage, userData.uid);
  
 
   let dispatch = useDispatch()   
@@ -81,8 +83,19 @@ const onChange = (e) => {
 const getCropData = () => {
   if (typeof cropperRef.current?.cropper !== "undefined") {
     setCropData(cropperRef.current?.cropper.getCroppedCanvas().toDataURL());
-
-    // console.log(cropperRef.current?.cropper.getCroppedCanvas().toDataURL());
+    const message4 = cropperRef.current?.cropper.getCroppedCanvas().toDataURL()
+    uploadString(storageRef, message4, 'data_url').then((snapshot) => {
+      getDownloadURL(storageRef).then((downloadURL) => {
+        updateProfile(auth.currentUser, {
+          photoURL: downloadURL
+        }).then(()=>{
+          setImage("")
+         dispatch(activeuser({...userData,photoURL:downloadURL}))
+         localStorage.setItem(JSON.stringify({...userData,photoURL:downloadURL}))
+        })
+        
+      });
+    });
   }
 };
 
@@ -157,7 +170,10 @@ const handleOpen = () =>{
             <div className="img-preview"></div>
           </div>
             :
-            <img src={userData.photoURL} alt="profile" />
+            <div>
+             <img className='crop-img' src={userData.photoURL} alt="profile" />
+            </div>
+           
 
           }
 
@@ -168,7 +184,7 @@ const handleOpen = () =>{
             image &&
           <Cropper
             ref={cropperRef}
-            style={{ height: 300, width: "100%" }}
+            style={{ height: 350, width: "100%" }}
             zoomTo={0.5}
             initialAspectRatio={1}
             preview=".img-preview"
@@ -189,7 +205,10 @@ const handleOpen = () =>{
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
            <input onChange={onChange} type="file" />
           </Typography>
+          {
+            image &&
           <Button  onClick={getCropData} variant="contained">Upload</Button>
+          }
         </Box>
       </Modal>
     </div>
