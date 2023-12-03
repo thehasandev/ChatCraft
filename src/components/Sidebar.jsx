@@ -31,9 +31,12 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: {
+    xs:300,
+    md:400
+  },
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  border: 0,
   boxShadow: 24,
   p: 4,
 };
@@ -163,7 +166,7 @@ const handleOpen = () =>{
         aria-describedby="modal-modal-description"
       >
         
-        <Box sx={style}>
+        <Box  sx={style}>
           {
             image ? 
           <div className='img-preview-item'>
