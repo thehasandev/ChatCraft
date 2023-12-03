@@ -29,6 +29,7 @@ function UserList() {
         if(item.key!=userData.uid){
           arr.push(item.val());
         }
+        
       })
         setUserList(arr)
         setIsloading(false)

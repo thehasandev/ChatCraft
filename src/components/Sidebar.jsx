@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,createRef } from 'react'
+
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
 
 import profileImg from "../assets/profile.png"
 
@@ -12,7 +15,34 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { activeuser } from '../slices/firebaseUser';
 
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+
+
+const defaultSrc =
+  "https://raw.githubusercontent.com/roadmanfong/react-cropper/master/example/img/child.jpg";
+
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
+
 function Sidebar() {
+  const [open, setOpen] = useState(false)
+
+  const handleClose = () => setOpen(false);
+
   const auth = getAuth();
   
   let userData =useSelector((state)=>state.loguser.value)
@@ -21,21 +51,51 @@ function Sidebar() {
   let dispatch = useDispatch()   
   let navigate = useNavigate()
  
-let handleLogout =()=>{
-  navigate("/")
-  dispatch(activeuser(null))
-  localStorage.removeItem("user")
+  let handleLogout =()=>{
+    navigate("/")
+    dispatch(activeuser(null))
+    localStorage.removeItem("user")
+  }
+
+
+const [image, setImage] = useState("");
+const [cropData, setCropData] = useState("#");
+const cropperRef = createRef();
+
+const onChange = (e) => {
+  e.preventDefault();
+  let files;
+
+  if (e.dataTransfer) {
+    files = e.dataTransfer.files;
+  } else if (e.target) {
+    files = e.target.files;
+  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    setImage(reader.result);
+  };
+  reader.readAsDataURL(files[0]);
+};
+
+const getCropData = () => {
+  if (typeof cropperRef.current?.cropper !== "undefined") {
+    setCropData(cropperRef.current?.cropper.getCroppedCanvas().toDataURL());
+
+    // console.log(cropperRef.current?.cropper.getCroppedCanvas().toDataURL());
+  }
+};
+
+
+const handleOpen = () =>{
+  setOpen(true)
 }
-
-
-
-
   return (
-    
+    <>
     <div className='sidevar'>
-      <div>
-        <img src={profileImg} alt="profile" />
-        <h2 className='name'>{userData.reloadUserInfo.displayName}</h2>
+      <div className='sidevar_item' onClick={handleOpen}>
+        <img src={userData.photoURL} alt="profile" />
+        <h2 className='name'>{userData.displayName}</h2>
       </div>
      
      
@@ -46,6 +106,8 @@ let handleLogout =()=>{
             </div>
           </Link>
         </div>
+
+      
         
         <div className='icons-part'>
           <Link to="/home/message">
@@ -78,6 +140,63 @@ let handleLogout =()=>{
 
 
     </div>
+
+    <div>
+      
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        
+        <Box sx={style}>
+          {
+            image ? 
+          <div className='img-preview-item'>
+            <div className="img-preview"></div>
+          </div>
+            :
+            <img src={userData.photoURL} alt="profile" />
+
+          }
+
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+           Upload Your Profile
+          </Typography>
+          {
+            image &&
+          <Cropper
+            ref={cropperRef}
+            style={{ height: 300, width: "100%" }}
+            zoomTo={0.5}
+            initialAspectRatio={1}
+            preview=".img-preview"
+            src={image}
+            viewMode={1}
+            minCropBoxHeight={100}
+            minCropBoxWidth={100}
+            background={false}
+            responsive={true}
+            autoCropArea={1}
+            checkOrientation={false}
+            guides={true}
+          />
+          }
+
+            
+
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+           <input onChange={onChange} type="file" />
+          </Typography>
+          <Button  onClick={getCropData} variant="contained">Upload</Button>
+        </Box>
+      </Modal>
+    </div>
+
+
+   
+    </>
     
   )
 }

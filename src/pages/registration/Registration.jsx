@@ -92,7 +92,7 @@ function Registration() {
           navigate('/')
         
           updateProfile(auth.currentUser, {
-            displayName: regData.userFullName, img_url: "https://firebasestorage.googleapis.com/v0/b/chating-1cd1e.appspot.com/o/download.jpg?alt=media&token=34be5b59-5e58-480a-bcf9-3d0e9f74e544"
+            displayName: regData.userFullName, photoURL: "https://firebasestorage.googleapis.com/v0/b/chating-1cd1e.appspot.com/o/download.jpg?alt=media&token=34be5b59-5e58-480a-bcf9-3d0e9f74e544"
           }).then(() => {
             set(ref(db, 'users/'+ userCredential.user.uid), {
               userName: regData.userFullName,
