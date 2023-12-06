@@ -440,11 +440,16 @@ a{
 }
 
 
-.sidevar img{
+.sidevar .sidevar_item img{
  width: 60px;
  height: 60px;
  border-radius: 50%;
  margin: 0 auto;
+}
+.sidevar .logout {
+ width: 35px;
+ height: 38px;
+ cursor: pointer;
 }
 .crop-img{
     width: 100px;
@@ -664,7 +669,12 @@ border-radius: 100%;
         justify-content: space-between;
     }
   
-
+    .sidevar .logout {
+        width: 30px;
+        height: 30px;
+        padding-top: 9px;
+        cursor: pointer;
+       }
     
     .sidevar .sidevar_item{
         display: flex;

@@ -1,10 +1,9 @@
 import React, { useEffect, useState,createRef } from 'react'
 
-import Cropper from "react-cropper";
-import "cropperjs/dist/cropper.css";
+
 
 import { getStorage, ref,uploadString ,getDownloadURL} from "firebase/storage";
-
+import logout from "../assets/logout.png"
 
 import { FaHome } from "react-icons/fa";
 import { AiFillMessage } from "react-icons/ai";
@@ -20,6 +19,8 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
 
 
 const defaultSrc =
@@ -153,9 +154,11 @@ const handleOpen = () =>{
         </div>
      
 
-      <div className='icons-part'>
-          <IoIosLogOut onClick={handleLogout} className='icons' style={{cursor:"pointer"}}/> 
-       </div>
+        <div className='icons-part'>
+          <img  onClick={handleLogout}  src={logout} alt=""  className='logout'/>
+        </div>
+          {/* <IoIosLogOut className='icons' style={{cursor:"pointer"}}/>  */}
+     
 
 
     </div>
