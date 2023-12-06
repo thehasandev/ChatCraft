@@ -46,6 +46,7 @@ function Sidebar() {
   const auth = getAuth();
   const [open, setOpen] = useState(false)
   const handleClose = () => setOpen(false);
+ 
   
   const storage = getStorage();
   
@@ -93,8 +94,10 @@ const getCropData = () => {
           photoURL: downloadURL
         }).then(()=>{
           setImage("")
+          setOpen(false)
          dispatch(activeuser({...userData,photoURL:downloadURL}))
          localStorage.setItem(JSON.stringify({...userData,photoURL:downloadURL}))
+         
         })
         
       });
