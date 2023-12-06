@@ -113,9 +113,9 @@ const handleOpen = () =>{
   return (
     <>
     <div className='sidevar'>
-      <div className='sidevar_item' onClick={handleOpen}>
-        <img src={userData.photoURL} alt="profile" />
-        <h2 className='name'>{userData.displayName}</h2>
+      <div className='sidevar_item' >
+        <img onClick={handleOpen} src={userData.photoURL} alt="profile" />
+        <p className='name'>{userData.displayName}</p>
       </div>
      
      
@@ -157,8 +157,7 @@ const handleOpen = () =>{
         <div className='icons-part'>
           <img  onClick={handleLogout}  src={logout} alt=""  className='logout'/>
         </div>
-          {/* <IoIosLogOut className='icons' style={{cursor:"pointer"}}/>  */}
-     
+          
 
 
     </div>

@@ -441,6 +441,7 @@ a{
 
 
 .sidevar .sidevar_item img{
+ cursor: pointer;
  width: 60px;
  height: 60px;
  border-radius: 50%;
@@ -457,16 +458,19 @@ a{
     border-radius: 50%;
 }
 .sidevar .name {
- margin-top: 5px;
- margin-bottom: 50px;
  color: white;
  font-family: 'Nunito Sans', sans-serif;
- font-size: 18px;
- font-weight: 500;
+ font-size: 16px;
+ font-weight: 600;
+ width: 100px;
+ margin-bottom: 50px;
+ margin-top: 5px;
  text-align: center;
 }
 .sidevar .sidevar_item{
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 
@@ -681,7 +685,7 @@ border-radius: 100%;
         column-gap: 7px;
         align-items: center;
     }
-    .sidevar .name {
+    .sidevar .sidevar_item .name {
      margin-bottom: 0;
      font-size: 14px;
     }
