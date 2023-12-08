@@ -17,6 +17,8 @@ function UserList() {
   let [input,setInput] =useState("")
   let [searchUserList,setSearchUserList] =useState([])
   let [isLoading,setIsloading] =useState(true)
+
+
  
 
   
@@ -68,6 +70,7 @@ function UserList() {
                 {
                   userList.map((item,index)=>
                     {
+                      console.log(item);
                      
          return       <div key={index} className='list-item'>
                         <div>
@@ -94,8 +97,9 @@ function UserList() {
                   searchUserList.length>0 ?
 
                 searchUserList.map((item,index)=>
-              
-                  {
+                
+                {
+                  
                 
       return       <div key={index} className='list-item'>
                       <div>

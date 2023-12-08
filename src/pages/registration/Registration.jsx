@@ -105,6 +105,7 @@ function Registration() {
           
          },2000)
         }); 
+
         toast.success("Registratin sucessfull please verify  your email")
         setEmailError('')
         setNameError('')

@@ -53,7 +53,8 @@ function Sidebar() {
   const [open, setOpen] = useState(false)
  
   let userData =useSelector((state)=>state.loguser.value)
-  console.log(userData);
+ 
+
   const storageRef = ref(storage, userData.uid);
  
 
@@ -96,8 +97,8 @@ const getCropData = () => {
         updateProfile(auth.currentUser, {
           photoURL: downloadURL
         }).then(()=>{
-          set(dref(db, 'users/'+userData.uid), {
-            username: userData.displayName,
+          set(dref(db, 'users/'+userData.uid),{
+            userName: userData.displayName,
             userImgUrl : downloadURL
           }).then(()=>{
             setImage("")
