@@ -14,6 +14,7 @@ function FriendRequest() {
 
   let [friendRequest,setFriendRequest] =useState([])
 
+
   useEffect(()=>{
     const friendrequstRef = ref(db, 'friendrequest');
     onValue(friendrequstRef, (snapshot) => {
@@ -23,8 +24,7 @@ function FriendRequest() {
         arr.push(item.val())
 
       }
-      console.log(userData.uid);
-      console.log(item.val().whosendid);
+      
      })
      setFriendRequest(arr);
     });
@@ -50,7 +50,7 @@ function FriendRequest() {
           {
             
             friendRequest.map((item)=>(
-              <div  className='list-item'>
+              <div key={item.whoreciveid}  className='list-item'>
                 <div>
                   <img src={gOne} alt="g1" />
                 </div>
@@ -58,9 +58,16 @@ function FriendRequest() {
                     <h3>{item.whosendname}</h3>
                     <p>Sure!</p>
                 </div>
-                <div>
-                    <button>Accept</button>
-                </div>
+             
+                  <div>
+                    <div>
+                      <button>Accept</button>
+                    </div>
+                    <div>
+                      <button>Cencel</button>
+                    </div>
+                    
+                  </div>
               </div>
             ))
           }

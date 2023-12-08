@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { getDatabase, ref, onValue,set,push } from "firebase/database";
 import { IoSearchSharp } from "react-icons/io5";
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 
 import { useSelector } from 'react-redux';
@@ -107,7 +109,9 @@ function UserList() {
                       
                       friendId.includes(item.userId+userData.uid)||friendId.includes(userData.uid+item.userId) ?
                       <div>
-                      <button>Pending</button>
+                      <Button variant="contained" disabled>
+                        Pending
+                      </Button>
                      </div>
                      :
                       <div>
