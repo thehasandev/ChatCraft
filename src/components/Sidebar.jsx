@@ -3,6 +3,7 @@ import React, { useEffect, useState,createRef } from 'react'
 
 
 import { getStorage, ref,uploadString ,getDownloadURL} from "firebase/storage";
+import { getDatabase, ref as dref, set } from "firebase/database";
 import logout from "../assets/logout.png"
 
 import { FaHome } from "react-icons/fa";
@@ -44,14 +45,15 @@ const style = {
 
 
 function Sidebar() {
-  const auth = getAuth();
-  const [open, setOpen] = useState(false)
-  const handleClose = () => setOpen(false);
- 
-  
+  const db = getDatabase();
   const storage = getStorage();
-  
+  const auth = getAuth();
+  const handleClose = () => setOpen(false);
+
+  const [open, setOpen] = useState(false)
+ 
   let userData =useSelector((state)=>state.loguser.value)
+  console.log(userData);
   const storageRef = ref(storage, userData.uid);
  
 
@@ -94,11 +96,15 @@ const getCropData = () => {
         updateProfile(auth.currentUser, {
           photoURL: downloadURL
         }).then(()=>{
-          setImage("")
-          setOpen(false)
-         dispatch(activeuser({...userData,photoURL:downloadURL}))
-         localStorage.setItem(JSON.stringify({...userData,photoURL:downloadURL}))
-         
+          set(dref(db, 'users/'+userData.uid), {
+            username: userData.displayName,
+            userImgUrl : downloadURL
+          }).then(()=>{
+            setImage("")
+            setOpen(false)
+           dispatch(activeuser({...userData,photoURL:downloadURL}))
+           localStorage.setItem(JSON.stringify({...userData,photoURL:downloadURL}))
+          })
         })
         
       });

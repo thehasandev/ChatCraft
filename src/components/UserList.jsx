@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 function UserList() {
   const db = getDatabase();
 
-  let userData =useSelector((state)=>state.loguser.value)
+  let userData = useSelector((state)=>state.loguser.value)
  
   
 
