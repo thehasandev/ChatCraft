@@ -12,14 +12,13 @@ function UserList() {
 
   let userData = useSelector((state)=>state.loguser.value)
   
- 
-  
-
   let [userList,setUserList] = useState([])
   let [input,setInput] =useState("")
   let [searchUserList,setSearchUserList] =useState([])
   let [isLoading,setIsloading] =useState(true)
 
+  let [friendId,setFriedId] =useState([])
+  
 
  
 
@@ -55,6 +54,18 @@ function UserList() {
       whoreciveid   : item.userId
     });
   }
+
+
+  useEffect(()=>{
+    const friendrequstRef = ref(db, 'friendrequest');
+    onValue(friendrequstRef, (snapshot) => {
+    let arr =[]
+     snapshot.forEach((item)=>{
+      arr.push(item.val().whoreciveid+item.val().whosendid)
+     })
+     setFriedId(arr);
+    });
+  },[])
   return (
     
     <div className='list'>
@@ -91,10 +102,20 @@ function UserList() {
                             <h3>{item.userName}</h3>
                             <p>Today, 2:31pm</p>
                         </div>
+                       
+                       {
+                      
+                      friendId.includes(item.userId+userData.uid)||friendId.includes(userData.uid+item.userId) ?
+                      <div>
+                      <button>Pending</button>
+                     </div>
+                     :
+                      <div>
+                      <button  onClick={()=>handleFriendRequest(item)}>+</button>
+                     </div>
+                       }
   
-                        <div>
-                            <button onClick={()=>handleFriendRequest(item)}>+</button>
-                        </div>
+                   
                       </div>  
                     }
                     ) 
@@ -121,9 +142,18 @@ function UserList() {
                           <p>Today, 2:31pm</p>
                       </div>
 
-                      <div>
-                          <button>+</button>
-                      </div>
+                      {
+                      
+                      friendId.includes(item.userId+userData.uid)||friendId.includes(userData.uid+item.userId) ?
+                        <div>
+                          <button>Pending</button>
+                        </div>
+                         :
+                        <div>
+                          <button  onClick={()=>handleFriendRequest(item)}>+</button>
+                        </div>
+
+                       }
                     </div>   
                   }
                   ) 
