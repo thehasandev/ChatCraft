@@ -20,13 +20,9 @@ function UserList() {
   let [searchUserList,setSearchUserList] =useState([])
   let [isLoading,setIsloading] =useState(true)
 
-  let [friendId,setFriedId] =useState([])
+  let [friendrequestId,setFriendrequestId] =useState([])
+  let [friendId,setFriendId] =useState([])
   
-
- 
-
-  
-
   useEffect(()=>{
     const starCountRef = ref(db, 'users');
     onValue(starCountRef, (snapshot) => {
@@ -41,7 +37,6 @@ function UserList() {
         setIsloading(false)
     });
   },[])
-
 
   let handleUserChange =(e)=>{
     setInput(e.target.value)
@@ -59,7 +54,6 @@ function UserList() {
     })
   }
 
-
   useEffect(()=>{
     const friendrequstRef = ref(db, 'friendrequest');
     onValue(friendrequstRef, (snapshot) => {
@@ -67,9 +61,27 @@ function UserList() {
      snapshot.forEach((item)=>{
       arr.push(item.val().whoreciveid+item.val().whosendid)
      })
-     setFriedId(arr);
+     setFriendrequestId(arr);
     });
   },[])
+
+  useEffect(()=>{
+    const friendrequstRef = ref(db, 'friends');
+    onValue(friendrequstRef, (snapshot) => {
+    let arr =[]
+     snapshot.forEach((item)=>{
+      arr.push(item.val().whoreciveid+item.val().whosendid)
+     })
+     setFriendId(arr);
+    });
+  },[])
+
+  
+
+
+
+
+
   return (
     
     <div className='list'>
@@ -109,16 +121,24 @@ function UserList() {
                        
                        {
                       
-                      friendId.includes(item.userId+userData.uid)||friendId.includes(userData.uid+item.userId) ?
+                      friendrequestId.includes(item.userId+userData.uid)||friendrequestId.includes(userData.uid+item.userId) ?
                       <div>
                       <Button variant="contained" disabled>
                         Pending
                       </Button>
                      </div>
                      :
+
+                     friendId.includes(item.userId+userData.uid) || friendId.includes(userData.uid+item.userId) ?
+                     <div>
+                      <button>Approv</button>
+                     </div>
+                     :
+
                       <div>
                       <button  onClick={()=>handleFriendRequest(item)}>+</button>
                      </div>
+
                        }
   
                    

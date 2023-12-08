@@ -24,16 +24,14 @@ function FriendRequest() {
      snapshot.forEach((item)=>{
       if(item.val().whoreciveid == userData.uid){
         arr.push({...item.val(),friendRequestId:item.key})
-
       }
-      
      })
      setFriendRequest(arr);
     });
   },[])
 
   let handleAccept =(item)=>{
-    set(push(ref(db, 'friend')), {
+    set(push(ref(db, 'friends')), {
       ...item
     }).then(()=>{
       remove(ref(db,'friendrequest/'+item.friendRequestId))
