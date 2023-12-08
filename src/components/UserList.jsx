@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
 import { BiDotsVerticalRounded } from "react-icons/bi";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue,set,push } from "firebase/database";
 import { IoSearchSharp } from "react-icons/io5";
+
 
 import { useSelector } from 'react-redux';
 
@@ -10,6 +11,7 @@ function UserList() {
   const db = getDatabase();
 
   let userData = useSelector((state)=>state.loguser.value)
+  
  
   
 
@@ -29,7 +31,7 @@ function UserList() {
       let arr =[]
       snapshot.forEach((item)=>{
         if(item.key!=userData.uid){
-          arr.push(item.val());
+          arr.push({...item.val(),userId:item.key});
         }
         
       })
@@ -43,6 +45,15 @@ function UserList() {
     setInput(e.target.value)
    let searchUser = userList.filter((item=> item.userName.toLowerCase().includes(e.target.value.toLowerCase())))
    setSearchUserList(searchUser);
+  }
+
+  let handleFriendRequest =(item)=>{
+    set(push(ref(db, 'friendrequest')), {
+      whosendname   : userData.displayName,
+      whosendid     : userData.uid,
+      whorecivename : item.userName,
+      whoreciveid   : item.userId
+    });
   }
   return (
     
@@ -70,7 +81,6 @@ function UserList() {
                 {
                   userList.map((item,index)=>
                     {
-                      console.log(item);
                      
          return       <div key={index} className='list-item'>
                         <div>
@@ -83,7 +93,7 @@ function UserList() {
                         </div>
   
                         <div>
-                            <button>+</button>
+                            <button onClick={()=>handleFriendRequest(item)}>+</button>
                         </div>
                       </div>  
                     }

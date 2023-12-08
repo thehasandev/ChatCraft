@@ -1,10 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import gOne from "../assets/fr1.png"
 import { IoSearchSharp } from "react-icons/io5";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 
+import { getDatabase, ref, onValue } from "firebase/database";
+
+import { useSelector } from 'react-redux';
+
 function FriendRequest() {
+  const db = getDatabase();
+  let userData = useSelector((state)=>state.loguser.value)
+
+  let [friendRequest,setFriendRequest] =useState([])
+
+  useEffect(()=>{
+    const friendrequstRef = ref(db, 'friendrequest');
+    onValue(friendrequstRef, (snapshot) => {
+    let arr =[]
+     snapshot.forEach((item)=>{
+      if(item.val().whoreciveid == userData.uid){
+        arr.push(item.val())
+
+      }
+      console.log(userData.uid);
+      console.log(item.val().whosendid);
+     })
+     setFriendRequest(arr);
+    });
+  },[])
+
   return (
     
     <div className='list'>
@@ -22,111 +47,25 @@ function FriendRequest() {
         </div>
         
         <div className='scroll'>
+          {
+            
+            friendRequest.map((item)=>(
+              <div  className='list-item'>
+                <div>
+                  <img src={gOne} alt="g1" />
+                </div>
+                <div>
+                    <h3>{item.whosendname}</h3>
+                    <p>Sure!</p>
+                </div>
+                <div>
+                    <button>Accept</button>
+                </div>
+              </div>
+            ))
+          }
+        
 
-              <div className='list-item'>
-                <div>
-                  <img src={gOne} alt="g1" />
-                </div>
-                <div>
-                    <h3>Tejeshwini C</h3>
-                    <p>Sure!</p>
-                </div>
-                <div>
-                    <button>Accept</button>
-                </div>
-              </div>
-            
-              <div className='list-item'>
-                <div>
-                  <img src={gOne} alt="g1" />
-                </div>
-                <div>
-                    <h3>Tejeshwini C</h3>
-                    <p>Sure!</p>
-                </div>
-                <div>
-                    <button>Accept</button>
-                </div>
-              </div>
-            
-              <div className='list-item'>
-                <div>
-                  <img src={gOne} alt="g1" />
-                </div>
-                <div>
-                    <h3>Tejeshwini C</h3>
-                    <p>Sure!</p>
-                </div>
-                <div>
-                    <button>Accept</button>
-                </div>
-              </div>
-            
-              <div className='list-item'>
-                <div>
-                  <img src={gOne} alt="g1" />
-                </div>
-                <div>
-                    <h3>Tejeshwini C</h3>
-                    <p>Sure!</p>
-                </div>
-                <div>
-                    <button>Accept</button>
-                </div>
-              </div>
-            
-              <div className='list-item'>
-                <div>
-                  <img src={gOne} alt="g1" />
-                </div>
-                <div>
-                    <h3>Tejeshwini C</h3>
-                    <p>Sure!</p>
-                </div>
-                <div>
-                    <button>Accept</button>
-                </div>
-              </div>
-            
-              <div className='list-item'>
-                <div>
-                  <img src={gOne} alt="g1" />
-                </div>
-                <div>
-                    <h3>Tejeshwini C</h3>
-                    <p>Sure!</p>
-                </div>
-                <div>
-                    <button>Accept</button>
-                </div>
-              </div>
-            
-              <div className='list-item'>
-                <div>
-                  <img src={gOne} alt="g1" />
-                </div>
-                <div>
-                    <h3>Tejeshwini C</h3>
-                    <p>Sure!</p>
-                </div>
-                <div>
-                    <button>Accept</button>
-                </div>
-              </div>
-            
-              <div className='list-item'>
-                <div>
-                  <img src={gOne} alt="g1" />
-                </div>
-                <div>
-                    <h3>Tejeshwini C</h3>
-                    <p>Sure!</p>
-                </div>
-                <div>
-                    <button>Accept</button>
-                </div>
-              </div>
-            
         </div>
 
     </div>
