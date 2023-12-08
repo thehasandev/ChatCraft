@@ -4,7 +4,8 @@ import gOne from "../assets/fr1.png"
 import { IoSearchSharp } from "react-icons/io5";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue ,set,push, remove} from "firebase/database";
+
 
 import { useSelector } from 'react-redux';
 
@@ -15,13 +16,14 @@ function FriendRequest() {
   let [friendRequest,setFriendRequest] =useState([])
 
 
+
   useEffect(()=>{
     const friendrequstRef = ref(db, 'friendrequest');
     onValue(friendrequstRef, (snapshot) => {
     let arr =[]
      snapshot.forEach((item)=>{
       if(item.val().whoreciveid == userData.uid){
-        arr.push(item.val())
+        arr.push({...item.val(),friendRequestId:item.key})
 
       }
       
@@ -29,6 +31,18 @@ function FriendRequest() {
      setFriendRequest(arr);
     });
   },[])
+
+  let handleAccept =(item)=>{
+    set(push(ref(db, 'friend')), {
+      ...item
+    }).then(()=>{
+      remove(ref(db,'friendrequest/'+item.friendRequestId))
+    })
+  }
+
+  let handleCancle =(item)=>{
+    remove(ref(db,'friendrequest/'+item.friendRequestId))
+  }
 
   return (
     
@@ -52,7 +66,7 @@ function FriendRequest() {
             friendRequest.map((item)=>(
               <div key={item.whoreciveid}  className='list-item'>
                 <div>
-                  <img src={gOne} alt="g1" />
+                  <img src={item.imgUrl} alt="g1" />
                 </div>
                 <div>
                     <h3>{item.whosendname}</h3>
@@ -61,10 +75,10 @@ function FriendRequest() {
              
                   <div>
                     <div>
-                      <button>Accept</button>
+                      <button onClick={()=>handleAccept(item)}>Accept</button>
                     </div>
                     <div>
-                      <button>Cencel</button>
+                      <button onClick={()=>{handleCancle(item)}}>Cencel</button>
                     </div>
                     
                   </div>

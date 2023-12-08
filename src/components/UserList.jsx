@@ -4,15 +4,16 @@ import { BiDotsVerticalRounded } from "react-icons/bi";
 import { getDatabase, ref, onValue,set,push } from "firebase/database";
 import { IoSearchSharp } from "react-icons/io5";
 import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+import { getAuth, updateProfile } from "firebase/auth";
 
 
 import { useSelector } from 'react-redux';
 
 function UserList() {
   const db = getDatabase();
-
+  const auth = getAuth();
   let userData = useSelector((state)=>state.loguser.value)
+  
   
   let [userList,setUserList] = useState([])
   let [input,setInput] =useState("")
@@ -53,8 +54,9 @@ function UserList() {
       whosendname   : userData.displayName,
       whosendid     : userData.uid,
       whorecivename : item.userName,
-      whoreciveid   : item.userId
-    });
+      whoreciveid   : item.userId,
+      imgUrl         :userData.photoURL 
+    })
   }
 
 
