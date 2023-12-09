@@ -19,9 +19,9 @@ a{
     color: white;
     border-radius: 8px;
     border: 0;
-    cursor: pointer;
-    
+    cursor: pointer;   
 }
+
 @media (min-width: 320px) and (max-width: 800.99px){
     .btn-all{
         width: 355px;    
@@ -158,6 +158,7 @@ a{
         font-size: 14px;
         text-align: center;
     }
+
    .registration .box .two img {
 	width: 250px;
 	height: 250px;
@@ -550,7 +551,7 @@ a{
 .scroll{
     padding-right: 10px;
     overflow-y: scroll;
-    height: 320px;
+    height: 175px;
 }
 .scroll::-webkit-scrollbar{
     width: 6px;
@@ -574,7 +575,7 @@ a{
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: black;
-    font-size: 20px;
+    font-size: 18px;
 }
 .list p{
     font-family: 'Poppins', sans-serif;
@@ -604,13 +605,13 @@ a{
  display: flex;
  align-items: center;
  justify-content: space-between;
- padding-bottom: 10px;
+ padding-bottom: 5px;
  border-bottom: 1px solid rgba(53, 52, 52, 0.4);
- margin-bottom: 20px;
+ margin-bottom:10px;
 }
 .list .list-item img{
-width: 60px;
-height: 60px;
+width: 45px;
+height: 45px;
 border-radius: 100%;
 }
 
@@ -618,15 +619,15 @@ border-radius: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 17px;
-    margin-top: 15px;
+    margin-bottom: 8px;
+    margin-top: 8px;
 }
 
 
 .input{
     position: relative;
     width:95%;
-    margin-bottom: 5px
+   
 }
  .input .icon{
     position: absolute;
