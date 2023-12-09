@@ -14,6 +14,7 @@ function FriendRequest() {
   let userData = useSelector((state)=>state.loguser.value)
 
   let [friendRequest,setFriendRequest] =useState([])
+  
 
 
 
@@ -31,6 +32,7 @@ function FriendRequest() {
   },[])
 
   let handleAccept =(item)=>{
+    // console.log(item)
     set(push(ref(db, 'friends')), {
       ...item
     }).then(()=>{

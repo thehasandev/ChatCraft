@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import gOne from "../assets/f1.png"
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { IoSearchSharp } from "react-icons/io5";
 import { getDatabase, ref, onValue } from "firebase/database";
@@ -44,6 +43,7 @@ function Friends() {
 
       <div className='scroll'>
         {
+         
           friendList.map((item)=>(
           <div className='list-item'>
             <div>

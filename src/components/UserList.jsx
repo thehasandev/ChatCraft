@@ -38,11 +38,7 @@ function UserList() {
     });
   },[])
 
-  let handleUserChange =(e)=>{
-    setInput(e.target.value)
-   let searchUser = userList.filter((item=> item.userName.toLowerCase().includes(e.target.value.toLowerCase())))
-   setSearchUserList(searchUser);
-  }
+
 
   let handleFriendRequest =(item)=>{
     set(push(ref(db, 'friendrequest')), {
@@ -76,6 +72,16 @@ function UserList() {
     });
   },[])
 
+
+  let handleUserChange =(e)=>{
+  let filterUser =  userList.filter((item)=>{
+    setInput(e.target.value)
+      return item.userName.toLowerCase().includes(e.target.value.toLowerCase())
+    })
+  setSearchUserList(filterUser)
+  }
+
+ 
   
 
 
@@ -102,11 +108,55 @@ function UserList() {
               <h2>User List </h2>
               <BiDotsVerticalRounded />
             </div>
-          {
-            input.length < 1 ?
-              <div className='scroll'>
+            <div className='scroll'>
+
                 {
+                  input.length<1 ?
+
                   userList.map((item,index)=>
+                  {
+                   
+       return       <div key={index} className='list-item'>
+                      <div>
+                        <img src={item.userImgUrl} alt="user" />
+                      </div>
+
+                      <div style={{width:"180px"}}>
+                          <h3>{item.userName}</h3>
+                          <p>Today, 2:31pm</p>
+                      </div>
+                     
+                     {
+                    
+                    friendrequestId.includes(item.userId+userData.uid)||friendrequestId.includes(userData.uid+item.userId) ?
+                    <div>
+                    <Button variant="contained" disabled>
+                      Pending
+                    </Button>
+                   </div>
+                   :
+
+                   friendId.includes(item.userId+userData.uid) || friendId.includes(userData.uid+item.userId) ?
+                   <div>
+                    <button>Friend</button>
+                   </div>
+                   :
+
+                    <div>
+                    <button  onClick={()=>handleFriendRequest(item)}>+</button>
+                   </div>
+
+                     }
+
+                 
+                    </div>  
+                  }
+                  ) 
+
+                  :
+                 searchUserList.length ?
+
+                 searchUserList.map((item,index)=>
                     {
                      
          return       <div key={index} className='list-item'>
@@ -131,7 +181,7 @@ function UserList() {
 
                      friendId.includes(item.userId+userData.uid) || friendId.includes(userData.uid+item.userId) ?
                      <div>
-                      <button>Approv</button>
+                      <button>Friend</button>
                      </div>
                      :
 
@@ -145,50 +195,10 @@ function UserList() {
                       </div>  
                     }
                     ) 
+                    :
+                    <h1 className='error'>User's Not Found</h1>
                 }
               </div>
-
-              :
-              <div className='scroll'>
-                {
-                  searchUserList.length>0 ?
-
-                searchUserList.map((item,index)=>
-                
-                {
-                  
-                
-      return       <div key={index} className='list-item'>
-                      <div>
-                        <img src={item.userImgUrl} alt="user" />
-                      </div>
-
-                      <div style={{width:"180px"}}>
-                          <h3>{item.userName}</h3>
-                          <p>Today, 2:31pm</p>
-                      </div>
-
-                      {
-                      
-                      friendId.includes(item.userId+userData.uid)||friendId.includes(userData.uid+item.userId) ?
-                        <div>
-                          <button>Pending</button>
-                        </div>
-                         :
-                        <div>
-                          <button  onClick={()=>handleFriendRequest(item)}>+</button>
-                        </div>
-
-                       }
-                    </div>   
-                  }
-                  ) 
-                  :
-                  <h1 className='error'>User's Not Found</h1>
-
-                }
-              </div>
-          }
       </>
     }
     </div>
