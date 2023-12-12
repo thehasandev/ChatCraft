@@ -14,8 +14,11 @@ function FriendRequest() {
   let userData = useSelector((state)=>state.loguser.value)
 
   let [friendRequest,setFriendRequest] =useState([])
-  
+  let [friendRequestInput,setFriendRequestInput] =useState("")
 
+  let [searchFriendRequest,setSearchFriendRequest] =useState([])
+  
+console.log(searchFriendRequest);
 
 
   useEffect(()=>{
@@ -32,12 +35,17 @@ function FriendRequest() {
   },[])
 
   let handleAccept =(item)=>{
-    // console.log(item)
     set(push(ref(db, 'friends')), {
       ...item
     }).then(()=>{
       remove(ref(db,'friendrequest/'+item.friendRequestId))
     })
+  }
+
+  let handlefriendRequestChange=(e)=>{
+    setFriendRequestInput(e.target.value)
+    let filter = friendRequest.filter((item)=>item.whosendname.toLowerCase().includes(e.target.value.toLowerCase()))
+    setSearchFriendRequest(filter)
   }
 
   let handleCancle =(item)=>{
@@ -48,7 +56,7 @@ function FriendRequest() {
     
     <div className='list'>
        <div className='input'>
-          <input  type="text" placeholder='Search a Users'/>
+          <input value={friendRequestInput} onChange={handlefriendRequestChange}  type="text" placeholder='Search a Users'/>
           
           <div className='icon'>
             <IoSearchSharp/>
@@ -62,6 +70,33 @@ function FriendRequest() {
         
         <div className='scroll'>
           {
+            friendRequest.length >1 ?
+
+            searchFriendRequest.length ?
+            friendRequest.map((item)=>(
+              <div key={item.whoreciveid}  className='list-item'>
+                <div>
+                  <img src={item.imgUrl} alt="g1" />
+                </div>
+                <div>
+                    <h3>{item.whosendname}</h3>
+                    <p>Sure!</p>
+                </div>
+             
+                  <div>
+                    <div>
+                      <button onClick={()=>handleAccept(item)}>Accept</button>
+                    </div>
+                    <div>
+                      <button onClick={()=>{handleCancle(item)}}>Cencel</button>
+                    </div>
+                    
+                  </div>
+              </div>
+            ))
+            :
+            <h1 className='error'>Request Not Found</h1>
+            :
             
             friendRequest.map((item)=>(
               <div key={item.whoreciveid}  className='list-item'>
@@ -84,6 +119,7 @@ function FriendRequest() {
                   </div>
               </div>
             ))
+
           }
         
 

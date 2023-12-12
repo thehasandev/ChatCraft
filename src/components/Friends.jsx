@@ -40,7 +40,7 @@ function Friends() {
 
 
   let handleFriendSearch =(e)=>{
-     setFriendInput(e.target.value)
+    setFriendInput(e.target.value)
     let filter = friendList.filter((item)=>item.whosendname.toLowerCase().includes(e.target.value.toLowerCase()))
     setSearchFredndList(filter)
   }
