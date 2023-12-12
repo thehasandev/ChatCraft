@@ -11,7 +11,7 @@ function Friends() {
   let [friendList,setFriendList] =useState([])
   let [userList,setUserList] =useState([])
   let [searchFredndList,setSearchFredndList] =useState([])
-  console.log(searchFredndList);
+
 
 
   useEffect(()=>{
@@ -80,7 +80,7 @@ function Friends() {
                  <img src={item.imgUrl} alt="a" />
                  :
                  userList.map((item2)=>(
-                  item.whorecivename== item2.userName &&
+                  item.whorecivename == item2.userName &&
                   <img src={item2.userImgUrl} alt="g1" />
                  ))
 
@@ -106,7 +106,7 @@ function Friends() {
 
           ))
           :
-          <>asfsadf</>
+          <h1  className='error'>Freind's Not Found</h1>
         
          :
          friendList.map((item,index)=>(
