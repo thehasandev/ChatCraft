@@ -595,26 +595,23 @@ a{
     font-weight: 500;
     color: white;
     font-size: 16px;
-    background:#5F35F5;
+    background:#3578E5;
     padding: 2px 13px;
     border: 0;
     border-radius: 5px;
     margin-bottom: 8px;
+    cursor: pointer;
 }
-/* .list .btn{
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    color: white;
-    font-size: 16px;
-    background:#5F35F5;
-    padding: 2px 13px;
-    border: 0;
-    border-radius: 5px;
-    margin-bottom: 8px;
-    
-} */
+.list .btn{
+    background: hsla(0, 0%, 50%, 0.5);
+    color: #111111;
+    cursor: pointer;  
+}
 .list .delete-btn{
     padding: 2px 20px;
+    background: hsla(0, 0%, 50%, 0.5);
+    color: #111111;
+    cursor: pointer;
 
 }
 

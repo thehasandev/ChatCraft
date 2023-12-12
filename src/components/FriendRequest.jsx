@@ -110,7 +110,7 @@ console.log(searchFriendRequest);
              
                   <div>
                     <div>
-                      <button onClick={()=>handleAccept(item)}>Confrim</button>
+                      <button onClick={()=>handleAccept(item)}>Confirm</button>
                     </div>
                     <div>
                       <button className='delete-btn' onClick={()=>{handleCancle(item)}}>Delete</button>

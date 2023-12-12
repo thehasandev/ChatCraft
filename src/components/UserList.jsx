@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { BiDotsVerticalRounded } from "react-icons/bi";
-import { getDatabase, ref, onValue,set,push } from "firebase/database";
+import { getDatabase, ref, onValue,set,push, remove } from "firebase/database";
 import { IoSearchSharp } from "react-icons/io5";
 import Button from '@mui/material/Button';
 import { getAuth, updateProfile } from "firebase/auth";
@@ -23,6 +23,9 @@ function UserList() {
   let [friendrequestId,setFriendrequestId] =useState([])
   let [friendId,setFriendId] =useState([])
   
+  let [friendDeleteId,setFriendDeleteId] =useState([])
+  
+  
   useEffect(()=>{
     const starCountRef = ref(db, 'users');
     onValue(starCountRef, (snapshot) => {
@@ -31,7 +34,6 @@ function UserList() {
         if(item.key!=userData.uid){
           arr.push({...item.val(),userId:item.key});
         }
-        
       })
         setUserList(arr)
         setIsloading(false)
@@ -46,9 +48,11 @@ function UserList() {
       whosendid     : userData.uid,
       whorecivename : item.userName,
       whoreciveid   : item.userId,
-      imgUrl         :userData.photoURL 
+      imgUrl        : userData.photoURL ,
     })
   }
+
+
 
   useEffect(()=>{
     const friendrequstRef = ref(db, 'friendrequest');
@@ -60,6 +64,20 @@ function UserList() {
      setFriendrequestId(arr);
     });
   },[])
+
+
+  useEffect(()=>{
+    const friendrequstRef = ref(db, 'friendrequest');
+    onValue(friendrequstRef, (snapshot) => {
+    let arr =[]
+     snapshot.forEach((item)=>{
+      arr.push({...item.val(),id:item.key})
+     })
+     setFriendDeleteId(arr)
+    });
+  },[])
+
+
 
   useEffect(()=>{
     const friendrequstRef = ref(db, 'friends');
@@ -73,6 +91,11 @@ function UserList() {
   },[])
 
 
+
+
+
+
+
   let handleUserChange =(e)=>{
   let filterUser =  userList.filter((item)=>{
     setInput(e.target.value)
@@ -81,12 +104,21 @@ function UserList() {
   setSearchUserList(filterUser)
   }
 
+
+
+  let handleDelete =(item)=>{
+    friendDeleteId.map((item2)=>{
+      if(item2.whoreciveid==item.userId){
+         friendDeleteId.map((item3)=>{  
+          if(item3.whoreciveid==item.userId){
+             remove(ref(db,'friendrequest/'+item3.id))
+          }
+         })
+      }
+    })
+  }
+
  
-  
-
-
-
-
 
   return (
     
@@ -130,7 +162,7 @@ function UserList() {
                     
                     friendrequestId.includes(item.userId+userData.uid)||friendrequestId.includes(userData.uid+item.userId) ?
                     <div>
-                    <button className='btn'>Pending</button>
+                    <button onClick={()=>{handleDelete(item)}} className='btn'>Cencel</button>
                    </div>
                    :
 
@@ -146,7 +178,6 @@ function UserList() {
 
                      }
 
-                 
                     </div>  
                   }
                   ) 
@@ -188,8 +219,6 @@ function UserList() {
                      </div>
 
                        }
-  
-                   
                       </div>  
                     }
                     ) 
