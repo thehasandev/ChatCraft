@@ -6,9 +6,12 @@ import { useSelector } from 'react-redux';
 function Friends() {
   const db = getDatabase();
   let userData = useSelector((state)=>state.loguser.value)
+  let [friendInput,setFriendInput] =useState()
 
   let [friendList,setFriendList] =useState([])
   let [userList,setUserList] =useState([])
+  let [searchFredndList,setSearchFredndList] =useState([])
+  console.log(searchFredndList);
 
 
   useEffect(()=>{
@@ -36,6 +39,13 @@ function Friends() {
   },[])
 
 
+  let handleFriendSearch =(e)=>{
+     setFriendInput(e.target.vlaue)
+    let filter = friendList.filter((item)=>item.whosendname.toLowerCase().includes(e.target.value.toLowerCase()))
+    setSearchFredndList(filter)
+  }
+
+
 
  
 
@@ -44,7 +54,7 @@ function Friends() {
     
     <div className='list'>
       <div className='input'>
-        <input  type="text" placeholder='Search a Users'/>
+        <input value={friendInput} onChange={handleFriendSearch} type="text" placeholder='Search a Users'/>
     
         <div className='icon'>
           <IoSearchSharp/>
@@ -59,8 +69,8 @@ function Friends() {
 
       <div className='scroll'>
         {
-         
-          friendList.map((item,index)=>(
+         searchFredndList.length ?
+          searchFredndList.map((item,index)=>(
           <div key={index} className='list-item'>
             <div>
               {
@@ -93,6 +103,8 @@ function Friends() {
           </div>
 
           ))
+          :
+          <>asfsadf</>
         }
           
       
