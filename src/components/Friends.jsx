@@ -8,6 +8,7 @@ function Friends() {
   let userData = useSelector((state)=>state.loguser.value)
 
   let [friendList,setFriendList] =useState([])
+  let [userList,setUserList] =useState([])
 
 
   useEffect(()=>{
@@ -22,6 +23,21 @@ function Friends() {
      setFriendList(arr);
     });
   },[])
+
+  useEffect(()=>{
+    const userRef = ref(db, 'users');
+      onValue(userRef, (snapshot) => {
+        let arr =[]
+      snapshot.forEach((item)=>{
+        arr.push(item.val())
+      })
+      setUserList(arr)
+});
+  },[])
+
+
+
+ 
 
  
   return (
@@ -44,10 +60,19 @@ function Friends() {
       <div className='scroll'>
         {
          
-          friendList.map((item)=>(
-          <div className='list-item'>
+          friendList.map((item,index)=>(
+          <div key={index} className='list-item'>
             <div>
-              <img src={item.imgUrl} alt="g1" />
+              {
+                 userData.uid == item.whoreciveid ?
+                 <img src={item.imgUrl} alt="a" />
+                 :
+                 userList.map((item2)=>(
+                  item.whorecivename== item2.userName &&
+                  <img src={item2.userImgUrl} alt="g1" />
+                 ))
+
+              }
             </div>
             <div>
               {
