@@ -85,10 +85,10 @@ console.log(searchFriendRequest);
              
                   <div>
                     <div>
-                      <button onClick={()=>handleAccept(item)}>Accept</button>
+                      <button onClick={()=>handleAccept(item)}>Confrim</button>
                     </div>
                     <div>
-                      <button onClick={()=>{handleCancle(item)}}>Cencel</button>
+                      <button onClick={()=>{handleCancle(item)}}>Delete</button>
                     </div>
                     
                   </div>
@@ -97,7 +97,7 @@ console.log(searchFriendRequest);
             :
             <h1 className='error'>Request Not Found</h1>
             :
-            
+
             friendRequest.map((item)=>(
               <div key={item.whoreciveid}  className='list-item'>
                 <div>
@@ -110,10 +110,10 @@ console.log(searchFriendRequest);
              
                   <div>
                     <div>
-                      <button onClick={()=>handleAccept(item)}>Accept</button>
+                      <button onClick={()=>handleAccept(item)}>Confrim</button>
                     </div>
                     <div>
-                      <button onClick={()=>{handleCancle(item)}}>Cencel</button>
+                      <button className='delete-btn' onClick={()=>{handleCancle(item)}}>Delete</button>
                     </div>
                     
                   </div>

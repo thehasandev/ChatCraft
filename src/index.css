@@ -601,7 +601,7 @@ a{
     border-radius: 5px;
     margin-bottom: 8px;
 }
-.list .btn{
+/* .list .btn{
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     color: white;
@@ -611,6 +611,11 @@ a{
     border: 0;
     border-radius: 5px;
     margin-bottom: 8px;
+    
+} */
+.list .delete-btn{
+    padding: 2px 20px;
+
 }
 
 .list .list-name{
