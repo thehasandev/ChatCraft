@@ -538,6 +538,7 @@ a{
     position: relative;
 }
 
+
 .list .error{
     position:absolute;
     top: 50%;
@@ -600,6 +601,27 @@ a{
     border-radius: 5px;
     margin-bottom: 8px;
 }
+.list .btn{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: white;
+    font-size: 16px;
+    background:#5F35F5;
+    padding: 2px 13px;
+    border: 0;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+.list .list-name{
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
 
 .list .list-item{
  display: flex;

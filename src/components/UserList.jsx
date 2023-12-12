@@ -121,7 +121,7 @@ function UserList() {
                         <img src={item.userImgUrl} alt="user" />
                       </div>
 
-                      <div style={{width:"180px"}}>
+                      <div className='list-name'>
                           <h3>{item.userName}</h3>
                           <p>Today, 2:31pm</p>
                       </div>
@@ -130,9 +130,7 @@ function UserList() {
                     
                     friendrequestId.includes(item.userId+userData.uid)||friendrequestId.includes(userData.uid+item.userId) ?
                     <div>
-                    <Button variant="contained" disabled>
-                      Pending
-                    </Button>
+                    <button className='btn'>Pending</button>
                    </div>
                    :
 
