@@ -14,7 +14,7 @@ function UserList() {
   const auth = getAuth();
   let userData = useSelector((state)=>state.loguser.value)
   
-  
+  let [open,setOpen] = useState(true)
   let [userList,setUserList] = useState([])
   let [input,setInput] =useState("")
   let [searchUserList,setSearchUserList] =useState([])
@@ -93,9 +93,6 @@ function UserList() {
 
 
 
-
-
-
   let handleUserChange =(e)=>{
   let filterUser =  userList.filter((item)=>{
     setInput(e.target.value)
@@ -118,8 +115,7 @@ function UserList() {
     })
   }
 
- 
-
+  
   return (
     
     <div className='list'>
@@ -160,10 +156,13 @@ function UserList() {
                      
                      {
                     
-                    friendrequestId.includes(item.userId+userData.uid)||friendrequestId.includes(userData.uid+item.userId) ?
+                    friendrequestId.includes(item.userId+userData.uid) || friendrequestId.includes(userData.uid+item.userId) ?
+                 
+                   
                     <div>
-                    <button onClick={()=>{handleDelete(item)}} className='btn'>Cencel</button>
-                   </div>
+                      <button onClick={()=>{handleDelete(item)}} className='btn'>Cancel</button>
+                    </div>
+
                    :
 
                    friendId.includes(item.userId+userData.uid) || friendId.includes(userData.uid+item.userId) ?
@@ -171,11 +170,9 @@ function UserList() {
                     <button>Friend</button>
                    </div>
                    :
-
                     <div>
-                    <button  onClick={()=>handleFriendRequest(item)}>+</button>
-                   </div>
-
+                     <button  onClick={()=>handleFriendRequest(item)}>+</button>
+                    </div>
                      }
 
                     </div>  
@@ -202,10 +199,8 @@ function UserList() {
                       
                       friendrequestId.includes(item.userId+userData.uid)||friendrequestId.includes(userData.uid+item.userId) ?
                       <div>
-                      <Button variant="contained" disabled>
-                        Pending
-                      </Button>
-                     </div>
+                        <button onClick={()=>{handleDelete(item)}} className='btn'>Cancel</button>
+                      </div>
                      :
 
                      friendId.includes(item.userId+userData.uid) || friendId.includes(userData.uid+item.userId) ?

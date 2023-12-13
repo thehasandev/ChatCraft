@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { IoSearchSharp } from "react-icons/io5";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, set, remove } from "firebase/database";
 import { useSelector } from 'react-redux';
 function Friends() {
   const db = getDatabase();
@@ -9,8 +9,11 @@ function Friends() {
   let [friendInput,setFriendInput] =useState("")
 
   let [friendList,setFriendList] =useState([])
+  let [friendIdList,setFriendIdList] =useState([])
   let [userList,setUserList] =useState([])
   let [searchFredndList,setSearchFredndList] =useState([])
+  let [open,setOpen]=useState(false)
+  let [indexa,setIndexa] =useState("")
 
 
 
@@ -45,10 +48,41 @@ function Friends() {
     setSearchFredndList(filter)
   }
 
+  
 
 
- 
+  let handlePopUp=(item)=>{
+    friendList.map((item2,index)=>{
+      if(item2.friendRequestId==item.friendRequestId){
+        setIndexa(index);
+        setOpen(!open)
+      }
+    })
+  }
 
+
+  useEffect(()=>{
+    const friendRef = ref(db, 'friends');
+    onValue(friendRef, (snapshot) => {
+    let arr =[]
+     snapshot.forEach((item)=>{
+      arr.push({...item.val(),friendId:item.key})
+     })
+    setFriendIdList(arr);
+    });
+  },[])
+
+
+  let handleUnfriend =(item)=>{
+    friendIdList.map((item2)=>{
+      if(item.whoreciveid==item2.whoreciveid){
+        remove(ref(db,"friends/"+item2.friendId))
+      }
+
+    })
+  }
+
+  
  
   return (
     
@@ -136,8 +170,21 @@ function Friends() {
               }
                 <p>Dinner?</p>
             </div>
-            <div>
-                <h6>Today, 8:56pm</h6>
+            <div className='drop-item'>
+            <BiDotsVerticalRounded onClick={()=>{handlePopUp(item,index)}}/>
+             {
+           
+             index == indexa &&
+              open &&
+              
+              <div className='drop'>
+                <ul>
+                  <li onClick={()=>{handleUnfriend(item)}}>Unfriend</li>
+                  <li>Block</li>
+                  <li>Report</li>
+                </ul>
+              </div>
+             }
             </div>
           </div>
 
@@ -147,13 +194,7 @@ function Friends() {
          
         }
           
-      
-
-      
-          
-        
-          
-
+    
 
       </div>
 

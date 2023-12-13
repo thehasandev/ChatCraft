@@ -9,6 +9,9 @@
 a{
     text-decoration: none;
 }
+ul{
+    list-style: none;
+}
 .btn-all{
     width: 410px;
     font-family: 'Nunito Sans', sans-serif;
@@ -673,6 +676,31 @@ border-radius: 100%;
    box-shadow: 0px 0px 22px 3px rgba(0,0,0,0.1);
    outline: 0;
     
+}
+
+.drop-item{
+    position: relative;
+}
+.drop {
+    top: 16px;
+    width: 100px;
+    text-align: center;
+    right: 21px;
+    position: absolute;
+    background: rgb(209, 208, 208);
+    padding: 10px 0px;
+    z-index: 10;
+}
+.drop ul li{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #111111;
+    font-size: 14px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid hsla(0, 0%, 7%, 0.3);
+}
+.drop ul li:last-child{
+    border-bottom: 0;
 }
 /* Grop List  */
 

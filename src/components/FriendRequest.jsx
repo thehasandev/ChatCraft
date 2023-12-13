@@ -18,7 +18,7 @@ function FriendRequest() {
 
   let [searchFriendRequest,setSearchFriendRequest] =useState([])
   
-console.log(searchFriendRequest);
+
 
 
   useEffect(()=>{
