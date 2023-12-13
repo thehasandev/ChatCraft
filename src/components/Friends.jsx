@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { IoSearchSharp } from "react-icons/io5";
 import { getDatabase, ref, onValue, set, remove } from "firebase/database";
@@ -14,6 +14,7 @@ function Friends() {
   let [searchFredndList,setSearchFredndList] =useState([])
   let [open,setOpen]=useState(false)
   let [indexa,setIndexa] =useState("")
+  let menuRef =useRef(null)
 
 
 
@@ -75,12 +76,27 @@ function Friends() {
 
   let handleUnfriend =(item)=>{
     friendIdList.map((item2)=>{
-      if(item.whoreciveid==item2.whoreciveid){
-        remove(ref(db,"friends/"+item2.friendId))
+      if(item.whosendid==item2.whosendid){
+        remove(ref(db,"friends/"+item2.friendId)).then(()=>{
+          setOpen(false)
+        })
       }
-
     })
   }
+
+  useEffect(()=>{
+   
+    let handler =(e)=>{
+      if(!menuRef.current.contains(e.target)){
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown",handler)
+    return ()=>{
+      document.removeEventListener("mousedown",handler)
+    }
+  },[])
 
   
  
@@ -102,97 +118,114 @@ function Friends() {
       
 
       <div className='scroll'>
-
-        {
-         friendInput.length>1 ?
-         searchFredndList.length ?
-          searchFredndList.map((item,index)=>(
-          <div key={index} className='list-item'>
-            <div>
-              {
-                 userData.uid == item.whoreciveid ?
-                 <img src={item.imgUrl} alt="a" />
-                 :
-                 userList.map((item2)=>(
-                  item.whorecivename == item2.userName &&
-                  <img src={item2.userImgUrl} alt="g1" />
-                 ))
-
-              }
-            </div>
-            <div>
-              {
-                userData.uid == item.whoreciveid ?
-                <h3>{item.whosendname}</h3>
-                :
-                userData.uid == item.whosendid ?
-                <h3>{item.whorecivename}</h3>
-                :
-                <></>
-
-              }
-                <p>Dinner?</p>
-            </div>
-            <div>
-                <h6>Today, 8:56pm</h6>
-            </div>
-          </div>
-
-          ))
-          :
-          <h1  className='error'>Freind's Not Found</h1>
-        
-         :
-         friendList.map((item,index)=>(
-          <div key={index} className='list-item'>
-            <div>
-              {
-                 userData.uid == item.whoreciveid ?
-                 <img src={item.imgUrl} alt="a" />
-                 :
-                 userList.map((item2)=>(
-                  item.whorecivename== item2.userName &&
-                  <img src={item2.userImgUrl} alt="g1" />
-                 ))
-
-              }
-            </div>
-            <div>
-              {
-                userData.uid == item.whoreciveid ?
-                <h3>{item.whosendname}</h3>
-                :
-                userData.uid == item.whosendid ?
-                <h3>{item.whorecivename}</h3>
-                :
-                <></>
-
-              }
-                <p>Dinner?</p>
-            </div>
-            <div className='drop-item'>
-            <BiDotsVerticalRounded onClick={()=>{handlePopUp(item,index)}}/>
-             {
-           
-             index == indexa &&
-              open &&
-              
-              <div className='drop'>
-                <ul>
-                  <li onClick={()=>{handleUnfriend(item)}}>Unfriend</li>
-                  <li>Block</li>
-                  <li>Report</li>
-                </ul>
+      {   
+         friendInput.length >0 ?
+           searchFredndList.length ?
+           searchFredndList.map((item,index)=>(
+            <div key={index} className='list-item'>
+              <div>
+                {
+                   userData.uid == item.whoreciveid ?
+                   <img src={item.imgUrl} alt="a" />
+                   :
+                   userList.map((item2)=>(
+                    item.whorecivename== item2.userName &&
+                    <img src={item2.userImgUrl} alt="g1" />
+                   ))
+  
+                }
               </div>
-             }
+              <div>
+                {
+                  userData.uid == item.whoreciveid ?
+                  <h3>{item.whosendname}</h3>
+                  :
+                  userData.uid == item.whosendid ?
+                  <h3>{item.whorecivename}</h3>
+                  :
+                  <></>
+  
+                }
+                  <p>Dinner?</p>
+              </div>
+              <div className='drop-item'>
+                 <BiDotsVerticalRounded onClick={()=>{handlePopUp(item,index)}}/>
+               {
+             
+               index == indexa &&
+                open &&
+                
+                <div ref={menuRef} className='drop'>
+                  <ul>
+                    <li onClick={()=>{handleUnfriend(item)}}>Unfriend</li>
+                    <li>Block</li>
+                    <li>Report</li>
+                  </ul>
+                </div>
+               }
+              </div>
             </div>
-          </div>
+  
+            ))
+            :
+            <h1 className='error'>Friend's Not Found</h1>
+            :
+            friendList.map((item,index)=>(
+              <div key={index} className='list-item'>
+                <div>
+                  {
+                     userData.uid == item.whoreciveid ?
+                     <img src={item.imgUrl} alt="a" />
+                     :
+                     userList.map((item2)=>(
+                      item.whorecivename== item2.userName &&
+                      <img src={item2.userImgUrl} alt="g1" />
+                     ))
+    
+                  }
+                </div>
+                <div>
+                  {
+                    userData.uid == item.whoreciveid ?
+                    <h3>{item.whosendname}</h3>
+                    :
+                    userData.uid == item.whosendid ?
+                    <h3>{item.whorecivename}</h3>
+                    :
+                    <></>
+    
+                  }
+                    <p>Dinner?</p>
+                </div>
+                <div className='drop-item'>
+                   <BiDotsVerticalRounded onClick={()=>{handlePopUp(item,index)}}/>
+                 {
+               
+                 index == indexa &&
+                  open &&
+                  
+                  <div   className='drop'>
+                    <ul ref={menuRef}>
+                      <li onClick={()=>{handleUnfriend(item)}}>Unfriend</li>
+                      <li>Block</li>
+                      <li>Report</li>
+                    </ul>
+                  </div>
+                 }
+                </div>
+              </div>
+    
+              ))
+      }
+        
 
-          ))
+
+       
+      
 
          
          
-        }
+    
           
     
 

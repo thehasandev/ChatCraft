@@ -70,10 +70,9 @@ function FriendRequest() {
         
         <div className='scroll'>
           {
-            friendRequest.length >1 ?
-
+            friendRequestInput.length>0 ?
             searchFriendRequest.length ?
-            friendRequest.map((item)=>(
+            searchFriendRequest.map((item)=>(
               <div key={item.whoreciveid}  className='list-item'>
                 <div>
                   <img src={item.imgUrl} alt="g1" />
@@ -85,19 +84,18 @@ function FriendRequest() {
              
                   <div>
                     <div>
-                      <button onClick={()=>handleAccept(item)}>Confrim</button>
+                      <button onClick={()=>handleAccept(item)}>Confirm</button>
                     </div>
                     <div>
-                      <button onClick={()=>{handleCancle(item)}}>Delete</button>
+                      <button className='delete-btn' onClick={()=>{handleCancle(item)}}>Delete</button>
                     </div>
                     
                   </div>
               </div>
             ))
             :
-            <h1 className='error'>Request Not Found</h1>
+            <h1>asdfasdfdsaf</h1>
             :
-
             friendRequest.map((item)=>(
               <div key={item.whoreciveid}  className='list-item'>
                 <div>
