@@ -57,6 +57,7 @@ function Friends() {
       if(item2.friendRequestId==item.friendRequestId){
         setIndexa(index);
         setOpen(!open)
+       
       }
     })
   }
@@ -148,14 +149,14 @@ function Friends() {
                 }
                   <p>Dinner?</p>
               </div>
-              <div className='drop-item'>
-                 <BiDotsVerticalRounded onClick={()=>{handlePopUp(item,index)}}/>
+              <div ref={menuRef} className='drop-item'>
+                <BiDotsVerticalRounded  onClick={()=>{handlePopUp(item,index)}}/>
                {
              
                index == indexa &&
                 open &&
                 
-                <div ref={menuRef} className='drop'>
+                <div  className='drop'>
                   <ul>
                     <li onClick={()=>{handleUnfriend(item)}}>Unfriend</li>
                     <li>Block</li>
@@ -197,7 +198,7 @@ function Friends() {
                   }
                     <p>Dinner?</p>
                 </div>
-                <div className='drop-item'>
+                <div ref={menuRef} className='drop-item'>
                    <BiDotsVerticalRounded onClick={()=>{handlePopUp(item,index)}}/>
                  {
                
@@ -205,7 +206,7 @@ function Friends() {
                   open &&
                   
                   <div   className='drop'>
-                    <ul ref={menuRef}>
+                    <ul>
                       <li onClick={()=>{handleUnfriend(item)}}>Unfriend</li>
                       <li>Block</li>
                       <li>Report</li>
