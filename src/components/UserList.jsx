@@ -22,8 +22,10 @@ function UserList() {
 
   let [friendrequestId,setFriendrequestId] =useState([])
   let [friendId,setFriendId] =useState([])
-  
   let [friendDeleteId,setFriendDeleteId] =useState([])
+  let [antaki,setAntaki] =useState("")
+
+
   
   
   useEffect(()=>{
@@ -43,6 +45,7 @@ function UserList() {
 
 
   let handleFriendRequest =(item)=>{
+    
     set(push(ref(db, 'friendrequest')), {
       whosendname   : userData.displayName,
       whosendid     : userData.uid,
@@ -115,6 +118,9 @@ function UserList() {
     })
   }
 
+
+
+
   
   return (
     
@@ -158,10 +164,11 @@ function UserList() {
                     
                     friendrequestId.includes(item.userId+userData.uid) || friendrequestId.includes(userData.uid+item.userId) ?
                  
-                   
-                    <div>
-                      <button onClick={()=>{handleDelete(item)}} className='btn'>Cancel</button>
-                    </div>
+                    
+                    <div key={index}>
+                    <button onClick={()=>{handleDelete(item)}} className='btn'>Cancel</button>
+                   </div>
+                    
 
                    :
 
