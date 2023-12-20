@@ -55,7 +55,7 @@ function Sidebar() {
   let userData =useSelector((state)=>state.loguser.value)
  
 
-  const storageRef = ref(storage, userData.uid);
+  
  
 
   let dispatch = useDispatch()   
@@ -92,6 +92,7 @@ const getCropData = () => {
   if (typeof cropperRef.current?.cropper !== "undefined") {
     setCropData(cropperRef.current?.cropper.getCroppedCanvas().toDataURL());
     const message4 = cropperRef.current?.cropper.getCroppedCanvas().toDataURL()
+    const storageRef = ref(storage, userData.uid);
     uploadString(storageRef, message4, 'data_url').then((snapshot) => {
       getDownloadURL(storageRef).then((downloadURL) => {
         updateProfile(auth.currentUser, {
@@ -120,10 +121,13 @@ const handleOpen = () =>{
   return (
     <>
     <div className='sidevar'>
+      {
+        userData &&
       <div className='sidevar_item' >
         <img onClick={handleOpen} src={userData.photoURL} alt="profile" />
         <p className='name'>{userData.displayName}</p>
       </div>
+      }
      
      
         <div className='icons-part'>
@@ -177,7 +181,7 @@ const handleOpen = () =>{
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        
+     
         <Box  sx={style}>
           {
             image ? 
@@ -185,9 +189,12 @@ const handleOpen = () =>{
             <div className="img-preview"></div>
           </div>
             :
+            
+           userData  &&
             <div>
              <img className='crop-img' src={userData.photoURL} alt="profile" />
             </div>
+            
            
 
           }
