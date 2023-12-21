@@ -32,7 +32,7 @@ function Friends() {
       let arr = []
       snapshot.forEach((item) => {
         if (item.val().whoreciveid == userData.uid || item.val().whosendid == userData.uid) {
-          arr.push(item.val())
+          arr.push({...item.val(),id:item.key})
         }
       })
       setFriendList(arr);
@@ -99,6 +99,9 @@ function Friends() {
       blockedid: item.whosendid,
       blockby: userData.displayName,
       blockbyid: userData.uid
+    }).then(()=>{
+      remove(ref(db,'friends/'+item.id))
+      setOpen(false)
     })
 
   }else if(userData.uid == item.whosendid){
@@ -107,16 +110,12 @@ function Friends() {
       blockedid: item.whoreciveid,
       blockby: userData.displayName,
       blockbyid: userData.uid
+    }).then(()=>{
+      remove(ref(db,'friends/'+item.id))
+      setOpen(false)
     })
   }
   }
-
-
-
-
-
-
-
 
 
   return (

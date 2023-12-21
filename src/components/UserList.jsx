@@ -21,9 +21,12 @@ function UserList() {
   let [isLoading,setIsloading] =useState(true)
 
   let [friendrequestId,setFriendrequestId] =useState([])
+
   let [friendId,setFriendId] =useState([])
   let [friendDeleteId,setFriendDeleteId] =useState([])
-  let [antaki,setAntaki] =useState("")
+  let [blockId,setBlockId] = useState([])
+
+  
 
 
   
@@ -93,6 +96,18 @@ function UserList() {
     });
   },[])
 
+  useEffect(()=>{
+    const blockListRef = ref(db, 'blockList');
+    onValue(blockListRef, (snapshot) => {
+    let arr =[]
+     snapshot.forEach((item)=>{
+      arr.push(item.val().blockedid+item.val().blockbyid)
+     })
+    setBlockId(arr);
+    
+    });
+  },[])
+
 
 
 
@@ -149,6 +164,7 @@ function UserList() {
 
                   userList.map((item,index)=>
                   {
+                    
                    
        return       <div key={index} className='list-item'>
                       <div>
@@ -161,21 +177,30 @@ function UserList() {
                       </div>
                      
                      {
-                    
+                      
+                    friendrequestId&&
                     friendrequestId.includes(item.userId+userData.uid) || friendrequestId.includes(userData.uid+item.userId) ?
-                 
+                    
                     
                     <div key={index}>
                     <button onClick={()=>{handleDelete(item)}} className='btn'>Cancel</button>
-                   </div>
+                    </div>
                     
 
                    :
-
+                   friendId &&
                    friendId.includes(item.userId+userData.uid) || friendId.includes(userData.uid+item.userId) ?
                    <div>
                     <button>Friend</button>
                    </div>
+
+                  :
+                  blockId.includes(item.userId+userData.uid) || friendId.includes(userData.uid+item.userId) ?
+                  <div>
+                  <button
+                  >Block</button>
+                 </div>
+
                    :
                     <div>
                      <button  onClick={()=>handleFriendRequest(item)}>+</button>
@@ -203,13 +228,13 @@ function UserList() {
                         </div>
                        
                        {
-                      
+                      friendrequestId &&
                       friendrequestId.includes(item.userId+userData.uid)||friendrequestId.includes(userData.uid+item.userId) ?
                       <div>
                         <button onClick={()=>{handleDelete(item)}} className='btn'>Cancel</button>
                       </div>
                      :
-
+                     friendId &&
                      friendId.includes(item.userId+userData.uid) || friendId.includes(userData.uid+item.userId) ?
                      <div>
                       <button>Friend</button>

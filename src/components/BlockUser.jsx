@@ -1,10 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import gOne from "../assets/b2.png"
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { IoSearchSharp } from "react-icons/io5";
+import { getDatabase, ref, onValue, set,push, remove } from "firebase/database";
+import { useSelector } from 'react-redux';
 
 function BlockUser() {
+  const db = getDatabase();
+  let [blockedList,setBlockedList] =useState([])
+  let userData = useSelector((state) => state.loguser.value)
+ 
+
+
+  useEffect(() => {
+    const blocklistRef = ref(db, 'blockList');
+    onValue(blocklistRef, (snapshot) => {
+      let arr = []
+
+      snapshot.forEach((item) => {
+       if(userData.uid==item.val().blockbyid){
+        arr.push({
+          id : item.key,
+          blocked : item.val().blocked,
+          blockedid : item.val().blockedid
+        })
+       }else if(userData.uid==item.val().blockedid){
+        arr.push({
+          id : item.key,
+          blockby : item.val().blockby,
+          blockbyid : item.val().blockbyid
+        })
+       }
+        
+      })
+
+   setBlockedList(arr)
+       
+    });
+  }, [])
   return (
     
     <div className='list'>
@@ -24,90 +58,16 @@ function BlockUser() {
      
 
       <div className='scroll'>
-              <div className='list-item'>
+        {
+          blockedList&&
+          blockedList.map((item,index)=>(
+            item.blocked &&
+              <div key={index} className='list-item'>
                 <div>
                   <img src={gOne} alt="g1" />
                 </div>
                 <div>
-                    <h3>Swathi</h3>
-                    <p>Today, 2:31pm</p>
-                </div>
-                <div>
-                    <button>unblock</button>
-                </div>
-              </div>
-            
-              <div className='list-item'>
-                <div>
-                  <img src={gOne} alt="g1" />
-                </div>
-                <div>
-                    <h3>Swathi</h3>
-                    <p>Today, 2:31pm</p>
-                </div>
-                <div>
-                    <button>unblock</button>
-                </div>
-              </div>
-            
-              <div className='list-item'>
-                <div>
-                  <img src={gOne} alt="g1" />
-                </div>
-                <div>
-                    <h3>Swathi</h3>
-                    <p>Today, 2:31pm</p>
-                </div>
-                <div>
-                    <button>unblock</button>
-                </div>
-              </div>
-            
-              <div className='list-item'>
-                <div>
-                  <img src={gOne} alt="g1" />
-                </div>
-                <div>
-                    <h3>Swathi</h3>
-                    <p>Today, 2:31pm</p>
-                </div>
-                <div>
-                    <button>unblock</button>
-                </div>
-              </div>
-            
-              <div className='list-item'>
-                <div>
-                  <img src={gOne} alt="g1" />
-                </div>
-                <div>
-                    <h3>Swathi</h3>
-                    <p>Today, 2:31pm</p>
-                </div>
-                <div>
-                    <button>unblock</button>
-                </div>
-              </div>
-            
-              <div className='list-item'>
-                <div>
-                  <img src={gOne} alt="g1" />
-                </div>
-                <div>
-                    <h3>Swathi</h3>
-                    <p>Today, 2:31pm</p>
-                </div>
-                <div>
-                    <button>unblock</button>
-                </div>
-              </div>
-            
-              <div className='list-item'>
-                <div>
-                  <img src={gOne} alt="g1" />
-                </div>
-                <div>
-                    <h3>Swathi</h3>
+                <h3>{item.blocked}</h3>
                     <p>Today, 2:31pm</p>
                 </div>
                 <div>
@@ -115,6 +75,9 @@ function BlockUser() {
                 </div>
               </div>
 
+          ))
+        }
+          
       </div>
   
     </div>
