@@ -47,8 +47,7 @@ function UserList() {
 
 
 
-  let handleFriendRequest =(item)=>{
-    
+  let handleFriendRequest =(item)=>{ 
     set(push(ref(db, 'friendrequest')), {
       whosendname   : userData.displayName,
       whosendid     : userData.uid,
@@ -165,7 +164,7 @@ function UserList() {
                   userList.map((item,index)=>
                   {
                     
-                   
+              
        return       <div key={index} className='list-item'>
                       <div>
                         <img src={item.userImgUrl} alt="user" />
@@ -178,9 +177,8 @@ function UserList() {
                      
                      {
                       
-                    friendrequestId&&
+                    friendrequestId &&
                     friendrequestId.includes(item.userId+userData.uid) || friendrequestId.includes(userData.uid+item.userId) ?
-                    
                     
                     <div key={index}>
                     <button onClick={()=>{handleDelete(item)}} className='btn'>Cancel</button>

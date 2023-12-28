@@ -593,7 +593,7 @@ ul{
     color: #4D4D4D;
     font-size: 12px;
 }
-.list button{
+.list .list-item button{
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     color: white;
@@ -668,7 +668,7 @@ border-radius: 100%;
 .input input{
     width: 100%;
    padding: 12px 8px;
-   /* border: 1px solid rgba(0, 0, 0, 0.2); */
+   
    border:0;
    border-radius: 2px;
    -webkit-box-shadow: 0px 0px 22px 3px rgba(0,0,0,0.1);
@@ -796,4 +796,15 @@ margin-bottom: 20px
 
 #modal-modal-description{
     margin-bottom: 15px;
+}
+
+
+.list-box button{
+ background:rgb(109, 109, 109);
+ padding: 4px 8px;
+ color: #f1f1f1;
+ border: 0;
+ font-size: 14px;
+ font-family: 'Poppins', sans-serif;
+ font-weight:400;
 }

@@ -18,8 +18,10 @@ function GroupList() {
 
       <div className="list-box">
           <h2>Groups List </h2>
-          <BiDotsVerticalRounded />
+          <button className='groupBtn'>Create Group</button>
       </div>
+      
+     
 
 
       <div className='scroll'>
@@ -35,48 +37,6 @@ function GroupList() {
               <button>Join</button>
           </div>
         </div>
-        
-        <div className='list-item'>
-          <div>
-            <img src={gOne} alt="g1" />
-          </div>
-          <div>
-              <h3>Friends Reunion</h3>
-              <p>Hi Guys, Wassup!</p>
-          </div>
-          <div>
-              <button>Join</button>
-          </div>
-        </div>
-        
-        <div className='list-item'>
-          <div>
-            <img src={gOne} alt="g1" />
-          </div>
-          <div>
-              <h3>Friends Reunion</h3>
-              <p>Hi Guys, Wassup!</p>
-          </div>
-          <div>
-              <button>Join</button>
-          </div>
-        </div>
-
-        <div className='list-item'>
-          <div>
-            <img src={gOne} alt="g1" />
-          </div>
-
-          <div>
-              <h3>Friends Reunion</h3>
-              <p>Hi Guys, Wassup!</p>
-          </div>
-
-          <div>
-              <button>Join</button>
-          </div>
-        </div>
-
       </div>
     </div>
   )
