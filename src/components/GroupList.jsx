@@ -8,7 +8,7 @@ import { FaFileCirclePlus } from "react-icons/fa6";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import { getDatabase, ref as fref, set,push } from "firebase/database";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useSelector } from 'react-redux';
 
@@ -25,14 +25,15 @@ const style = {
 };
 
 function GroupList() {
+  const db = getDatabase();
   const storage = getStorage();
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState("");
   const [fileValue, setFileValue] = useState("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [border, setBorder] = useState(false)
-  let userData = useSelector((state) => state.loguser.value)
+  const [border,setBorder]=useState(false)
+  let userData = useSelector((state)=>state.loguser.value)
 
 
 
@@ -48,26 +49,25 @@ function GroupList() {
   }
 
   let handleSubmit = () => {
-    if (!name) {
+    if(!name){
       setBorder(true)
-    } else if (!fileValue) {
+    }else if(!fileValue){
       setBorder(true)
-    } else {
-      setBorder(false)
-      const storageRef = ref(storage, 'some-child');
-      uploadBytes(storageRef, file).then((snapshot) => {
-        getDownloadURL(storageRef).then((downloadURL) => {
-          console.log('File available at', downloadURL);
-          console.log({
-            groupName: name,
-            groupAdmin: userData.displayName,
-            groupAdminId: userData.uid,
-            groupImg: downloadURL
-          });
-        });
-      });
+    }else{
+     setBorder(false)
+     const storageRef = ref(storage, userData.uid);
+     uploadBytes(storageRef, file).then((snapshot) => {
+       getDownloadURL(storageRef).then((downloadURL) => {
+        set(push(fref(db, 'createGrup')), {
+          groupName : name,
+          groupAdmin : userData.displayName,
+          groupAdminId:userData.uid,
+          gorupImg : downloadURL
+        })
+       });
+     });
     }
-
+   
   }
 
 
@@ -99,7 +99,7 @@ function GroupList() {
             <div className='file_inner'>
               <label className='file' htmlFor="files"><FaFileCirclePlus className='icon' /></label>
               <input onChange={handleFileChange} type="file" id="files" style={{ display: "none" }} />
-              <input onChange={handleNameChange} className={`name_input ${border ? "color" : "discolor"}`} type="text" placeholder='Please Enter a Group Name' />
+              <input onChange={handleNameChange} className={`name_input ${border ? "color" : "discolor"}` } type="text" placeholder='Please Enter a Group Name' />
             </div>
             <div className='group_btn'>
               <button onClick={handleSubmit}>Submit</button>
