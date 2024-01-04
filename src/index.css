@@ -1,18 +1,22 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    
+
 }
-.box{
+
+.box {
     display: flex;
 }
-a{
+
+a {
     text-decoration: none;
 }
-ul{
+
+ul {
     list-style: none;
 }
-.btn-all{
+
+.btn-all {
     width: 410px;
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 600;
@@ -22,43 +26,47 @@ ul{
     color: white;
     border-radius: 8px;
     border: 0;
-    cursor: pointer;   
+    cursor: pointer;
 }
 
-@media (min-width: 320px) and (max-width: 800.99px){
-    .btn-all{
-        width: 355px;    
+@media (min-width: 320px) and (max-width: 800.99px) {
+    .btn-all {
+        width: 355px;
     }
 }
 
 
 
 /*================ Registration  Part Start =============*/
-.loader{
+.loader {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100%;
 }
-.registration{
+
+.registration {
     padding: 0
 }
-.registration .box .one{
+
+.registration .box .one {
     width: 50%;
 }
 
-#outlined-basic{
+#outlined-basic {
     width: 380px;
 }
-.registration .box .one h1{
+
+.registration .box .one h1 {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 700;
     font-size: 34px;
     color: #11175D;
     margin-bottom: 12px;
 }
-.registration .box .one p{
+
+.registration .box .one p {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
     font-size: 20px;
@@ -66,44 +74,48 @@ ul{
     margin-bottom: 34px;
 }
 
-.registration .box .one .from{
+.registration .box .one .from {
     width: 497px;
     margin-left: auto;
     margin-top: 100px;
-    
+
 }
 
-.registration .box .one .from .from-item{
- position: relative; 
-}
-.registration .box .one .from .from-item .icon-eye{
- position: absolute;
- top: 50%;
- transform: translateY(-50%);
- right: 100px;
- cursor: pointer; 
-}
-.registration .box .one .from .from-item .icon-top{
- position: absolute;
- top: 20px;
- right: 100px;
- cursor: pointer; 
+.registration .box .one .from .from-item {
+    position: relative;
 }
 
-.registration .box .one .from .input-part{
-  position: relative; 
-  margin-bottom: 20px; 
+.registration .box .one .from .from-item .icon-eye {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 100px;
+    cursor: pointer;
 }
-.registration .box .one .from .input-margin{
-  position: relative; 
-  margin-bottom: 10px; 
+
+.registration .box .one .from .from-item .icon-top {
+    position: absolute;
+    top: 20px;
+    right: 100px;
+    cursor: pointer;
 }
-.registration .box .one .from  .alert{
+
+.registration .box .one .from .input-part {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.registration .box .one .from .input-margin {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.registration .box .one .from .alert {
     max-width: 75%
 }
 
 
-.registration .box .one .from h4{
+.registration .box .one .from h4 {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 700;
     font-size: 14px;
@@ -112,17 +124,18 @@ ul{
     text-align: center;
     padding-top: 20px;
 }
-.registration .box .one .from span{
+
+.registration .box .one .from span {
     color: orange;
 }
 
 
-.registration .box .two{
+.registration .box .two {
     width: 50%;
 }
 
 
-.registration .box .two img{
+.registration .box .two img {
     height: 100vh;
     width: 100%;
     display: block;
@@ -130,70 +143,78 @@ ul{
 }
 
 /* Responsive  */
-@media (min-width: 320px) and (max-width: 800.99px){
-    .registration{
+@media (min-width: 320px) and (max-width: 800.99px) {
+    .registration {
         padding: 20px 0px
     }
-  
-  
-    .registration .box{
+
+
+    .registration .box {
         flex-direction: column-reverse;
         justify-content: center;
     }
-    .registration .box .one{
+
+    .registration .box .one {
         width: auto;
     }
-    .registration .box .two{
+
+    .registration .box .two {
         width: auto;
     }
-    .registration .box .one .from{
+
+    .registration .box .one .from {
         width: 360px;
-        margin: 0 auto ;
+        margin: 0 auto;
         margin-top: 30px;
-        
+
     }
+
     .registration .box .one h1 {
-        font-size: 20px; 
+        font-size: 20px;
         text-align: center;
-        
+
     }
+
     .registration .box .one p {
         font-size: 14px;
         text-align: center;
     }
 
-   .registration .box .two img {
-	width: 250px;
-	height: 250px;
-	object-fit: cover;
-	margin: 0 auto;
-    border-radius: 100%;
-  }
+    .registration .box .two img {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        margin: 0 auto;
+        border-radius: 100%;
+    }
 
 
-.registration .box .one .from .from-item .icon-eye{
-    right: 20px;
-   }
-   .registration .box .one .from  .alert{
-    max-width: 340px;
-   }
-   .registration .box .one .from .from-item .icon-top {
-	right: 20px;
-   }
+    .registration .box .one .from .from-item .icon-eye {
+        right: 20px;
+    }
+
+    .registration .box .one .from .alert {
+        max-width: 340px;
+    }
+
+    .registration .box .one .from .from-item .icon-top {
+        right: 20px;
+    }
 }
 
 
 /*================ Registration  Part End =============*/
 
 /*================ Login  Part Start =============*/
-.login{
+.login {
     padding: 0;
 }
-.login .box .one{
+
+.login .box .one {
     width: 50%;
 }
 
-.login .box .one h1{
+.login .box .one h1 {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 700;
     font-size: 34px;
@@ -202,81 +223,90 @@ ul{
 }
 
 
-.login .box .one .from{
+.login .box .one .from {
     width: 497px;
     margin-left: auto;
     margin-top: 100px;
-    
+
 }
-.login .box .one .from h6{
+
+.login .box .one .from h6 {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
     font-size: 14px;
     color: red;
     margin-top: 4px;
 }
-.login .box .one .goggle{
-   cursor: pointer;
-   margin: 30px 0px;
-   display: flex;
-   align-items: center;
-   gap: 9px;
-   border: 2px solid rgb(194, 191, 191);
-   width: 200px;
-   justify-content: center;
-   padding: 10px 0px;
-   border-radius: 5px;
+
+.login .box .one .goggle {
+    cursor: pointer;
+    margin: 30px 0px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    border: 2px solid rgb(194, 191, 191);
+    width: 200px;
+    justify-content: center;
+    padding: 10px 0px;
+    border-radius: 5px;
 }
-.login .box .one .goggle img{
-   width: 20px;
+
+.login .box .one .goggle img {
+    width: 20px;
 }
-.login .box .one .goggle .title{
+
+.login .box .one .goggle .title {
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     font-size: 13px;
     color: #11175D;
 }
-.login .box .one .from .input-part{
-  position: relative; 
-  margin-bottom: 20px; 
+
+.login .box .one .from .input-part {
+    position: relative;
+    margin-bottom: 20px;
 }
-.login .box .one .from .input-part .icon-eye{
+
+.login .box .one .from .input-part .icon-eye {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 100px;
-    cursor: pointer; 
-   }
-.login .box .one .from p{
+    cursor: pointer;
+}
+
+.login .box .one .from p {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
     font-size: 14px;
-    color:#11175D;
+    color: #11175D;
     width: 80%;
     text-align: center;
     margin-top: 5px;
     margin-bottom: 10px;
 }
-.login .box .one .from h4{
+
+.login .box .one .from h4 {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 700;
     font-size: 14px;
     color: #11175D;
     width: 80%;
     text-align: center;
- 
+
 }
-.login .box .one .from span{
+
+.login .box .one .from span {
     color: orange;
 }
 
 
-.login .box .two{
+.login .box .two {
     width: 50%;
 }
 
 
-.login .box .two img{
+.login .box .two img {
     height: 100vh;
     width: 100%;
     display: block;
@@ -285,67 +315,75 @@ ul{
 
 
 /* Responsive  */
-@media (min-width: 320px) and (max-width: 800.99px){
-    .login{
+@media (min-width: 320px) and (max-width: 800.99px) {
+    .login {
         padding: 20px 0px;
     }
+
     .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
         width: 360px;
     }
-    .login .box{
+
+    .login .box {
         flex-direction: column-reverse;
         justify-content: center;
     }
-    .login .box .one{
+
+    .login .box .one {
         width: auto;
     }
-    .login .box .two{
+
+    .login .box .two {
         width: auto;
     }
-    .login .box .one .from{
+
+    .login .box .one .from {
         width: 360px;
-        margin: 0 auto ;
+        margin: 0 auto;
         margin-top: 30px;
     }
+
     .login .box .one h1 {
-        font-size: 20px; 
+        font-size: 20px;
         text-align: center;
-        
+
     }
 
-   .login .box .two img {
-	width: 250px;
-	height: 250px;
-	object-fit: cover;
-	margin: 0 auto;
-    border-radius: 100%;
-  }
+    .login .box .two img {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        margin: 0 auto;
+        border-radius: 100%;
+    }
 
-  .login .box .one .from .input-part .icon-eye{
-    right: 20px;
-    
-   }
+    .login .box .one .from .input-part .icon-eye {
+        right: 20px;
 
-
+    }
 
 
-.login .box .one img {
-	margin-left: 10px;
-}
-.login .box .one .from h4 {
-	margin-left: 27px;
-    padding-top: 5px;
-}
-.login .box .one .from p {
-	margin-left: 22px;
-}
+
+
+    .login .box .one img {
+        margin-left: 10px;
+    }
+
+    .login .box .one .from h4 {
+        margin-left: 27px;
+        padding-top: 5px;
+    }
+
+    .login .box .one .from p {
+        margin-left: 22px;
+    }
 }
 
 
 /*================ Login  Part End =============*/
 
 /*================ Forgot  Part Start =============*/
-.forgot{
+.forgot {
     background: #6470f3;
     width: 100%;
     height: 100vh;
@@ -353,63 +391,70 @@ ul{
     align-items: center;
     justify-content: center;
 }
-.forgot .forgot-item{
+
+.forgot .forgot-item {
     background: white;
     width: 350px;
     border-radius: 10px;
     padding: 20px 0px;
 }
-.forgot .forgot-item h1{
+
+.forgot .forgot-item h1 {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 700;
     font-size: 30px;
     color: #11175D;
-    text-align: center;  
+    text-align: center;
     margin-bottom: 10px;
 }
-.forgot .forgot-item p{
+
+.forgot .forgot-item p {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
     font-size: 14px;
     color: #11175D;
-    text-align: center;  
+    text-align: center;
     margin-bottom: 20px;
 }
 
-.forgot .forgot-item .input{
+.forgot .forgot-item .input {
     width: 280px;
     margin: 0 auto;
     position: relative;
- 
-}
-.forgot .forgot-item .input .icon-box{
-   position: absolute;
-   top: 0;
-   right: -11px;
-   width: 40px;
-   height: 100%;
-   background: #11175D;
-   border-radius: 2px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   color: white;
 
 }
-.forgot .forgot-item .input input{
+
+.forgot .forgot-item .input .icon-box {
+    position: absolute;
+    top: 0;
+    right: -11px;
+    width: 40px;
+    height: 100%;
+    background: #11175D;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+}
+
+.forgot .forgot-item .input input {
     width: 100%;
     border: 1px solid rgb(172, 172, 172);
     padding: 8px 5px;
     border-radius: 2px;
 
 }
-.forgot .forgot-item .btn{
+
+.forgot .forgot-item .btn {
     margin-top: 30px;
     display: flex;
     justify-content: center;
     gap: 15px;
 }
-.forgot .forgot-item button{
+
+.forgot .forgot-item button {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 400;
     font-size: 14px;
@@ -418,7 +463,7 @@ ul{
     color: white;
     border-radius: 5px;
     border: 0;
-   cursor: pointer;
+    cursor: pointer;
 }
 
 /*================ Forgot  Part End ===============*/
@@ -426,14 +471,15 @@ ul{
 
 
 /* Sidevar  */
-.routLayouts{
+.routLayouts {
     display: flex;
-   
+
 }
-.sidevar{
+
+.sidevar {
     width: 110px;
     height: 95vh;
-    background:#5F35F5;
+    background: #5F35F5;
     margin: 20px;
     border-radius: 20px;
     padding: 38px 0px;
@@ -444,48 +490,53 @@ ul{
 }
 
 
-.sidevar .sidevar_item img{
- cursor: pointer;
- width: 60px;
- height: 60px;
- border-radius: 50%;
- margin: 0 auto;
+.sidevar .sidevar_item img {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto;
 }
+
 .sidevar .logout {
- width: 35px;
- height: 38px;
- cursor: pointer;
+    width: 35px;
+    height: 38px;
+    cursor: pointer;
 }
-.crop-img{
+
+.crop-img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
 }
+
 .sidevar .name {
- color: white;
- font-family: 'Nunito Sans', sans-serif;
- font-size: 16px;
- font-weight: 600;
- width: 100px;
- margin-bottom: 50px;
- margin-top: 5px;
- text-align: center;
+    color: white;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100px;
+    margin-bottom: 50px;
+    margin-top: 5px;
+    text-align: center;
 }
-.sidevar .sidevar_item{
+
+.sidevar .sidevar_item {
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
 
 
-.sidevar .icons{
+.sidevar .icons {
     margin-bottom: 55px;
     display: flex;
     justify-content: center;
     font-size: 30px;
     color: white;
 }
-.icons-part{
+
+.icons-part {
     position: relative;
     z-index: 1;
 }
@@ -501,6 +552,7 @@ ul{
     z-index: -2;
     border-bottom-left-radius: 10px;
 }
+
 .sidevar .active::before {
     position: absolute;
     top: -6px;
@@ -513,7 +565,8 @@ ul{
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
 }
-.sidevar .active .icons{
+
+.sidevar .active .icons {
     color: #5F35F5;
 }
 
@@ -521,52 +574,55 @@ ul{
 
 
 /* Grop List  */
-.groups-item .box{
+.groups-item .box {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-  
+
 }
 
-.list{
+.list {
     width: 400px;
     margin: 20px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 16px;
     box-sizing: border-box;
-    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
-    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     position: relative;
 }
 
 
-.list .error{
-    position:absolute;
+.list .error {
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 800;
     color: #444444;
     font-size: 20px;
 }
-.scroll{
+
+.scroll {
     padding-right: 10px;
     overflow-y: scroll;
     height: 175px;
 }
-.scroll::-webkit-scrollbar{
+
+.scroll::-webkit-scrollbar {
     width: 6px;
     background: gray;
 }
-.scroll::-webkit-scrollbar-thumb{
+
+.scroll::-webkit-scrollbar-thumb {
     width: 6px;
-    background: linear-gradient(transparent,#0c1dde);
+    background: linear-gradient(transparent, #0c1dde);
 }
 
-.list h2{
+.list h2 {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: #111111;
@@ -575,42 +631,48 @@ ul{
     justify-content: space-between;
     align-items: center;
 }
-.list h3{
+
+.list h3 {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: black;
     font-size: 18px;
 }
-.list p{
+
+.list p {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     color: #4D4D4D;
     font-size: 14px;
 }
-.list h6{
+
+.list h6 {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     color: #4D4D4D;
     font-size: 12px;
 }
-.list .list-item button{
+
+.list .list-item button {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     color: white;
     font-size: 16px;
-    background:#3578E5;
+    background: #3578E5;
     padding: 2px 13px;
     border: 0;
     border-radius: 5px;
     margin-bottom: 8px;
     cursor: pointer;
 }
-.list .btn{
+
+.list .btn {
     background: hsla(0, 0%, 50%, 0.5);
     color: #111111;
-    cursor: pointer;  
+    cursor: pointer;
 }
-.list .delete-btn{
+
+.list .delete-btn {
     padding: 2px 20px;
     background: hsla(0, 0%, 50%, 0.5);
     color: #111111;
@@ -618,7 +680,7 @@ ul{
 
 }
 
-.list .list-name{
+.list .list-name {
     width: 180px;
     display: flex;
     align-items: center;
@@ -628,21 +690,22 @@ ul{
 
 
 
-.list .list-item{
- display: flex;
- align-items: center;
- justify-content: space-between;
- padding-bottom: 5px;
- border-bottom: 1px solid rgba(53, 52, 52, 0.4);
- margin-bottom:10px;
-}
-.list .list-item img{
-width: 45px;
-height: 45px;
-border-radius: 100%;
+.list .list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(53, 52, 52, 0.4);
+    margin-bottom: 10px;
 }
 
-.list-box{
+.list .list-item img {
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+}
+
+.list-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -651,36 +714,38 @@ border-radius: 100%;
 }
 
 
-.input{
+.input {
     position: relative;
-    width:95%;
-   
+    width: 95%;
+
 }
- .input .icon{
+
+.input .icon {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 0;
-    color:rgba(0, 0, 0, 0.8);
+    color: rgba(0, 0, 0, 0.8);
     font-size: 20px;
-    }
-
-.input input{
-    width: 100%;
-   padding: 12px 8px;
-   
-   border:0;
-   border-radius: 2px;
-   -webkit-box-shadow: 0px 0px 22px 3px rgba(0,0,0,0.1);
-   -moz-box-shadow: 0px 0px 22px 3px rgba(0,0,0,0.1);
-   box-shadow: 0px 0px 22px 3px rgba(0,0,0,0.1);
-   outline: 0;
-    
 }
 
-.drop-item{
+.input input {
+    width: 100%;
+    padding: 12px 8px;
+
+    border: 0;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 0px 22px 3px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 0px 22px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 22px 3px rgba(0, 0, 0, 0.1);
+    outline: 0;
+
+}
+
+.drop-item {
     position: relative;
 }
+
 .drop {
     top: 16px;
     width: 100px;
@@ -691,7 +756,8 @@ border-radius: 100%;
     padding: 10px 0px;
     z-index: 10;
 }
-.drop ul li{
+
+.drop ul li {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     color: #111111;
@@ -700,19 +766,23 @@ border-radius: 100%;
     border-bottom: 1px solid hsla(0, 0%, 7%, 0.3);
     cursor: pointer;
 }
-.drop ul li:last-child{
+
+.drop ul li:last-child {
     border-bottom: 0;
 }
+
 /* Grop List  */
 
-@media (min-width: 320px) and (max-width: 556.99px){
-    .modal{
+@media (min-width: 320px) and (max-width: 556.99px) {
+    .modal {
         width: 100px;
     }
-    .routLayouts{
+
+    .routLayouts {
         display: flex;
         flex-direction: column;
     }
+
     .sidevar {
         width: 100%;
         height: 50px;
@@ -723,88 +793,138 @@ border-radius: 100%;
         padding-left: 5px;
         display: flex;
         flex-direction: row;
-        align-items: center; 
+        align-items: center;
         justify-content: space-between;
     }
-  
+
     .sidevar .logout {
         width: 30px;
         height: 30px;
         padding-top: 9px;
         cursor: pointer;
-       }
-    
-    .sidevar .sidevar_item{
+    }
+
+    .sidevar .sidevar_item {
         display: flex;
         column-gap: 7px;
         align-items: center;
     }
+
     .sidevar .sidevar_item .name {
-     margin-bottom: 0;
-     font-size: 14px;
+        margin-bottom: 0;
+        font-size: 14px;
     }
 
-    .sidevar img{
+    .sidevar img {
         margin-bottom: 0px;
         width: 60px;
-       }
-       .sidevar .icons{
+    }
+
+    .sidevar .icons {
         margin-bottom: 0;
         display: flex;
-   
+
     }
-    .routLayouts{
+
+    .routLayouts {
         justify-content: center;
     }
+
     .sidevar .active::before {
         width: 0px;
     }
+
     .sidevar .active::after {
         width: 0;
     }
 
-    .sidevar .active .icons{
+    .sidevar .active .icons {
         color: white;
     }
-    .list h3{
+
+    .list h3 {
         font-family: 'Poppins', sans-serif;
         font-weight: 600;
         color: black;
         font-size: 16px;
     }
-    .groups-item .box{
+
+    .groups-item .box {
         justify-content: center;
     }
 }
 
 
-.img-preview-item{
+.img-preview-item {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     overflow: hidden;
     margin-bottom: 20px;
 }
-.img-preview{
-    width:100%;
+
+.img-preview {
+    width: 100%;
     height: 100%;
 }
 
-#modal-modal-title{
-margin-bottom: 20px
+#modal-modal-title {
+    margin-bottom: 20px
 }
 
-#modal-modal-description{
+#modal-modal-description {
     margin-bottom: 15px;
 }
 
 
-.list-box button{
- background:rgb(109, 109, 109);
- padding: 4px 8px;
- color: #f1f1f1;
- border: 0;
- font-size: 14px;
- font-family: 'Poppins', sans-serif;
- font-weight:400;
+.list-box button {
+    background: rgb(109, 109, 109);
+    padding: 4px 8px;
+    color: #f1f1f1;
+    border: 0;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.group_btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.group_item button {
+    background: rgb(31, 95, 245);
+    padding: 4px 8px;
+    color: #f1f1f1;
+    border: 0;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.group_item h1 {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: rgb(43, 43, 43);
+}
+.group_item .name_input {
+width: 300px;
+margin-left: 20px;
+padding: 10px 5px;
+}
+.group_item .icon{
+    font-size: 35px;
+    color: #444444;
+  
+}
+.group_item .file_inner{
+display: flex;
+  
+}
+
+.color{
+    border-color: red;
 }
