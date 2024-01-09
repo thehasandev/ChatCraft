@@ -920,6 +920,11 @@ padding: 10px 5px;
     color: #444444;
   
 }
+.group_item .red_icon{
+    font-size: 35px;
+    color: red;
+  
+}
 .group_item .file_inner{
 display: flex;
   
@@ -928,3 +933,4 @@ display: flex;
 .color{
     border-color: red;
 }
+

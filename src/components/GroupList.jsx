@@ -6,8 +6,8 @@ import { IoSearchSharp } from "react-icons/io5";
 import Modal from '@mui/material/Modal';
 import { FaFileCirclePlus } from "react-icons/fa6";
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import { v4 as uuidv4 } from 'uuid';
+
 import { getDatabase, ref as fref, set, push, onValue } from "firebase/database";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useSelector } from 'react-redux';
@@ -31,16 +31,17 @@ function GroupList() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const userData = useSelector((state) => state.loguser.value)
-  console.log(userData.uid);
+
 
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState("");
   const [fileValue, setFileValue] = useState("");
   const [border, setBorder] = useState(false)
-  const [groupList,setGroupList] =useState([])
-  
+  const [groupList, setGroupList] = useState([])
 
-  
+
+
+
 
 
 
@@ -53,40 +54,43 @@ function GroupList() {
   let handleFileChange = (e) => {
     setFile(e.target.files[0])
     setFileValue(e.target.files.length)
+    
   }
 
   let handleSubmit = () => {
-    if (!name) {
-      setBorder(true)
-    } else if (!fileValue) {
-      setBorder(true)
-    } else {
-      setBorder(false)
-      const storageRef = ref(storage, userData.uid);
+    if (fileValue == 1 && name) {
+      const storageRef = ref(storage, uuidv4());
       uploadBytes(storageRef, file).then((snapshot) => {
         getDownloadURL(storageRef).then((downloadURL) => {
           set(push(fref(db, 'createGroup')), {
             groupName: name,
             groupAdmin: userData.displayName,
             groupAdminId: userData.uid,
-            gorupImg: downloadURL
+            groupImg: downloadURL
+          }).then(()=>{
+            setOpen(false)
+            setFile("")
+            setName("")
+            console.log("done");
           })
         });
       });
+      setBorder(false)
+    } else {
+      setBorder(true)
     }
-
   }
 
   useEffect(() => {
     const starCountRef = fref(db, 'createGroup');
     onValue(starCountRef, (snapshot) => {
       let arr = []
-      snapshot.forEach((item)=>{
-        if(userData.uid != item.val().groupAdminId){
+      snapshot.forEach((item) => {
+        if (userData.uid != item.val().groupAdminId) {
           arr.push(item.val())
         }
       })
-    setGroupList(arr)
+      setGroupList(arr)
     });
   }, [])
 
@@ -117,9 +121,9 @@ function GroupList() {
           <div className='group_item'>
             <h1>Create New Group</h1>
             <div className='file_inner'>
-              <label className='file' htmlFor="files"><FaFileCirclePlus className='icon' /></label>
+              <label className='file' htmlFor="files"><FaFileCirclePlus className={`${border ? "red_icon" : "icon"}`} /></label>
               <input onChange={handleFileChange} type="file" id="files" style={{ display: "none" }} />
-              <input onChange={handleNameChange} className={`name_input ${border ? "color" : "discolor"}`} type="text" placeholder='Please Enter a Group Name' />
+              <input onChange={handleNameChange} className={`name_input ${border && "color"}`} type="text" placeholder='Please Enter a Group Name' />
             </div>
             <div className='group_btn'>
               <button onClick={handleSubmit}>Submit</button>
@@ -131,22 +135,22 @@ function GroupList() {
 
 
       <div className='scroll'>
-      {
-        groupList.map((item,index)=>(
-        <div key={index} className='list-item'>
-          <div>
-            <img src={item.gorupImg} alt="g1" />
-          </div>
-          <div>
-            <h3>{item.groupName}</h3>
-            <p>Hi Guys, Wassup!</p>
-          </div>
-          <div>
-            <button>Join</button>
-          </div>
-        </div>
-        ))
-      }
+        {
+          groupList.map((item, index) => (
+            <div key={index} className='list-item'>
+              <div>
+                <img src={item.gorupImg} alt="g1" />
+              </div>
+              <div>
+                <h3>{item.groupName}</h3>
+                <p>Hi Guys, Wassup!</p>
+              </div>
+              <div>
+                <button>Join</button>
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
   )

@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import gOne from "../assets/mg1.png"
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { IoSearchSharp } from "react-icons/io5";
+import { getDatabase, ref , set, push, onValue } from "firebase/database";
+import { useSelector } from 'react-redux';
+
 
 function MyGroups() {
+  const db = getDatabase();
+  const[myGroupsList,setMyGroupList] =useState([])
+  const userData = useSelector((state) => state.loguser.value)
+  useEffect(() => {
+    const starCountRef = ref(db, 'createGroup');
+    onValue(starCountRef, (snapshot) => {
+      let arr = []
+      snapshot.forEach((item)=>{
+        if(userData.uid == item.val().groupAdminId){
+          arr.push(item.val())
+        }
+      })
+      setMyGroupList(arr);
+
+    });
+  }, [])
+
+
+
   return (
+
+
     
     <div className='list'>
        <div className='input'>
@@ -22,103 +46,39 @@ function MyGroups() {
 
         
         <div className='scroll'>
-
-            <div className='list-item'>
+          {
+            myGroupsList.map((item,index)=>(
+            <div key={index} className='list-item'>
               <div>
-                <img src={gOne} alt="g1" />
+                <img src={item.groupImg} alt="g1" />
               </div>
               <div>
-                  <h3>Raghav</h3>
+                  <h3>{item.groupName}</h3>
                   <p>Dinner?</p>
               </div>
               <div>
                   <h6>Today, 8:56pm</h6>
               </div>
             </div>
+
+            ))
+          }
             
 
-            <div className='list-item'>
-              <div>
-                <img src={gOne} alt="g1" />
-              </div>
-              <div>
-                  <h3>Raghav</h3>
-                  <p>Dinner?</p>
-              </div>
-              <div>
-                  <h6>Today, 8:56pm</h6>
-              </div>
-            </div>
+   
+
+      
             
 
-            <div className='list-item'>
-              <div>
-                <img src={gOne} alt="g1" />
-              </div>
-              <div>
-                  <h3>Raghav</h3>
-                  <p>Dinner?</p>
-              </div>
-              <div>
-                  <h6>Today, 8:56pm</h6>
-              </div>
-            </div>
+      
+
+         
             
 
-            <div className='list-item'>
-              <div>
-                <img src={gOne} alt="g1" />
-              </div>
-              <div>
-                  <h3>Raghav</h3>
-                  <p>Dinner?</p>
-              </div>
-              <div>
-                  <h6>Today, 8:56pm</h6>
-              </div>
-            </div>
+    
             
 
-            <div className='list-item'>
-              <div>
-                <img src={gOne} alt="g1" />
-              </div>
-              <div>
-                  <h3>Raghav</h3>
-                  <p>Dinner?</p>
-              </div>
-              <div>
-                  <h6>Today, 8:56pm</h6>
-              </div>
-            </div>
-            
-
-            <div className='list-item'>
-              <div>
-                <img src={gOne} alt="g1" />
-              </div>
-              <div>
-                  <h3>Raghav</h3>
-                  <p>Dinner?</p>
-              </div>
-              <div>
-                  <h6>Today, 8:56pm</h6>
-              </div>
-            </div>
-            
-
-            <div className='list-item'>
-              <div>
-                <img src={gOne} alt="g1" />
-              </div>
-              <div>
-                  <h3>Raghav</h3>
-                  <p>Dinner?</p>
-              </div>
-              <div>
-                  <h6>Today, 8:56pm</h6>
-              </div>
-            </div>
+    
         </div>
       
     </div>
