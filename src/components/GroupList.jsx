@@ -8,9 +8,10 @@ import { FaFileCirclePlus } from "react-icons/fa6";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { getDatabase, ref as fref, set,push } from "firebase/database";
+import { getDatabase, ref as fref, set, push, onValue } from "firebase/database";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useSelector } from 'react-redux';
+
 
 const style = {
   position: 'absolute',
@@ -27,13 +28,19 @@ const style = {
 function GroupList() {
   const db = getDatabase();
   const storage = getStorage();
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const userData = useSelector((state) => state.loguser.value)
+  console.log(userData.uid);
+
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState("");
   const [fileValue, setFileValue] = useState("");
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const [border,setBorder]=useState(false)
-  let userData = useSelector((state)=>state.loguser.value)
+  const [border, setBorder] = useState(false)
+  const [groupList,setGroupList] =useState([])
+  
+
+  
 
 
 
@@ -49,26 +56,39 @@ function GroupList() {
   }
 
   let handleSubmit = () => {
-    if(!name){
+    if (!name) {
       setBorder(true)
-    }else if(!fileValue){
+    } else if (!fileValue) {
       setBorder(true)
-    }else{
-     setBorder(false)
-     const storageRef = ref(storage, userData.uid);
-     uploadBytes(storageRef, file).then((snapshot) => {
-       getDownloadURL(storageRef).then((downloadURL) => {
-        set(push(fref(db, 'createGrup')), {
-          groupName : name,
-          groupAdmin : userData.displayName,
-          groupAdminId:userData.uid,
-          gorupImg : downloadURL
-        })
-       });
-     });
+    } else {
+      setBorder(false)
+      const storageRef = ref(storage, userData.uid);
+      uploadBytes(storageRef, file).then((snapshot) => {
+        getDownloadURL(storageRef).then((downloadURL) => {
+          set(push(fref(db, 'createGroup')), {
+            groupName: name,
+            groupAdmin: userData.displayName,
+            groupAdminId: userData.uid,
+            gorupImg: downloadURL
+          })
+        });
+      });
     }
-   
+
   }
+
+  useEffect(() => {
+    const starCountRef = fref(db, 'createGroup');
+    onValue(starCountRef, (snapshot) => {
+      let arr = []
+      snapshot.forEach((item)=>{
+        if(userData.uid != item.val().groupAdminId){
+          arr.push(item.val())
+        }
+      })
+    setGroupList(arr)
+    });
+  }, [])
 
 
 
@@ -99,7 +119,7 @@ function GroupList() {
             <div className='file_inner'>
               <label className='file' htmlFor="files"><FaFileCirclePlus className='icon' /></label>
               <input onChange={handleFileChange} type="file" id="files" style={{ display: "none" }} />
-              <input onChange={handleNameChange} className={`name_input ${border ? "color" : "discolor"}` } type="text" placeholder='Please Enter a Group Name' />
+              <input onChange={handleNameChange} className={`name_input ${border ? "color" : "discolor"}`} type="text" placeholder='Please Enter a Group Name' />
             </div>
             <div className='group_btn'>
               <button onClick={handleSubmit}>Submit</button>
@@ -111,18 +131,22 @@ function GroupList() {
 
 
       <div className='scroll'>
-        <div className='list-item'>
+      {
+        groupList.map((item,index)=>(
+        <div key={index} className='list-item'>
           <div>
-            <img src={gOne} alt="g1" />
+            <img src={item.gorupImg} alt="g1" />
           </div>
           <div>
-            <h3>Friends Reunion</h3>
+            <h3>{item.groupName}</h3>
             <p>Hi Guys, Wassup!</p>
           </div>
           <div>
             <button>Join</button>
           </div>
         </div>
+        ))
+      }
       </div>
     </div>
   )
