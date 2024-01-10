@@ -17,7 +17,7 @@ function Message() {
 
   return (
     <div>
-      {/* <Friends/> */}
+      <Friends/>
      <Msg/>
 
 

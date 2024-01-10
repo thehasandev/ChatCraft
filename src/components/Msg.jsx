@@ -22,14 +22,25 @@ function Msg() {
             <div className='messege_body'>
                <p>My  esse? Lorem ipsum dolor</p>
             </div>
-            {/* Recive Image  */}
             <div className='messege_img'>
             <img src={One} alt="" />
             </div>
-            {/* Recive Audio  */}
-            <audio controls>
-                
-            </audio>
+
+            <div className='messege_audio'>
+            <audio controls></audio>
+            </div>
+
+            {/* Send Messege  */}
+
+            <div className='messege_body right'>
+               <p>My  esse? Lorem ipsum dolor</p>
+            </div>
+            <div className='messege_img right'>
+            <img src={One} alt="" />
+            </div>
+            <div className='messege_audio right'>
+            <audio controls></audio>
+            </div>
         </div>
     )
 }
