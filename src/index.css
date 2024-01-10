@@ -4,6 +4,7 @@
 
 }
 
+
 .box {
     display: flex;
 }
@@ -611,6 +612,11 @@ ul {
     overflow-y: scroll;
     height: 175px;
 }
+.scrollTwo {
+    padding-right: 10px;
+    overflow-y: scroll;
+    height: 500px;
+}
 
 .scroll::-webkit-scrollbar {
     width: 6px;
@@ -933,5 +939,64 @@ display: flex;
 
 .color{
     border-color: red;
+}
+
+.messege_box{
+    margin: 20px;
+    padding: 20px;
+    width: 500px;
+    height: 650px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+
+.messege_box .messege_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.messege_box .messege_header .part_one img{
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+}
+.messege_box .messege_header .part_one{
+    display: flex;
+    column-gap: 10px;
+}
+.messege_box .messege_header .part_one h2{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+}
+.messege_box .messege_header .part_one p{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.messege_box .messege_body{
+    margin-top: 25px;
+}
+.messege_box .messege_body p{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 15px 16px;
+    background: #efeded;
+    display: inline-block;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 11% 77%, 0 91%, 0 50%);
+    margin-bottom: 15px;
+}
+.messege_box .messege_img{
+   margin-bottom: 15px;
+ 
+}
+.messege_box .messege_img img{
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 

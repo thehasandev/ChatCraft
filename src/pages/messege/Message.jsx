@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import Friends from "../../components/Friends"
+import Msg from '../../components/Msg'
+
 
 function Message() {
   let userData =useSelector((state)=>state.loguser.value)
@@ -13,7 +16,12 @@ function Message() {
    },[])
 
   return (
-    <div>Message</div>
+    <div>
+      {/* <Friends/> */}
+     <Msg/>
+
+
+    </div>
   )
 }
 

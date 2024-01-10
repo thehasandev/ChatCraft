@@ -19,6 +19,8 @@ function Friends() {
   let [open, setOpen] = useState(false)
   let [indexa, setIndexa] = useState("")
 
+  
+
 
 
 
@@ -137,7 +139,7 @@ function Friends() {
       </div>
 
 
-      <div className='scroll'>
+      <div className={location.pathname == "/home/message" ? "scrollTwo" : "scroll"}>
         {
           friendInput.length > 0 ?
             searchFredndList.length ?
