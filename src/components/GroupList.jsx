@@ -35,9 +35,12 @@ function GroupList() {
 
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState("");
+  const [fileDeta,setFileDeta]=useState("")
   const [fileValue, setFileValue] = useState("");
   const [border, setBorder] = useState(false)
   const [groupList, setGroupList] = useState([])
+
+  
 
 
 
@@ -54,11 +57,13 @@ function GroupList() {
   let handleFileChange = (e) => {
     setFile(e.target.files[0])
     setFileValue(e.target.files.length)
-    
+    setFileDeta(e.target.value)
   }
+  
 
   let handleSubmit = () => {
-    if (fileValue == 1 && name) {
+    
+    if (fileValue == 1 && name && fileDeta) {
       const storageRef = ref(storage, uuidv4());
       uploadBytes(storageRef, file).then((snapshot) => {
         getDownloadURL(storageRef).then((downloadURL) => {
@@ -69,9 +74,8 @@ function GroupList() {
             groupImg: downloadURL
           }).then(()=>{
             setOpen(false)
-            setFile("")
+            setFileDeta("")
             setName("")
-            console.log("done");
           })
         });
       });
