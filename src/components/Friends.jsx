@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { BiDotsVerticalRounded } from "react-icons/bi";
 import { IoSearchSharp } from "react-icons/io5";
-import { getDatabase, ref, onValue, set,push, remove } from "firebase/database";
-import { useSelector } from 'react-redux';
+import { getDatabase, ref, onValue, set, push, remove } from "firebase/database";
+import { useDispatch, useSelector } from 'react-redux';
+import  { user_log } from '../slices/userMessege';
 
 
 
 function Friends() {
-
   const db = getDatabase();
+  let dispatch =useDispatch()
   let userData = useSelector((state) => state.loguser.value)
   let [friendInput, setFriendInput] = useState("")
 
@@ -19,13 +20,6 @@ function Friends() {
   let [open, setOpen] = useState(false)
   let [indexa, setIndexa] = useState("")
 
-  
-
-
-
-
-
-
 
 
   useEffect(() => {
@@ -34,7 +28,7 @@ function Friends() {
       let arr = []
       snapshot.forEach((item) => {
         if (item.val().whoreciveid == userData.uid || item.val().whosendid == userData.uid) {
-          arr.push({...item.val(),id:item.key})
+          arr.push({ ...item.val(), id: item.key })
         }
       })
       setFriendList(arr);
@@ -95,28 +89,37 @@ function Friends() {
   }
 
   let handleBlock = (item) => {
-  if(userData.uid == item.whoreciveid){
-    set(push(ref(db, 'blockList')), {
-      blocked: item.whosendname,
-      blockedid: item.whosendid,
-      blockby: userData.displayName,
-      blockbyid: userData.uid
-    }).then(()=>{
-      remove(ref(db,'friends/'+item.id))
-      setOpen(false)
-    })
+    if (userData.uid == item.whoreciveid) {
+      set(push(ref(db, 'blockList')), {
+        blocked: item.whosendname,
+        blockedid: item.whosendid,
+        blockby: userData.displayName,
+        blockbyid: userData.uid
+      }).then(() => {
+        remove(ref(db, 'friends/' + item.id))
+        setOpen(false)
+      })
 
-  }else if(userData.uid == item.whosendid){
-    set(push(ref(db, 'blockList')), {
-      blocked: item.whorecivename,
-      blockedid: item.whoreciveid,
-      blockby: userData.displayName,
-      blockbyid: userData.uid
-    }).then(()=>{
-      remove(ref(db,'friends/'+item.id))
-      setOpen(false)
-    })
+    } else if (userData.uid == item.whosendid) {
+      set(push(ref(db, 'blockList')), {
+        blocked: item.whorecivename,
+        blockedid: item.whoreciveid,
+        blockby: userData.displayName,
+        blockbyid: userData.uid
+      }).then(() => {
+        remove(ref(db, 'friends/' + item.id))
+        setOpen(false)
+      })
+    }
   }
+
+  let handleMessege =(item)=>{
+   
+    if(userData.uid==item.whoreciveid){
+      dispatch(user_log({name:item.whosendname,id:item.whosendid,url:item.imgUrl}))
+    }else{
+      dispatch(user_log({name:item.whorecivename,id:item.whoreciveid,url:item.imgUrl}))
+    }
   }
 
 
@@ -204,17 +207,19 @@ function Friends() {
 
                 }
 
+                <div onClick={()=>{handleMessege(item)}}>
 
-                {
-                  userData.uid == item.whoreciveid ?
-                    <h3>{item.whosendname}</h3>
-                    :
-                    userData.uid == item.whosendid ?
-                      <h3>{item.whorecivename}</h3>
+                  {
+                    userData.uid == item.whoreciveid ?
+                      <h3 >{item.whosendname}</h3>
                       :
-                      <></>
+                      userData.uid == item.whosendid ?
+                        <h3>{item.whorecivename}</h3>
+                        :
+                        <></>
 
-                }
+                  }
+                </div>
                 <p>Dinner?</p>
 
                 <div className='drop-item'>

@@ -957,21 +957,25 @@ ul {
 
 .messege_box {
     margin: 20px;
+    width: 600px;
     padding: 20px;
-    width: 500px;
-    height: 650px;
     border: 1px solid gray;
-    box-sizing: border-box;
+    box-sizing: border-box; 
+
+}
+.messege_box .messege_item{
+    height: 550px;
     overflow-y: scroll;
+
 }
 
-.messege_box::-webkit-scrollbar {
-    width: 6px;
+.messege_box .messege_item::-webkit-scrollbar {
+    width: 0px;
     background: gray;
 }
 
-.messege_box::-webkit-scrollbar-thumb {
-    width: 6px;
+.messege_box .messege_item::-webkit-scrollbar-thumb {
+    width: 0px;
     background: linear-gradient(transparent, #0c1dde);
 }
 
@@ -985,6 +989,7 @@ ul {
 .messege_box .messege_header .part_one img {
     height: 50px;
     width: 50px;
+    border-radius: 100%;
     object-fit: cover;
 }
 
@@ -1037,9 +1042,23 @@ ul {
     color: white;
 }
 
+.messege_box .messege_img .inner {
+    margin-bottom: 15px;
+    background: #efeded;
+    padding: 10px 15px;
+    display: inline-block;
+    border-radius: 5px; 
+
+}
 .messege_box .messege_img {
     margin-bottom: 15px;
 
+}
+.messege_img.right .inner{
+    background: #0c1dde;
+    padding: 10px 15px;
+    display: inline-block;
+    border-radius: 5px; 
 }
 
 .messege_box .messege_audio {
@@ -1052,4 +1071,8 @@ ul {
     height: 250px;
     object-fit: cover;
     border-radius: 5px;
+}
+
+.part_one .icon{
+color: #0c1dde;
 }
