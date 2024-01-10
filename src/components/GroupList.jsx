@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { getDatabase, ref as fref, set, push, onValue } from "firebase/database";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useSelector } from 'react-redux';
-
+import { LineWave } from 'react-loader-spinner'
 
 const style = {
   position: 'absolute',
@@ -35,12 +35,12 @@ function GroupList() {
 
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState("");
-  const [fileDeta,setFileDeta]=useState("")
+  const [fileDeta, setFileDeta] = useState("")
   const [fileValue, setFileValue] = useState("");
   const [border, setBorder] = useState(false)
   const [groupList, setGroupList] = useState([])
+  const [loader, setLoader] = useState(false)
 
-  
 
 
 
@@ -59,11 +59,12 @@ function GroupList() {
     setFileValue(e.target.files.length)
     setFileDeta(e.target.value)
   }
-  
+
 
   let handleSubmit = () => {
-    
+
     if (fileValue == 1 && name && fileDeta) {
+      setLoader(true)
       const storageRef = ref(storage, uuidv4());
       uploadBytes(storageRef, file).then((snapshot) => {
         getDownloadURL(storageRef).then((downloadURL) => {
@@ -72,10 +73,11 @@ function GroupList() {
             groupAdmin: userData.displayName,
             groupAdminId: userData.uid,
             groupImg: downloadURL
-          }).then(()=>{
+          }).then(() => {
             setOpen(false)
             setFileDeta("")
             setName("")
+            setLoader(false)
           })
         });
       });
@@ -123,12 +125,38 @@ function GroupList() {
       >
         <Box sx={style}>
           <div className='group_item'>
-            <h1>Create New Group</h1>
-            <div className='file_inner'>
-              <label className='file' htmlFor="files"><FaFileCirclePlus className={`${border ? "red_icon" : "icon"}`} /></label>
-              <input onChange={handleFileChange} type="file" id="files" style={{ display: "none" }} />
-              <input onChange={handleNameChange} className={`name_input ${border && "color"}`} type="text" placeholder='Please Enter a Group Name' />
-            </div>
+            {
+              loader ?
+                <>
+                  <h1>Creating a Group...</h1>
+                  <LineWave
+                    visible={true}
+                    height="100"
+                    width="100"
+                    color="#4fa94d"
+                    ariaLabel="line-wave-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    firstLineColor=""
+                    middleLineColor=""
+                    lastLineColor=""
+                  />
+                  
+                </>
+                :
+                <>
+                  <h1>Create New Group</h1>
+                  <div className='file_inner'>
+                    <label className='file' htmlFor="files"><FaFileCirclePlus className={`${border ? "red_icon" : "icon"}`} /></label>
+                    <input onChange={handleFileChange} type="file" id="files" style={{ display: "none" }} />
+                    <input onChange={handleNameChange} className={`name_input ${border && "color"}`} type="text" placeholder='Please Enter a Group Name' />
+                  </div>
+                  
+                </>
+
+            }
+
+
             <div className='group_btn'>
               <button onClick={handleSubmit}>Submit</button>
             </div>
