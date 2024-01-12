@@ -1,15 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BsThreeDotsVertical } from "react-icons/bs";
 import imgOne from "../assets/b1.png"
 import One from "../assets/registration.png"
 import { TiArrowBackOutline } from "react-icons/ti";
 import { useDispatch, useSelector } from 'react-redux';
 import { user_log } from '../slices/userMessege';
+import { getDatabase, ref, onValue, set, push, remove } from "firebase/database";
+
 
 function Msg() {
+    const db = getDatabase();
     let dispatch =useDispatch()
+    let userData = useSelector((state) => state.loguser.value)
     let logUserData =useSelector((state)=>state.usermessege.value)
-    // console.log(logUserData);
+    let [input,setInput] =useState("")
+
+    let handleSend =()=>{
+        set(push(ref(db, 'singleMessege')), {  
+            whosendname : userData.displayName,
+            whosendid: userData.uid,
+            whorecivename: logUserData.name,
+            whoreciveid: logUserData.id,
+            messege : input
+          })
+    }
+
+    let handleSendChange =(e)=>{
+        setInput(e.target.value)
+    }
+
+
    
     return (
         <div className='messege_box'>
@@ -58,6 +78,13 @@ function Msg() {
                         <audio controls></audio>
                   
                 </div>
+            </div>
+            
+            <div className='messege_submit_input'>
+              <input onChange={handleSendChange} type="text" /> 
+              <div className='btn'>
+               <button onClick={handleSend}>Send</button>
+              </div>
             </div>
 
         </div>

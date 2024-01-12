@@ -22,6 +22,7 @@ function Friends() {
 
 
 
+
   useEffect(() => {
     const friendRef = ref(db, 'friends');
     onValue(friendRef, (snapshot) => {
@@ -114,12 +115,19 @@ function Friends() {
   }
 
   let handleMessege =(item)=>{
-   
-    if(userData.uid==item.whoreciveid){
-      dispatch(user_log({name:item.whosendname,id:item.whosendid,url:item.imgUrl}))
-    }else{
-      dispatch(user_log({name:item.whorecivename,id:item.whoreciveid,url:item.imgUrl}))
+   userList.map((item2)=>{
+    if(item.whorecivename==item2.userName){
+      if(userData.uid==item.whoreciveid){
+        dispatch(user_log({name:item.whosendname,id:item.whosendid,url:item2.userImgUrl}))
+      }else{
+        dispatch(user_log({name:item.whorecivename,id:item.whoreciveid,url:item2.userImgUrl}))
+      }
+
     }
+  
+   })
+   
+
   }
 
 
@@ -154,6 +162,7 @@ function Friends() {
                       :
                       userList.map((item2) => (
                         item.whorecivename == item2.userName &&
+                 
                         <img src={item2.userImgUrl} alt="g1" />
                       ))
 
@@ -195,7 +204,7 @@ function Friends() {
             :
 
             friendList.map((item, index) => (
-              <div key={index} className='list-item'>
+              <div onClick={()=>{handleMessege(item)}} key={index} className='list-item'>
                 {
                   userData.uid == item.whoreciveid ?
                     <img src={item.imgUrl} alt="a" />
@@ -207,7 +216,7 @@ function Friends() {
 
                 }
 
-                <div onClick={()=>{handleMessege(item)}}>
+                <div>
 
                   {
                     userData.uid == item.whoreciveid ?
