@@ -6,18 +6,25 @@ import { TiArrowBackOutline } from "react-icons/ti";
 import { useDispatch, useSelector } from 'react-redux';
 import { user_log } from '../slices/userMessege';
 import { getDatabase, ref, onValue, set, push, remove } from "firebase/database";
+import { MdInsertPhoto } from "react-icons/md";
+import { getDownloadURL, getStorage, ref as refs, uploadBytes } from "firebase/storage";
+import { v4 as uuidv4 } from 'uuid';
 
 
 function Msg() {
+    const storage = getStorage();
     const db = getDatabase();
     let dispatch = useDispatch()
     let userData = useSelector((state) => state.loguser.value)
     let logUserData = useSelector((state) => state.usermessege.value)
     let [input, setInput] = useState("")
     let [singleMessege, setSingleMessege] = useState([])
+    let [file, setFile] = useState("")
+
 
 
     let handleSend = () => {
+        console.log(file);
         if (input) {
             set(push(ref(db, 'singleMessege')), {
                 whosendname: userData.displayName,
@@ -37,9 +44,9 @@ function Msg() {
         onValue(singleMessegeRef, (snapshot) => {
             let arr = []
             snapshot.forEach((item) => {
-                if(userData.uid == item.val().whosendid && logUserData.id == item.val().whoreciveid ||
-                userData.uid == item.val().whoreciveid && logUserData.id == item.val().whosendid){
-                 arr.push(item.val())
+                if (userData.uid == item.val().whosendid && logUserData.id == item.val().whoreciveid ||
+                    userData.uid == item.val().whoreciveid && logUserData.id == item.val().whosendid) {
+                    arr.push(item.val())
                 }
             })
             setSingleMessege(arr)
@@ -48,6 +55,26 @@ function Msg() {
 
     let handleSendChange = (e) => {
         setInput(e.target.value)
+    }
+
+    let handleSubmitPicture = (e) => {
+        const storageRef = refs(storage, uuidv4());
+        uploadBytes(storageRef, e.target.files[0]).then((snapshot) => {
+            getDownloadURL(storageRef).then((downloadURL) => {
+                set(push(ref(db, 'singleMessege')), {
+                    whosendname: userData.displayName,
+                    whosendid: userData.uid,
+                    whorecivename: logUserData.name,
+                    whoreciveid: logUserData.id,
+                    messege: input,
+                    url: downloadURL
+                }).then(() => {
+                    setInput("")
+                })
+            });
+        });
+
+
     }
 
 
@@ -73,13 +100,30 @@ function Msg() {
                 {
                     singleMessege.map((item, index) => (
                         item.whosendid == userData.uid ?
-                            <div key={index} className='messege_body right'>
-                                <p>{item.messege}</p>
-                            </div>
+                            item.messege ?
+
+                                <div key={index} className='messege_body right'>
+                                    <p>{item.messege}</p>
+                                </div>
+                                :
+                                item.url &&
+                                <div className='messege_img right'>
+                                    <div className='inner'>
+                                        <img src={item.url} alt="" />
+                                    </div>
+                                </div>
                             :
-                            <div className='messege_body'>
-                                <p>{item.messege}</p>
-                            </div>
+                            item.messege ?
+                                <div className='messege_body'>
+                                    <p>{item.messege}</p>
+                                </div>
+                                :
+                                item.url &&
+                                <div className='messege_img'>
+                                    <div className='inner'>
+                                        <img src={item.url} alt="" />
+                                    </div>
+                                </div>
                     ))
                 }
 
@@ -119,6 +163,12 @@ function Msg() {
                 <div className='btn'>
                     <button onClick={handleSend}>Send</button>
                 </div>
+
+                <label className='icon'>
+                    <MdInsertPhoto size={25} />
+                    <input onChange={handleSubmitPicture} type="file" hidden />
+                </label>
+
             </div>
 
         </div>
