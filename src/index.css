@@ -1022,7 +1022,7 @@ ul {
     background: #efeded;
     display: inline-block;
     clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 11% 77%, 0 91%, 0 50%);
-    margin-bottom: 15px;
+    margin-bottom:5px;
 }
 
 .messege_box .right {
@@ -1038,7 +1038,7 @@ ul {
     background: #0c1dde;
     display: inline-block;
     clip-path: polygon(0% 0%, 100% 0%, 100% 54%, 100% 90%, 89% 75%, 0 76%, 0 50%);
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     color: white;
 }
 
@@ -1051,7 +1051,7 @@ ul {
 
 }
 .messege_box .messege_img {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 
 }
 .messege_img.right .inner{
