@@ -17,6 +17,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "firebase": "^10.6.0",
     "react": "^18.2.0",
+    "react-audio-voice-recorder": "^2.2.0",
     "react-cropper": "^2.3.3",
     "react-custom-scroll": "^5.0.0",
     "react-dom": "^18.2.0",

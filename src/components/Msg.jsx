@@ -10,6 +10,7 @@ import { MdInsertPhoto } from "react-icons/md";
 import { getDownloadURL, getStorage, ref as refs, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
 import { AiFillAudio } from "react-icons/ai";
+import { AudioRecorder } from 'react-audio-voice-recorder';
 
 
 function Msg() {
@@ -79,6 +80,24 @@ function Msg() {
     }
 
 
+    const addAudioElement = (blob) => {
+        const url = URL.createObjectURL(blob);
+        const audio = document.createElement("audio");
+        audio.src = url;
+        audio.controls = true;
+        document.body.appendChild(audio);
+        set(push(ref(db, 'singleMessege')), {
+            whosendname: userData.displayName,
+            whosendid: userData.uid,
+            whorecivename: logUserData.name,
+            whoreciveid: logUserData.id,
+            messege: input,
+            audio: url
+        }).then(() => {
+            setInput("")
+        })
+
+    };
 
     return (
         <div className='messege_box'>
@@ -87,12 +106,11 @@ function Msg() {
                 <div className='part_one'>
                     <TiArrowBackOutline onClick={() => { dispatch(user_log(null)) }} className='icon' size={25} />
                     <div className='url_part'>
-                     <img src={logUserData.url} alt="" className='img'/>
-                    <img src={active} alt="" className='active'/>
-                    
+                        <img src={logUserData.url} alt="" className='img' />
+                        <img src={active} alt="" className='active' />
                     </div>
 
-             
+
                     <div>
                         <h2>{logUserData.name}</h2>
                         <p>online</p>
@@ -108,29 +126,39 @@ function Msg() {
                     singleMessege.map((item, index) => (
                         item.whosendid == userData.uid ?
                             item.messege ?
-
                                 <div key={index} className='messege_body right'>
                                     <p>{item.messege}</p>
                                 </div>
                                 :
-                                item.url &&
+                                item.url ?
                                 <div className='messege_img right'>
                                     <div className='inner'>
                                         <img src={item.url} alt="" />
                                     </div>
                                 </div>
                             :
-                            item.messege ?
-                                <div className='messege_body'>
-                                    <p>{item.messege}</p>
+                            item.audio &&
+                                <div className='messege_audio right'>
+                                    <audio src={item.audio} controls></audio>
                                 </div>
+
                                 :
-                                item.url &&
-                                <div className='messege_img'>
-                                    <div className='inner'>
-                                        <img src={item.url} alt="" />
+                                item.messege ?
+                                    <div className='messege_body'>
+                                        <p>{item.messege}</p>
                                     </div>
-                                </div>
+                                    :
+                                    item.url ?
+                                    <div className='messege_img'>
+                                        <div className='inner'>
+                                            <img src={item.url} alt="" />
+                                        </div>
+                                    </div>
+                                    :
+                                    item.audio &&
+                                    <div className='messege_audio'>
+                                    <audio src={item.audio} controls></audio>
+                                </div> 
                     ))
                 }
 
@@ -171,7 +199,16 @@ function Msg() {
                     <button onClick={handleSend}>Send</button>
                 </div>
                 <div className='audio'>
-                    <AiFillAudio size={20}/>
+                    <AudioRecorder
+                        onRecordingComplete={addAudioElement}
+                        audioTrackConstraints={{
+                            noiseSuppression: true,
+                            echoCancellation: true,
+                        }}
+                        downloadOnSavePress={true}
+                        downloadFileExtension="webm"
+                    />
+                    {/* <AiFillAudio size={20} /> */}
                 </div>
 
                 <label className='icon'>
