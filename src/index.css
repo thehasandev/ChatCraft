@@ -986,7 +986,7 @@ ul {
 
 }
 
-.messege_box .messege_header .part_one img {
+.messege_box .messege_header .part_one .img {
     height: 50px;
     width: 50px;
     border-radius: 100%;
@@ -1095,7 +1095,14 @@ color: #0c1dde;
 .messege_box .messege_submit_input .icon{
  position: absolute;
  top: 50%;
- right: 75px;
+ right:93px;
+ transform: translateY(-50%);
+ color: #11175D;
+}
+.messege_box .messege_submit_input .audio{
+ position: absolute;
+ top: 50%;
+ right: 70px;
  transform: translateY(-50%);
  color: #11175D;
 }
@@ -1109,4 +1116,15 @@ color: #0c1dde;
     border-radius: 5px;
     border: 0;
     cursor: pointer;
+}
+.url_part{
+    position: relative;
+}
+.url_part .active {
+    position: absolute;
+    bottom: 7px;
+    left: 32px;
+    height: 15px;
+    width: 24px;
+    border-radius: 100%;
 }

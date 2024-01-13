@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { BsThreeDotsVertical } from "react-icons/bs";
 import imgOne from "../assets/b1.png"
-import One from "../assets/registration.png"
+import active from "../assets/active.png"
 import { TiArrowBackOutline } from "react-icons/ti";
 import { useDispatch, useSelector } from 'react-redux';
 import { user_log } from '../slices/userMessege';
@@ -9,6 +9,7 @@ import { getDatabase, ref, onValue, set, push, remove } from "firebase/database"
 import { MdInsertPhoto } from "react-icons/md";
 import { getDownloadURL, getStorage, ref as refs, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
+import { AiFillAudio } from "react-icons/ai";
 
 
 function Msg() {
@@ -85,7 +86,13 @@ function Msg() {
             <div className='messege_header'>
                 <div className='part_one'>
                     <TiArrowBackOutline onClick={() => { dispatch(user_log(null)) }} className='icon' size={25} />
-                    <img src={logUserData.url} alt="" />
+                    <div className='url_part'>
+                     <img src={logUserData.url} alt="" className='img'/>
+                    <img src={active} alt="" className='active'/>
+                    
+                    </div>
+
+             
                     <div>
                         <h2>{logUserData.name}</h2>
                         <p>online</p>
@@ -162,6 +169,9 @@ function Msg() {
                 <input value={input} onChange={handleSendChange} type="text" />
                 <div className='btn'>
                     <button onClick={handleSend}>Send</button>
+                </div>
+                <div className='audio'>
+                    <AiFillAudio size={20}/>
                 </div>
 
                 <label className='icon'>
