@@ -812,6 +812,8 @@ ul {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        padding-top: 53px;
+        padding-bottom: 50px;
     }
 
     .sidevar .logout {
@@ -961,7 +963,6 @@ ul {
     padding: 20px;
     border: 1px solid gray;
     box-sizing: border-box; 
-
 }
 .messege_box .messege_item{
     height: 500px;
@@ -1127,4 +1128,15 @@ color: #0c1dde;
     height: 15px;
     width: 24px;
     border-radius: 100%;
+}
+
+@media (min-width: 320px) and (max-width: 800.99px){
+    .messege_box {
+        margin: 20px;
+        width: auto;
+        padding: 20px;
+        border: 1px solid gray;
+        box-sizing: border-box; 
+        scroll-behavior: hidden;
+    }
 }

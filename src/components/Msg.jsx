@@ -26,7 +26,6 @@ function Msg() {
 
 
     let handleSend = () => {
-        console.log(file);
         if (input) {
             set(push(ref(db, 'singleMessege')), {
                 whosendname: userData.displayName,

@@ -116,6 +116,7 @@ function Friends() {
 
   let handleMessege =(item)=>{
    userList.map((item2)=>{
+    console.log(item.whosendname);
     if(item.whorecivename==item2.userName){
       if(userData.uid==item.whoreciveid){
         dispatch(user_log({name:item.whosendname,id:item.whosendid,url:item2.userImgUrl}))

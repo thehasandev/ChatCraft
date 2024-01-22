@@ -171,7 +171,7 @@ function GroupList() {
           groupList.map((item, index) => (
             <div key={index} className='list-item'>
               <div>
-                <img src={item.gorupImg} alt="g1" />
+                <img src={item.groupImg} alt="g1" />
               </div>
               <div>
                 <h3>{item.groupName}</h3>
