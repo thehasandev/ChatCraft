@@ -118,14 +118,16 @@ function Friends() {
    userList.map((item2)=>{
     if(item.whorecivename==item2.userName){
       if(userData.uid==item.whoreciveid){
-        dispatch(user_log({name:item.whosendname,id:item.whosendid,url:item2.userImgUrl}))
-      }else if(userData.uid==item.whoreciveid){
+        dispatch(user_log({name:item.whosendname,id:item.whosendid,url:item.imgUrl}))
+      }else{
         dispatch(user_log({name:item.whorecivename,id:item.whoreciveid,url:item2.userImgUrl}))
       }
+
     }
   
    })
    
+
   }
 
 
@@ -200,6 +202,7 @@ function Friends() {
               :
               <h1 className='error'>Friend's Not Found</h1>
             :
+
             friendList.map((item, index) => (
               <div onClick={()=>{handleMessege(item)}} key={index} className='list-item'>
                 {

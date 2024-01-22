@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import LoginPng from "../../assets/login.png"
+import LoginPng from "../../assets/login_img.jpg"
 import TextField from '@mui/material/TextField';
 import Button from "../../components/Button"
 import GoggleLogo from '../../assets/g.png'
