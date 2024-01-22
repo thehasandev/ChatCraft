@@ -9,7 +9,7 @@ import { IoMdNotifications } from "react-icons/io";
 import { CiSettings } from "react-icons/ci";
 import { getAuth, updateProfile } from "firebase/auth";
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, json, useNavigate } from 'react-router-dom';
 import { activeuser } from '../slices/firebaseUser';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -96,7 +96,7 @@ function Sidebar() {
               setImage("")
               setOpen(false)
               dispatch(activeuser({ ...userData, photoURL: downloadURL }))
-              localStorage.setItem(JSON.stringify({ ...userData, photoURL: downloadURL }))
+              localStorage.setItem("user",JSON.stringify({...userData,photoURL:downloadURL}))
             })
           })
 
@@ -113,13 +113,12 @@ function Sidebar() {
     <>
       <div className='sidevar'>
         {
-          userData &&
           <div className='sidevar_item' >
             <img onClick={handleOpen} src={userData.photoURL} alt="profile" />
             <p className='name'>{userData.displayName}</p>
           </div>
         }
-
+    
 
         <div className='icons-part'>
           <Link to="/home">
@@ -138,6 +137,8 @@ function Sidebar() {
             </div>
           </Link>
         </div>
+
+
 
         <div className='icons-part'>
           <Link to="/home/notification">
