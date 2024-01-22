@@ -23,6 +23,12 @@ function Msg() {
     let [singleMessege, setSingleMessege] = useState([])
     let [file, setFile] = useState("")
 
+    useEffect(() => {
+        window.scrollTo({
+          bottom: 0,
+          behavior: 'smooth', // Optional: for smooth scrolling animation
+        });
+      }, []);
 
 
     let handleSend = () => {
