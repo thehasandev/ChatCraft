@@ -161,8 +161,6 @@ function Sidebar() {
           <img onClick={handleLogout} src={logout} alt="" className='logout' />
         </div>
 
-
-
       </div>
 
       <div>
@@ -173,7 +171,7 @@ function Sidebar() {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-
+ 
           <Box sx={style}>
             {
               image ?
@@ -194,6 +192,7 @@ function Sidebar() {
             </Typography>
             {
               image &&
+
               <Cropper
                 ref={cropperRef}
                 style={{ height: 350, width: "100%" }}
@@ -211,8 +210,6 @@ function Sidebar() {
                 guides={true}
               />
             }
-
-
 
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               <input onChange={onChange} type="file" />
