@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import RegistraionImg from "../../assets/registration.png"
+import RegistraionImg from "../../assets/group.jpg"
 import TextField from '@mui/material/TextField';
 import Button from '../../components/Button';
 
