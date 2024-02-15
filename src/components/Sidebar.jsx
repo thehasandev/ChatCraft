@@ -17,6 +17,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
+import { LineWave } from 'react-loader-spinner';
 
 
 const defaultSrc =
@@ -45,8 +46,9 @@ function Sidebar() {
   const auth = getAuth();
 
   const handleClose = () => setOpen(false);
-  let userData = useSelector((state) => state.loguser.value)
+  const userData = useSelector((state) => state.loguser.value)
   const [open, setOpen] = useState(false)
+  const [loading,setLoading] = useState(false)
 
   let dispatch = useDispatch()
   let navigate = useNavigate()
@@ -80,6 +82,7 @@ function Sidebar() {
   };
 
   const getCropData = () => {
+    setLoading(true)
     if (typeof cropperRef.current?.cropper !== "undefined") {
       setCropData(cropperRef.current?.cropper.getCroppedCanvas().toDataURL());
       const message4 = cropperRef.current?.cropper.getCroppedCanvas().toDataURL()
@@ -95,8 +98,9 @@ function Sidebar() {
             }).then(() => {
               setImage("")
               setOpen(false)
+              setLoading(false)
               dispatch(activeuser({ ...userData, photoURL: downloadURL }))
-              localStorage.setItem("user",JSON.stringify({...userData,photoURL:downloadURL}))
+              localStorage.setItem("user", JSON.stringify({ ...userData, photoURL: downloadURL }))
             })
           })
 
@@ -118,7 +122,7 @@ function Sidebar() {
             <p className='name'>{userData.displayName}</p>
           </div>
         }
-    
+
 
         <div className='icons-part'>
           <Link to="/home">
@@ -171,7 +175,7 @@ function Sidebar() {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
- 
+
           <Box sx={style}>
             {
               image ?
@@ -190,26 +194,41 @@ function Sidebar() {
             <Typography id="modal-modal-title" variant="h6" component="h2">
               Upload Your Profile
             </Typography>
-            {
-              image &&
 
-              <Cropper
-                ref={cropperRef}
-                style={{ height: 350, width: "100%" }}
-                zoomTo={0.5}
-                initialAspectRatio={1}
-                preview=".img-preview"
-                src={image}
-                viewMode={1}
-                minCropBoxHeight={100}
-                minCropBoxWidth={100}
-                background={false}
-                responsive={true}
-                autoCropArea={1}
-                checkOrientation={false}
-                guides={true}
-              />
-            }
+{
+  loading ?
+  <LineWave
+  visible={true}
+  height="150"
+  width="150"
+  color="#4fa94d"
+  ariaLabel="line-wave-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  firstLineColor=""
+  middleLineColor=""
+  lastLineColor=""
+/>
+  :
+    image &&
+    <Cropper
+      ref={cropperRef}
+      style={{ height: 350, width: "100%" }}
+      zoomTo={0.5}
+      initialAspectRatio={1}
+      preview=".img-preview"
+      src={image}
+      viewMode={1}
+      minCropBoxHeight={100}
+      minCropBoxWidth={100}
+      background={false}
+      responsive={true}
+      autoCropArea={1}
+      checkOrientation={false}
+      guides={true}
+    />
+  
+}
 
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               <input onChange={onChange} type="file" />
