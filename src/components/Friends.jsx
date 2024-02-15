@@ -41,7 +41,7 @@ function Friends() {
     onValue(userRef, (snapshot) => {
       let arr = []
       snapshot.forEach((item) => {
-        arr.push(item.val())
+        arr.push({...item.val(),id:item.key})
       })
       setUserList(arr)
     });
@@ -158,11 +158,12 @@ function Friends() {
                 <div key={index} className='list-item'>
                   {
                     userData.uid == item.whoreciveid ?
-                      <img src={item.imgUrl} alt="a" />
+                    <>
+                    <img src={item.imgUrl} alt="a" />
+                      </>
                       :
                       userList.map((item2) => (
-                        item.whorecivename == item2.userName &&
-                 
+                        item.whoreciveid == item2.id &&
                         <img src={item2.userImgUrl} alt="g1" />
                       ))
 
@@ -210,8 +211,9 @@ function Friends() {
                     <img src={item.imgUrl} alt="a" />
                     :
                     userList.map((item2, index) => (
-                      item.whorecivename == item2.userName &&
+                      item.whoreciveid == item2.id &&
                       <img key={index} src={item2.userImgUrl} alt="g1" />
+                      
                     ))
 
                 }
